@@ -17,11 +17,13 @@ const openai = new OpenAI({
 app.post("/generate-vacation", async (req, res) => { // Defines API Endpoint
     try {
         const { location, date } = req.body;
+        
+        // Prompt
         const prompt = `Plan a vacation to ${location} on ${date}. Provide activities, accommodation options, and estimated costs.`;
 
         const completion = await openai.chat.completions.create({
             model: "gpt-4o-mini",
-            messages: [{ "role": "user", "content": prompt }] // Prompt
+            messages: [{ "role": "user", "content": prompt }] 
         });
         res.json({ vacation: completion.choices[0].message.content });
     } catch (error) {
