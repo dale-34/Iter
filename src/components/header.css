@@ -1,0 +1,25 @@
+/* Header Container */
+.header {
+    background-color: rgba(107, 112, 92, 1);
+    width: 100%;
+  }
+  
+  /* Navigation Container */
+  .header-nav {
+    max-width: 1168px;
+    margin: 0 auto;
+  }
+  
+  /* Logo and Title */
+  .header-title {
+    font-size: 3rem;
+    color: rgba(255, 232, 214, 1);
+    font-weight: bold;
+    white-space: nowrap;
+    padding-top: 0.5rem;
+    padding-bottom: 43px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  
