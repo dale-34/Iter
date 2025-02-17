@@ -1,14 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Header } from "../components/header";
 //import './LandingPage.css';  // Import a specific CSS file for the landing page styles
 
 const LandingPage = () => {
-  const navigate = useNavigate();
-
-  const handleNavigate = () => {
-    navigate('/TripPlanning');
-  };
-
   return (
     <div className="landing-page">
       <header>
