@@ -3,7 +3,9 @@ import { Header } from '../components/header';
 import './TripPlanning.css';
 import { CalendarComponent } from '../components/calendar';
 import { BudgetSlider } from '../components/budgetSlider';
-
+import { HousingAccommodations } from '../components/housingAccomdations';
+import { Transportation } from '../components/Transportation';
+import { Destinations } from '../components/Destinations';
 
 const TripPlanning = () => {
   return (
@@ -22,7 +24,18 @@ const TripPlanning = () => {
             <p className="budgetSubtitle">Designate the minimum and maximum amounts you're willing to spend on this trip.</p>
             <BudgetSlider />
         </div>
+        <div className="housing">
+            <HousingAccommodations />
     </div>
+    <div className="transportation">
+        <Transportation />
+    </div> 
+    <div className="destinations">
+        <Destinations />
+    </div>
+    </div>
+    
+
   );
 };
 
