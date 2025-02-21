@@ -34,9 +34,9 @@ export const CalendarComponent = () => {
                 .react-calendar {
                     width: 100%;
                     max-width: 1400px;
-                    background: lightgreen;
-                    max-height: 1000px;
-                    font-size: 3.0rem;
+                    background: white
+                    color: #4F4F4F; /* Dark charcoal */
+                    font-size: 1.5rem;
                     border-radius: 30px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
                 }
@@ -44,14 +44,21 @@ export const CalendarComponent = () => {
                     border-radius: 8px;
                     padding: 10px;
                     margin: 5px;
+                    background: #D3B8AE; /* Warm taupe */
+                    color: #4F4F4F; /* Dark charcoal */
+                    border: none;
+                    cursor: pointer;
+                }
+                .react-calendar button:hover {
+                    background: #B49A88; /* Slightly darker taupe */
                 }
                 .react-calendar__tile--active {
-                    background: red;
+                    background: #556B2F; /* Olive green */
                     color: white;
                 }
                 .react-calendar__tile--range {
-                    background: #FFC300;
-                    color: black;
+                    background: green; /* Muted tan */
+                    color: #4F4F4F; /* Dark charcoal */
                 }
                 .react-calendar__month-view__days {
                     display: grid !important;

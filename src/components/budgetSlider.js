@@ -11,7 +11,6 @@ export const BudgetSlider = () => {
 
     return (
         <div className="slider-container">
-            <h1>Budget Range Slider</h1>
             <ReactSlider
                 min={0} // Minimum value of the slider
                 max={49999} // Maximum value of the slider
@@ -20,7 +19,7 @@ export const BudgetSlider = () => {
                 className="slider" // Custom class for styling
                 thumbClassName="thumb" // Custom styling for the thumbs (handles)
                 trackClassName="track" // Custom styling for the track
-                renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>} // Customize thumb (optional)
+                renderThumb={(props) => <div {...props}></div>} // No value displayed on thumb
                 step={1000}
             />
             <div className="slider-values">
@@ -44,7 +43,7 @@ export const BudgetSlider = () => {
                     .thumb {
                         height: 30px;
                         width: 30px;
-                        background-color: white;
+                        background-color: rgba(107, 112, 92, 1);
                         color: white;
                         border-radius: 50%;
                         display: flex;
