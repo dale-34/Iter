@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './myTrips.css'; // Import the CSS file
+import './myTrips.css';// Import the CSS file
 
 export const MyTrips = () => {
   const [loading, setLoading] = useState(true);
