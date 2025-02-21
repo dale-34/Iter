@@ -27,7 +27,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+    margin-top: 80px; /* Increased margin to move the globe down */
+}
+
   
   .home-hero-globe img {
     width: 400px;

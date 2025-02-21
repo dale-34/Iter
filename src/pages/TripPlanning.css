@@ -1,9 +1,48 @@
-/* FILEPATH: /Users/doriandejesus/Documents/GitHub/Iter/src/pages/TripPlanning.css */
-
 /* Reset default styles */
 body, h1, p {
     margin: 0;
     padding: 0;
+}
+
+/* Header Container */
+.header {
+    background-color: rgba(107, 112, 92, 1); /* Same color as original */
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Ensures content is centered */
+}
+
+/* Navigation Container */
+.header-nav {
+    max-width: 1168px;
+    width: 100%; /* Ensures it stretches across the full width */
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Logo and Title */
+.header-title {
+    font-size: 3rem;
+    color: rgba(255, 232, 214, 1);
+    font-weight: bold;
+    white-space: nowrap;
+    padding: 0.5rem 1.5rem 0.5rem 2.5rem;
+    letter-spacing: 1.1px;
+}
+
+/* Ensures clickable title */
+.header-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.header-link:hover {
+    opacity: 0.8;
 }
 
 /* Global styles */
@@ -11,29 +50,44 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
     color: #333;
+    text-align: center;
+    min-height: 100vh;
 }
 
+/* Ensure full-page background */
+html, body {
+    height: 100%;
+    width: 100%;
+    background-color: #f5eade; /* Light beige background */
+}
+
+/* Centering container */
 .container {
+    width: 80%;
+    max-width: 900px;
     margin: 0 auto;
-    background-color: rgba(255,232,214,0.26);
+    text-align: center;
+    background-color: rgba(255,232,214,0.5);
+    padding: 20px;
+    border-radius: 8px;
 }
 
-/* Example code */
+/* Title styling */
 .surveyTitle {
     font-size: 54px;
     font-weight: bold;
     color: #333;
-    margin-bottom: 10px;
-    text-align: center;
-    padding-top: 5%;
+    margin-bottom: 20px;
 }
 
+/* Paragraph styling */
 p {
     font-size: 16px;
     line-height: 1.5;
     color: #666;
 }
 
+/* Button styling */
 .button {
     display: inline-block;
     padding: 10px 20px;
@@ -41,8 +95,113 @@ p {
     color: #fff;
     text-decoration: none;
     border-radius: 4px;
+    margin-top: 20px;
+    text-align: center;
 }
 
 .button:hover {
     background-color: #0056b3;
+}
+
+/* Calendar Container */
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff; /* Changed to white for better contrast */
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); /* Slightly deeper shadow for emphasis */
+    border: 2px solid #d4a373; /* A warm accent color for visual appeal */
+}
+
+/* Calendar Title */
+.calendarTitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4a4a4a; /* Darker text for better readability */
+    margin-bottom: 10px;
+}
+
+/* React Calendar Styling */
+.react-calendar {
+    border: none;
+    background: #f8f9fa; /* Soft neutral color to make it distinct */
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Selected Date Display */
+.calendar-container p {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Submit Button Container */
+.submit-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Submit Button Styling */
+.submit-button {
+    background: #007bff; /* Blue color */
+    color: white;
+    font-size: 18px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+}
+
+.submit-button:hover {
+    background: #0056b3;
+}
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .surveyTitle {
+        font-size: 40px;
+    }
+
+    .calendarTitle {
+        font-size: 20px;
+    }
+
+    .calendar-container {
+        padding: 15px;
+    }
+
+    .react-calendar {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .surveyTitle {
+        font-size: 36px;
+    }
+
+    .calendarTitle {
+        font-size: 18px;
+    }
+
+    .react-calendar {
+        width: 100%;
+        padding: 5px;
+    }
 }
