@@ -28,7 +28,8 @@ const TripPlanning = () => {
             <CalendarComponent />
         </div>
         <div className="budget">
-            <h2 className="budgetTitle">What is your budget for this trip?</h2>
+            <h2 className="budgetTitle" justifyContent="center"
+            >What is your budget for this trip?</h2>
             <p className="budgetSubtitle">Designate the minimum and maximum amounts you want to spend on this trip.</p>
             <BudgetSlider />
         </div>

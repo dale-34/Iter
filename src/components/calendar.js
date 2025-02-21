@@ -34,24 +34,32 @@ export const CalendarComponent = () => {
                 .react-calendar {
                     width: 100%;
                     max-width: 1400px;
-                    background: lightgreen;
-                    max-height: 1000px;
-                    font-size: 3.0rem;
-                    border-radius: 30px;
+                    font-size: 1.5rem;
+                    border-radius: 25px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                    background-color: white;
+                }
+                .react-calendar__tile {
+                    height: 100px;
+                    padding: 30px;
+                    font-size: 1.5rem;
                 }
                 .react-calendar button {
                     border-radius: 8px;
                     padding: 10px;
                     margin: 5px;
+                    border: none;
+                    cursor: pointer;
+                }
+                .react-calendar button:hover {
+                    outline: 2px solid rgba(107, 112, 92, 1); /* Darker outline on hover */
+                    cursor: pointer;
                 }
                 .react-calendar__tile--active {
-                    background: red;
-                    color: white;
+                    background-color: rgba(107, 112, 92, 1);
                 }
                 .react-calendar__tile--range {
-                    background: #FFC300;
-                    color: black;
+
                 }
                 .react-calendar__month-view__days {
                     display: grid !important;
