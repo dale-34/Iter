@@ -29,6 +29,21 @@ export const Destinations = () => {
           <li key={index}>{place}</li>
         ))}
       </ul>
+      <style>
+      {`
+        .destinations-container {
+          margin: 20px;
+          padding: 20px;
+          border: 1px solid #ddd;
+          border-radius: 10px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+      `}
+      </style>
     </div>
   );
+  
 };

@@ -46,6 +46,21 @@ export const Transportation = () => {
           {transportType && <p>You selected: {transportType}</p>}
         </div>
       )}
+      <style>
+      {`
+        .transportation-container {
+          margin: 20px;
+          padding: 20px;
+          border: 1px solid #ddd;
+          border-radius: 10px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+      `}
+      </style>
+
     </div>
   );
 };
