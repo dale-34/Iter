@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link for routing
 import { Header } from '../components/header';
 import './TripPlanning.css';
 import './LoadingPage.css';
@@ -8,6 +9,7 @@ import { HousingAccommodations } from '../components/housingAccomdations';
 import { Transportation } from '../components/Transportation';
 import { Destinations } from '../components/Destinations';
 import { useNavigate } from 'react-router-dom';
+
 
 
 const TripPlanning = () => {
@@ -33,7 +35,8 @@ const TripPlanning = () => {
             <p className="budgetSubtitle">Designate the minimum and maximum amounts you want to spend on this trip.</p>
             <BudgetSlider />
         </div>
-        <div className="housing">
+
+        <div className="question-container">
             <HousingAccommodations />
     </div>
     <div className="transportation">
@@ -52,9 +55,17 @@ const TripPlanning = () => {
       </button>
     </div>
     </div>
-    
 
-  );
+        <div className="question-container">
+            <h2 className="question-title">Where would you like to go?</h2>
+            <Destinations />
+        </div>
+
+        <div className="submit-container">
+            <Link to="/my-itinerary" className="submit-button">Submit</Link>
+        </div>
+    </div>
+);
 };
 
 export default TripPlanning;
