@@ -1,0 +1,52 @@
+/* Style for the Globe Component */
+.loading-globe-container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-globe-container img {
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
+    animation: spinHorizontal 10s linear infinite; /* Horizontal spin */
+    margin: 0 auto;
+}
+
+/* Keyframes for horizontal rotation (around the Y-axis) */
+@keyframes spinHorizontal {
+    0% {
+        transform: rotateY(0deg); /* Start at the initial position */
+    }
+    100% {
+        transform: rotateY(360deg); /* Rotate fully around the Y-axis */
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .loading-globe-container img {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .loading-globe-container {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .loading-globe-container img {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .loading-globe-container img {
+        width: 100%;
+        height: auto;
+    }
+}

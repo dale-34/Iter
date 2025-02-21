@@ -1,0 +1,61 @@
+/* Reset default styles */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2; /* Same as TripPlanning */
+    color: #333; /* Text color */
+}
+
+/* Style for the overall container */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Aligns the content to the top */
+    height: 100vh;
+    background-color: rgba(255,232,214,0.26);
+    text-align: center;
+}
+
+/* Style for the content */
+.loading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px; /* Increase this value to move the globe lower */
+    width: 100%; /* Ensure full width */
+}
+
+/* Style for the loading text */
+.loading-text {
+    margin-top: 20px; /* Adds space between the globe and the text */
+    font-size: 30px;
+    font-weight: bold;
+    color: #333; /* Matching the text color */
+    animation: fadeIn 2s infinite alternate; /* Animation for the text */
+}
+
+/* Keyframes for subtle animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0.5;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg); /* Start rotation */
+    }
+    100% {
+        transform: rotate(360deg); /* Correct direction for clockwise rotation */
+    }
+}
