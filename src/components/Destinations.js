@@ -36,6 +36,10 @@ export const Destinations = () => {
           padding: 20px;
           border: 1px solid #ddd;
           border-radius: 10px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
         }
       `}
       </style>
