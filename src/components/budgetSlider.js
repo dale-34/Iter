@@ -23,8 +23,8 @@ export const BudgetSlider = () => {
                 step={1000}
             />
             <div className="slider-values">
-                <p>Min Value: {values[0]}</p>
-                <p>Max Value: {values[1]}</p>
+                <p>Value Budget: ${values[0]}</p>
+                <p>Maximum Budget: ${values[1]}</p>
             </div>
 
             {/* Inline styles using the <style> tag */}
@@ -62,12 +62,15 @@ export const BudgetSlider = () => {
                     }
                     
                     .slider-values {
+                        font-size: 1.7rem;
+                        
                         display: flex;
                         justify-content: space-between;
                         width: 80%;
                         max-width: 600px;
                         margin: 10px auto;
                         font-size: 1.2rem;
+                        font-weight: bold;
                     }
                 `}
             </style>
