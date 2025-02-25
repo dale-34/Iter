@@ -13,7 +13,7 @@ export const BudgetSlider = () => {
         <div className="slider-container">
             <ReactSlider
                 min={0} // Minimum value of the slider
-                max={14999} // Maximum value of the slider
+                max={15000} // Maximum value of the slider
                 value={values} // Current values of the two handles
                 onChange={handleSliderChange} // Function to update state when the slider value changes
                 className="slider" // Custom class for styling
@@ -23,8 +23,12 @@ export const BudgetSlider = () => {
                 step={100}
             />
             <div className="slider-values">
+                <button className="decrement"> - </button>
                 <p>Value Budget: ${values[0]}</p>
+                <button className="increment"> + </button>
+                <button className="decrement"> - </button>
                 <p>Maximum Budget: ${values[1]}</p>
+                <button className="increment"> + </button>
             </div>
 
             {/* Inline styles using the <style> tag */}
@@ -34,10 +38,36 @@ export const BudgetSlider = () => {
                         width: 80%;
                         max-width: 600px;
                         height: 10px;
-                        margin: 20px auto;
+                        margin: 0 auto;
+                        margin-top: 40px;
+                        margin-bottom: 60px;
                         background: #ddd;
                         border-radius: 5px;
                         position: relative;
+                    }
+
+                    .increment {
+                        width: 15px;
+                        height: 15px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 10px 10px; /* Smaller padding */
+                        font-size: 1rem; /* Adjust font size */
+                        border-radius: 50%;
+                        background-color: dark green;
+                    }
+
+                    .decrement {
+                        width: 15px;
+                        height: 15px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 10px 10px; /* Smaller padding */
+                        font-size: 1rem; /* Adjust font size */
+                        border-radius: 50%;
+                        background-color: dark red;
                     }
                     
                     .thumb {
@@ -63,10 +93,9 @@ export const BudgetSlider = () => {
                     
                     .slider-values {
                         font-size: 1.7rem;
-                        
                         display: flex;
                         justify-content: space-between;
-                        width: 80%;
+                        width: 50%;
                         max-width: 600px;
                         margin: 10px auto;
                         font-size: 1.2rem;
