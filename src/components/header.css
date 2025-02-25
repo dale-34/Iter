@@ -5,11 +5,12 @@
   height: 100px;
   display: flex;
   align-items: center;
-  justify-content: center; /* Center content horizontally */
-  position: fixed; /* Ensures it stays at the top */
+  justify-content: center;
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000; /* Keeps it above other content */
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
 }
 
 /* Navigation Container */
@@ -17,21 +18,26 @@
   width: 100%;
   max-width: 1168px;
   display: flex;
-  justify-content: flex-start; /* Moves title to the left */
   align-items: center;
-  padding-left: 2.5rem; /* Adds spacing from the left edge */
+  justify-content: flex-start;
+  padding: 0 2.5rem;
 }
-
 
 /* Logo and Title */
 .header-title {
   font-size: 3rem;
-  color: rgba(255, 232, 214, 1) !important; /* Force original color */
+  color: rgba(255, 232, 214, 1);
   font-weight: bold;
-  white-space: nowrap;
   letter-spacing: 1.1px;
+  margin: 0;
 }
 
+.header-link {
+  text-decoration: none;
+  color: rgba(255, 232, 214, 1); /* Matches title color */
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
 
 .header-link:hover {
   opacity: 0.8;
