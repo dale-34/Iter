@@ -3,7 +3,7 @@ import ReactSlider from "react-slider"; // Import react-slider
 
 export const BudgetSlider = () => {
     // State for the two handles
-    const [values, setValues] = useState([0, 49999]); // Initial values for the two handles
+    const [values, setValues] = useState([0, 14999]); // Initial values for the two handles
 
     const handleSliderChange = (newValues) => {
         setValues(newValues); // Update the state with new values
@@ -13,14 +13,14 @@ export const BudgetSlider = () => {
         <div className="slider-container">
             <ReactSlider
                 min={0} // Minimum value of the slider
-                max={49999} // Maximum value of the slider
+                max={14999} // Maximum value of the slider
                 value={values} // Current values of the two handles
                 onChange={handleSliderChange} // Function to update state when the slider value changes
                 className="slider" // Custom class for styling
                 thumbClassName="thumb" // Custom styling for the thumbs (handles)
                 trackClassName="track" // Custom styling for the track
                 renderThumb={(props) => <div {...props}></div>} // No value displayed on thumb
-                step={1000}
+                step={100}
             />
             <div className="slider-values">
                 <p>Value Budget: ${values[0]}</p>

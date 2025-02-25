@@ -1,7 +1,6 @@
 import React from 'react';
 import { Header } from '../components/header';
 import './TripPlanning.css';
-import './LoadingPage.css';
 import { CalendarComponent } from '../components/calendar';
 import { BudgetSlider } from '../components/budgetSlider';
 import { HousingAccommodations } from '../components/housingAccomdations';
@@ -17,7 +16,7 @@ const TripPlanning = () => {
 
     return (
         <div>
-        <div>
+        <div className='header-container'>
             <Header />
         </div>
         <div className="trip-planning container">
