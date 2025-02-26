@@ -1,0 +1,166 @@
+/* Main Container */
+.destinations {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Title */
+.destinations__title {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 20px;
+}
+
+/* Continent Selection Grid */
+.destinations__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Continent Buttons */
+.destinations__continent {
+    width: 100%;
+    height: 120px;
+    background-size: cover;
+    background-position: center;
+    background-color: #d3d3d3;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Grayscale effect for unselected continents */
+.destinations__continent:not(.selected) {
+    filter: grayscale(100%);
+    opacity: 0.9;
+}
+
+/* Selected Continent */
+.destinations__continent.selected {
+    filter: none;
+    opacity: 1;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-blend-mode: darken;
+}
+
+/* Filter Buttons */
+.destinations__filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.destinations__filter {
+    background: rgb(248, 241, 235);
+    border: none;
+    padding: 8px 15px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.destinations__filter.selected {
+    background: #666;
+    color: white;
+}
+
+.destinations__filter:hover {
+    background: #aaa;
+}
+
+/* Carousel Section */
+.destinations__carousel-title {
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 10px;
+}
+
+/* Carousel Container */
+.destinations__carousel {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* Carousel Cards */
+.destinations__carousel-card {
+    width: 250px; /* Consistent width */
+    height: 220px; /* Adjusted height */
+    background: rgb(250, 236, 226);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+    padding: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Hover Effect */
+.destinations__carousel-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Styling */
+.carousel-image {
+    width: 100%; /* Full width */
+    height: 150px; /* Consistent height */
+    object-fit: cover; /* Ensures image fills the area properly */
+    border-radius: 8px 8px 0 0; /* Rounded top corners */
+}
+
+/* Text under Image */
+.destinations__carousel-card p {
+    margin: 10px 0 5px;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    text-align: center;
+}
+
+
+/* "I Have a Place in Mind" Button */
+.destinations__custom-button {
+    margin-top: 20px;
+    padding: 12px 18px;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    background: rgb(248, 241, 235);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
+
+.destinations__custom-button:hover {
+    background: #d0d0d0;
+    transform: translateY(-2px);
+}

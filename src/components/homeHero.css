@@ -18,8 +18,10 @@
   }
   
   .home-hero-title {
-    font-size: 64px;
+    font-size: 72px;
+    width: 700px;
     line-height: 1.2;
+    margin-left: 200px;
   }
   
   .home-hero-globe {
@@ -27,11 +29,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+    margin-left: 300px;
+    margin-top: 60px; /* Increased margin to move the globe down */
+}
+
   
   .home-hero-globe img {
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: 500px;
     object-fit: contain;
   }
   

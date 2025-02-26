@@ -1,10 +1,11 @@
 import React from "react";
 import { Header } from "../components/header";
 import { HomeHero } from "../components/homeHero";
+import "../css/homePage.css";
 
 const HomePage = () => {
   return (
-    <div className="bg-[rgba(255,232,214,0.26)] flex flex-col overflow-hidden min-h-screen pb-[114px]">
+    <div className="homepage-container">
       <Header />
       <HomeHero />
     </div>

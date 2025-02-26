@@ -1,0 +1,77 @@
+/* Main Container */
+.transport {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+    background: rgb(249, 232, 220);
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Title styling to match Trip Planning */
+.transport__title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Background Section */
+.transport__background {
+    width: 100%;
+    height: 500px;
+    background: url('https://images.pexels.com/photos/62623/wing-plane-flying-airplane-62623.jpeg?cs=srgb&dl=pexels-pixabay-62623.jpg&fm=jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 15px;
+}
+
+/* Clickable Options */
+.transport__options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* Stylish Buttons */
+.transport__option {
+    width: 85%;
+    padding: 15px;
+    font-size: 18px;
+    background: rgb(248, 241, 235);
+    border: 0.5px solid #c8c8c8;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-align: center;
+    font-weight: 500;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover and Selected Effects */
+.transport__option:hover {
+    background: #d0d0d0;
+    transform: translateY(-2px);
+}
+
+.transport__option.selected {
+    background: black;
+    color: white;
+    font-weight: bold;
+}
+
+/* Selected Option Display */
+.transport__selected {
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
