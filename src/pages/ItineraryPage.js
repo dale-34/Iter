@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { Header } from "../components/header";
 import { useLocation } from "react-router-dom";
-import { Destinations } from "../components/Destinations";
-import TripPlanning from "./TripPlanning";
 import ActivityCard from '../components/activityCard';
-import './ItineraryPage.css';
+import '../css/ItineraryPage.css';
 
 function ItineraryPage() {
     const location = useLocation();
