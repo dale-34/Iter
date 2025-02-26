@@ -11,9 +11,6 @@ import SpecificPlaces from "../components/specificPlaces";
 
 const TripPlanning = () => {
     const navigate = useNavigate();
-    // const goToLoadingPage = () => {
-    //     navigate("/LoadingPage");
-    // };
 
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
@@ -37,22 +34,14 @@ const TripPlanning = () => {
     };
 
     const handleTransport = (transportData) => {
-        // const needTransport =
-        //     transportData.needsFlight === "yes"
-        //     ? transportData.transportType
-        //     : "none";
         setTransport(transportData);
     };
 
     const handleDestination = (destinationLoc) => {
-        // if (destination.trim() && !destinations.includes(destination)) {
-        //     setDestinations([...destinations, destination.trim()]);
-        // }
         setDestination(destinationLoc);
     };
 
     const handleSubmit = () => {
-        // const vacation = await generateVacation();
         navigate("/LoadingPage", {
             state: {
                 startDate,
@@ -64,37 +53,6 @@ const TripPlanning = () => {
             },
         });
     };
-
-    // const generateVacation = async () => {
-    //     console.log("Generating...");
-    //     try {
-    //         console.log(startDate, endDate);
-    //         const response = await fetch(
-    //             "http://localhost:3000/generate-vacation",
-    //             {
-    //                 method: "POST",
-    //                 headers: { "Content-Type": "application/json" },
-    //                 body: JSON.stringify({
-    //                     startDate,
-    //                     endDate,
-    //                     budget,
-    //                     accommodation,
-    //                     transport,
-    //                     destinations,
-    //                 }),
-    //             }
-    //         );
-
-    //         const data = await response.json();
-    //         setVacationPlan(data.vacation);
-    //         return data.vacation;
-    //     } catch (error) {
-    //         const errorMessage = "Error generating vacation";
-    //         setVacationPlan("Failed to get vacation plan.");
-    //         console.log(error);
-    //         return errorMessage;
-    //     }
-    // };
 
     return (
         <div>

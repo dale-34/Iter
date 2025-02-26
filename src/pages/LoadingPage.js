@@ -8,8 +8,6 @@ const LoadingPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // const { vacationPlan } = location.state || {};
-
   useEffect(() => {
     const { startDate, endDate, budget, accommodation, transport, destination } = location.state;
     
@@ -28,21 +26,12 @@ const LoadingPage = () => {
           }),
         });
         const data = await response.json();
-        // Navigate to ItineraryPage once the plan is generated
-        navigate("/ItineraryPage", { state: { vacationPlan: data.vacation } });
+        navigate("/ItineraryPage", { state: { vacationPlan: data.vacation } }); // Go to itinerary when plan is generated
       } catch (error) {
         console.error("Error generating vacation:", error);
-        // Optionally handle the error by showing an error message or navigating elsewhere
       }
     };
     generateVacation();
-    // Set a timeout to navigate to the next page after 5 seconds
-    // const timer = setTimeout(() => {
-    //   navigate("/ItineraryPage", { state: { vacationPlan } }); // Change '/NextPage' to the correct path for the next page
-    // }, 10000);  // Adjusted to 5 seconds for demo
-
-    // // Cleanup the timer when the component is unmounted
-    // return () => clearTimeout(timer);
   }, [location.state, navigate]);
 
 
