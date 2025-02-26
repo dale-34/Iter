@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-export const CalendarComponent = () => {
+export const CalendarComponent = ({ onDateChange }) => {
     const [dateRange, setDateRange] = useState([new Date(), new Date()]); // Default to today's date as a range
 
     const handleDateChange = (newDate) => {
         setDateRange(newDate); // Set selected date range
         console.log("Selected Date Range: ", newDate);
+        if (onDateChange && Array.isArray(newDate)) {
+            onDateChange(newDate[0]?.toDateString(), newDate[1]?.toDateString());
+        }
     };
 
     return (

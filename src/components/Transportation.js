@@ -1,8 +1,16 @@
 import React, { useState } from "react";
-import "./Transportation.css";
+import "../css/Transportation.css";
 
-export const Transportation = () => {
+
+export const Transportation = ({ onTransportChange }) => {
   const [selectedOption, setSelectedOption] = useState("");
+
+  const handleTransportChange = (transport) => {
+    setSelectedOption(selectedOption);
+    if (onTransportChange) {
+      onTransportChange(transport);
+    }
+  };
 
   return (
     <div className="transport">
@@ -16,28 +24,28 @@ export const Transportation = () => {
       <div className="transport__options">
         <button
           className={`transport__option ${selectedOption === "rental" ? "selected" : ""}`}
-          onClick={() => setSelectedOption("rental")}
+          onClick={() => handleTransportChange("rental")}
         >
           Rental Car
         </button>
 
         <button
           className={`transport__option ${selectedOption === "flight" ? "selected" : ""}`}
-          onClick={() => setSelectedOption("flight")}
+          onClick={() => handleTransportChange("flight")}
         >
           Flight
         </button>
 
         <button
           className={`transport__option ${selectedOption === "train" ? "selected" : ""}`}
-          onClick={() => setSelectedOption("train")}
+          onClick={() => handleTransportChange("train")}
         >
           Train
         </button>
 
         <button
           className={`transport__option ${selectedOption === "own" ? "selected" : ""}`}
-          onClick={() => setSelectedOption("own")}
+          onClick={() => handleTransportChange("own")}
         >
           No, I have my own transportation
         </button>

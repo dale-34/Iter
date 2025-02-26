@@ -1,21 +1,39 @@
 import React, { useEffect } from 'react';
 import { Header } from '../components/header';
-import './LoadingPage.css';  // Import the main Loading Page CSS
-import { useNavigate } from 'react-router-dom';
+import '../css/LoadingPage.css';  // Import the main Loading Page CSS
+import { useLocation, useNavigate } from 'react-router-dom';
 import LoadingGlobe from '../components/LoadingGlobe'; // Import the LoadingGlobe component
 
 const LoadingPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    // Set a timeout to navigate to the next page after 5 seconds
-    const timer = setTimeout(() => {
-      navigate('/ItineraryPage'); // Change '/NextPage' to the correct path for the next page
-    }, 10000);  // Adjusted to 5 seconds for demo
+    const { startDate, endDate, budget, accommodation, transport, destination } = location.state;
+    
+    const generateVacation = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/generate-vacation", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            startDate,
+            endDate,
+            budget,
+            accommodation,
+            transport,
+            destination,
+          }),
+        });
+        const data = await response.json();
+        navigate("/ItineraryPage", { state: { vacationPlan: data.vacation } }); // Go to itinerary when plan is generated
+      } catch (error) {
+        console.error("Error generating vacation:", error);
+      }
+    };
+    generateVacation();
+  }, [location.state, navigate]);
 
-    // Cleanup the timer when the component is unmounted
-    return () => clearTimeout(timer);
-  }, [navigate]);
 
   return (
     <div className="loading-container"> {/* Single Parent Element */}

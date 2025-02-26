@@ -1,15 +1,30 @@
-// Import any necessary dependencies
-import React from 'react';
-import { Header } from '../components/header';
+import React, { useState } from "react";
+import { Header } from "../components/header";
+import { useLocation } from "react-router-dom";
+import { Destinations } from "../components/Destinations";
+import TripPlanning from "./TripPlanning";
 
-// Define the LoadingPage component
-const ItineraryPage = () => {
+function ItineraryPage() {
+    const location = useLocation();
+    const { vacationPlan } = location.state || {};
     return (
-        <div className = "header">
-            <Header />
+        <div>
+            <div className="header">
+                <Header />
+            </div>
+            <div>
+                <h3>Your Vacation Plan:</h3>
+                {vacationPlan ? (
+                    <p>{vacationPlan}</p>
+                ) : (
+                    <p>
+                        No vacation plan available. Please go back and create
+                        one.
+                    </p>
+                )}
+            </div>
         </div>
     );
 }
 
-// Export the ItineraryPage component
 export default ItineraryPage;

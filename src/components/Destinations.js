@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./Destinations.css";
+import "../css/Destinations.css";
 import {SpecificPlaces} from "./specificPlaces.js";
 
-export const Destinations = () => {
+export const Destinations = ({ onDestinationChange }) => {
   const [showSpecificPlaces, setShowSpecificPlaces] = useState(false);
   const [selectedRegion, setSelectedRegion] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("Popular");
@@ -92,7 +92,7 @@ export const Destinations = () => {
           </button>
         </>
       ) : (
-        <SpecificPlaces onClose={() => setShowSpecificPlaces(false)} />
+        <SpecificPlaces onClose={() => setShowSpecificPlaces(false)} onSpecificChange={onDestinationChange} />
       )}
     </div>
   );

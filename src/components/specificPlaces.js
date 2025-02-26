@@ -1,54 +1,60 @@
-import React, { useState } from "react";
-import "./specificPlaces.css";
+import React, { useState, useEffect } from "react";
+import "../css/specificPlaces.css";
 
-export const SpecificPlaces = ({ onClose }) => {
-  const [places, setPlaces] = useState([]);
-  const [input, setInput] = useState("");
+export const SpecificPlaces = ({ onClose, onSpecificChange }) => {
+    const [places, setPlaces] = useState([]);
+    const [input, setInput] = useState("");
 
-  // Add a new place when pressing Enter
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter" && input.trim() !== "") {
-      setPlaces([...places, input]);
-      setInput("");
-    }
-  };
+    // Add a new place when pressing Enter
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter" && input.trim() !== "") {
+            setPlaces([...places, input]);
+            setInput("");
+        }
+    };
 
-  // Remove a place when clicking 'x'
-  const removePlace = (index) => {
-    setPlaces(places.filter((_, i) => i !== index));
-  };
+    // Remove a place when clicking 'x'
+    const removePlace = (index) => {
+        setPlaces(places.filter((_, i) => i !== index));
+    };
 
-  return (
-    <div className="specific-places">
-      <h2 className="specific-places__title">Any specific places?</h2>
+    useEffect(() => {
+        if (onSpecificChange) {
+            onSpecificChange(places);
+        }
+    }, [places, onSpecificChange]);
 
-      <div className="specific-places__box">
-        <input
-          type="text"
-          placeholder="Search"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleKeyDown}
-          className="specific-places__input"
-        />
+    return (
+        <div className="specific-places">
+            <h2 className="specific-places__title">Any specific places?</h2>
 
-        {/* Selected Places */}
-        <div className="specific-places__tags">
-          {places.map((place, index) => (
-            <div key={index} className="specific-places__tag">
-              {place} <span onClick={() => removePlace(index)}>x</span>
+            <div className="specific-places__box">
+                <input
+                    type="text"
+                    placeholder="Search"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                    className="specific-places__input"
+                />
+
+                {/* Selected Places */}
+                <div className="specific-places__tags">
+                    {places.map((place, index) => (
+                        <div key={index} className="specific-places__tag">
+                            {place}{" "}
+                            <span onClick={() => removePlace(index)}>x</span>
+                        </div>
+                    ))}
+                </div>
             </div>
-          ))}
-        </div>
-      </div>
 
-      {/* Back Button */}
-      <button className="specific-places__back-button" onClick={onClose}>
-        Back
-      </button>
-    </div>
-  );
+            {/* Back Button */}
+            <button className="specific-places__back-button" onClick={onClose}>
+                Back
+            </button>
+        </div>
+    );
 };
 
 export default SpecificPlaces;
-
