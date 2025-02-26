@@ -7,6 +7,7 @@ import { Transportation } from "../components/Transportation";
 import { Destinations } from "../components/Destinations";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
+import SpecificPlaces from "../components/specificPlaces";
 
 const TripPlanning = () => {
     const navigate = useNavigate();
@@ -19,7 +20,7 @@ const TripPlanning = () => {
     const [budget, setBudget] = useState("");
     const [accommodation, setAccommodation] = useState("");
     const [transport, setTransport] = useState("");
-    const [destinations, setDestinations] = useState([]);
+    const [destination, setDestination] = useState([]);
     const [vacationPlan, setVacationPlan] = useState("");
 
     const handleDateChange = (start, end) => {
@@ -36,56 +37,64 @@ const TripPlanning = () => {
     };
 
     const handleTransport = (transportData) => {
-        const needTransport =
-            transportData.needsFlight === "yes"
-            ? transportData.transportType
-            : "none";
-        setTransport(needTransport);
+        // const needTransport =
+        //     transportData.needsFlight === "yes"
+        //     ? transportData.transportType
+        //     : "none";
+        setTransport(transportData);
     };
 
-    const handleDestination = (destination) => {
+    const handleDestination = (destinationLoc) => {
         // if (destination.trim() && !destinations.includes(destination)) {
         //     setDestinations([...destinations, destination.trim()]);
         // }
-        setDestinations(destination);
-        
+        setDestination(destinationLoc);
     };
 
-    const handleSubmit = async () => {
-        const vacation = await generateVacation();
-        navigate("/ItineraryPage", { state: { vacationPlan: vacation } });
+    const handleSubmit = () => {
+        // const vacation = await generateVacation();
+        navigate("/LoadingPage", {
+            state: {
+                startDate,
+                endDate,
+                budget,
+                accommodation,
+                transport,
+                destination,
+            },
+        });
     };
 
-    const generateVacation = async () => {
-        console.log("Generating...");
-        try {
-            console.log(startDate, endDate);
-            const response = await fetch(
-                "http://localhost:3000/generate-vacation",
-                {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        startDate,
-                        endDate,
-                        budget,
-                        accommodation,
-                        transport,
-                        destinations
-                    }),
-                }
-            );
+    // const generateVacation = async () => {
+    //     console.log("Generating...");
+    //     try {
+    //         console.log(startDate, endDate);
+    //         const response = await fetch(
+    //             "http://localhost:3000/generate-vacation",
+    //             {
+    //                 method: "POST",
+    //                 headers: { "Content-Type": "application/json" },
+    //                 body: JSON.stringify({
+    //                     startDate,
+    //                     endDate,
+    //                     budget,
+    //                     accommodation,
+    //                     transport,
+    //                     destinations,
+    //                 }),
+    //             }
+    //         );
 
-            const data = await response.json();
-            setVacationPlan(data.vacation);
-            return data.vacation;
-        } catch (error) {
-            const errorMessage = "Error generating vacation";
-            setVacationPlan("Failed to get vacation plan.");
-            console.log(error);
-            return errorMessage;
-        }
-    };
+    //         const data = await response.json();
+    //         setVacationPlan(data.vacation);
+    //         return data.vacation;
+    //     } catch (error) {
+    //         const errorMessage = "Error generating vacation";
+    //         setVacationPlan("Failed to get vacation plan.");
+    //         console.log(error);
+    //         return errorMessage;
+    //     }
+    // };
 
     return (
         <div>
@@ -113,16 +122,16 @@ const TripPlanning = () => {
                         Designate the minimum and maximum amounts you want to
                         spend on this trip.
                     </p>
-                    <BudgetSlider onBudgetChange={handleBudgetChange}/>
+                    <BudgetSlider onBudgetChange={handleBudgetChange} />
                 </div>
                 <div className="question-container">
-                    <HousingAccommodations onHousingChange={handleHousing}/>
+                    <HousingAccommodations onHousingChange={handleHousing} />
                 </div>
                 <div className="transportation">
-                    <Transportation onTransportChange={handleTransport}/>
+                    <Transportation onTransportChange={handleTransport} />
                 </div>
                 <div className="destinations">
-                    <Destinations onDestinationChange={handleDestination}/>
+                    <Destinations onDestinationChange={handleDestination} />
                 </div>
                 <div className="submit">
                     <button

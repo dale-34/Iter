@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/specificPlaces.css";
 
-export const SpecificPlaces = ({ onClose }) => {
+export const SpecificPlaces = ({ onClose, onSpecificChange }) => {
   const [places, setPlaces] = useState([]);
   const [input, setInput] = useState("");
 
@@ -17,6 +17,28 @@ export const SpecificPlaces = ({ onClose }) => {
   const removePlace = (index) => {
     setPlaces(places.filter((_, i) => i !== index));
   };
+
+  useEffect(() => {
+    if (onSpecificChange) {
+      onSpecificChange(places);
+    }
+  }, [places, onSpecificChange]);
+
+  // export const Destinations = ({onDestinationChange}) => {
+  //     const [destinations, setDestinations] = useState([]);
+  //     const [input, setInput] = useState("");
+  
+  //     const addDestination = () => {
+  //         if (input.trim()) {
+  //             const updatedDestinations = [...destinations, input.trim()];
+  //             setDestinations(updatedDestinations);
+  //             console.log("Selected Date Range: ", updatedDestinations);
+  //             if (onDestinationChange) {
+  //                 onDestinationChange(updatedDestinations);
+  //             }
+  //             setInput("");
+  //         }
+  //     };
 
   return (
     <div className="specific-places">

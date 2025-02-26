@@ -2,26 +2,8 @@ import React, { useState } from "react";
 import "../css/Destinations.css";
 import {SpecificPlaces} from "./specificPlaces.js";
 
-// export const Destinations = ({onDestinationChange}) => {
-//     const [destinations, setDestinations] = useState([]);
-//     const [input, setInput] = useState("");
-
-//     const addDestination = () => {
-//         if (input.trim()) {
-//             const updatedDestinations = [...destinations, input.trim()];
-//             setDestinations(updatedDestinations);
-//             console.log("Selected Date Range: ", updatedDestinations);
-//             if (onDestinationChange) {
-//                 onDestinationChange(updatedDestinations);
-//             }
-//             setInput("");
-//         }
-//     };
-
-export const Destinations = () => {
+export const Destinations = ({ onDestinationChange }) => {
   const [showSpecificPlaces, setShowSpecificPlaces] = useState(false);
-
-  
 
   return (
     <div className="destinations">
@@ -63,7 +45,7 @@ export const Destinations = () => {
           </button>
         </>
       ) : (
-        <SpecificPlaces onClose={() => setShowSpecificPlaces(false)} />
+        <SpecificPlaces onClose={() => setShowSpecificPlaces(false)} onSpecificChange={onDestinationChange} />
       )}
     </div>
   );
