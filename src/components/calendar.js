@@ -48,7 +48,7 @@ export const CalendarComponent = ({ onDateChange }) => {
                     font-size: 1.5rem;
                 }
                 .react-calendar button {
-                    border-radius: 8px;
+                    border-radius: 10px;
                     padding: 10px;
                     margin: 5px;
                     border: none;
@@ -67,6 +67,7 @@ export const CalendarComponent = ({ onDateChange }) => {
                 .react-calendar__month-view__days {
                     display: grid !important;
                     grid-template-columns: repeat(7, 1fr) !important;
+                    font-weight: bold;
                 }
             `}
 </style>
