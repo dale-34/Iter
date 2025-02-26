@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 
-export const HousingAccommodations = () => {
+export const HousingAccommodations = ({ onHousingChange }) => {
   const [accommodation, setAccommodation] = useState("");
 
   const handleChange = (event) => {
-    setAccommodation(event.target.value);
+    const newValue = event.target.value;
+    if (onHousingChange) {
+      onHousingChange(newValue);
+    }
+    setAccommodation(newValue);
   };
 
   return (

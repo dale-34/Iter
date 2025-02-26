@@ -17,7 +17,10 @@ const TripPlanning = () => {
 
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
-    // const [destinations, setDestinations] = useState([]);
+    const [budget, setBudget] = useState("");
+    const [accommodation, setAccommodation] = useState("");
+    const [transport, setTransport] = useState("");
+    const [destinations, setDestinations] = useState([]);
     const [vacationPlan, setVacationPlan] = useState("");
 
     const handleDateChange = (start, end) => {
@@ -25,11 +28,29 @@ const TripPlanning = () => {
         setEndDate(end);
     };
 
-    // const handleDestination = (destination) => {
-    //   if (destination.trim() && !destinations.includes(destination)) {
-    //       setDestinations([...destinations, destination.trim()]);
-    //   }
-    // };
+    const handleBudgetChange = (budgetRange) => {
+        setBudget(budgetRange);
+    };
+
+    const handleHousing = (housing) => {
+        setAccommodation(housing);
+    };
+
+    const handleTransport = (transportData) => {
+        const needTransport =
+            transportData.needsFlight === "yes"
+            ? transportData.transportType
+            : "none";
+        setTransport(needTransport);
+    };
+
+    const handleDestination = (destination) => {
+        // if (destination.trim() && !destinations.includes(destination)) {
+        //     setDestinations([...destinations, destination.trim()]);
+        // }
+        setDestinations(destination);
+        
+    };
 
     const handleSubmit = async () => {
         const vacation = await generateVacation();
@@ -48,6 +69,10 @@ const TripPlanning = () => {
                     body: JSON.stringify({
                         startDate,
                         endDate,
+                        budget,
+                        accommodation,
+                        transport,
+                        destinations
                     }),
                 }
             );
@@ -74,11 +99,10 @@ const TripPlanning = () => {
                 </div>
                 <div className="calendar">
                     <h2 className="calendarTitle">
-                        What dates do you plan on travelling?
+                        What dates do you plan on traveling?
                     </h2>
                     <p className="calendarSubtitle">
                         Select the dates which you want to travel during.
-                        
                     </p>
                     <CalendarComponent onDateChange={handleDateChange} />
                 </div>
@@ -90,16 +114,16 @@ const TripPlanning = () => {
                         Designate the minimum and maximum amounts you want to
                         spend on this trip.
                     </p>
-                    <BudgetSlider />
+                    <BudgetSlider onBudgetChange={handleBudgetChange}/>
                 </div>
                 <div className="question-container">
-                    <HousingAccommodations />
+                    <HousingAccommodations onHousingChange={handleHousing}/>
                 </div>
                 <div className="transportation">
-                    <Transportation />
+                    <Transportation onTransportChange={handleTransport}/>
                 </div>
                 <div className="destinations">
-                    <Destinations />
+                    <Destinations onDestinationChange={handleDestination}/>
                 </div>
                 <div className="submit">
                     <button

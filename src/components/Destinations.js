@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const Destinations = ({onDestinationsChange}) => {
+export const Destinations = ({onDestinationChange}) => {
     const [destinations, setDestinations] = useState([]);
     const [input, setInput] = useState("");
 
@@ -8,9 +8,10 @@ export const Destinations = ({onDestinationsChange}) => {
         if (input.trim()) {
             const updatedDestinations = [...destinations, input.trim()];
             setDestinations(updatedDestinations);
-            if (onDestinationsChange) {
-              onDestinationsChange(updatedDestinations);
-          }
+            console.log("Selected Date Range: ", updatedDestinations);
+            if (onDestinationChange) {
+                onDestinationChange(updatedDestinations);
+            }
             setInput("");
         }
     };

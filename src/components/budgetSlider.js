@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import ReactSlider from "react-slider"; // Import react-slider
 
-export const BudgetSlider = () => {
+export const BudgetSlider = ({onBudgetChange}) => {
     // State for the two handles
     const [values, setValues] = useState([0, 49999]); // Initial values for the two handles
 
     const handleSliderChange = (newValues) => {
+        if (onBudgetChange) {
+            onBudgetChange(newValues);
+        }
         setValues(newValues); // Update the state with new values
     };
 
