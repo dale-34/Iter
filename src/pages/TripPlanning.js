@@ -26,7 +26,7 @@ const TripPlanning = () => {
             </div>
             <div className="calendar">
                 <h2 className="calendarTitle">What dates do you plan on travelling?</h2>
-                <p className="calendarSubtitle">Select the dates which you want to travel during.</p>
+                <p className="calendarSubtitle">Select the date(s) on which you want to travel.</p>
                 <CalendarComponent />
             </div>
             <div className="budget">

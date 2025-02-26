@@ -11,7 +11,7 @@ const LoadingPage = () => {
     // Set a timeout to navigate to the next page after 5 seconds
     const timer = setTimeout(() => {
       navigate('/ItineraryPage'); // Change '/NextPage' to the correct path for the next page
-    }, 10000);  // Adjusted to 5 seconds for demo
+    }, 5000);  // Adjusted to 5 seconds for demo
 
     // Cleanup the timer when the component is unmounted
     return () => clearTimeout(timer);
