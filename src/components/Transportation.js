@@ -1,66 +1,56 @@
 import React, { useState } from "react";
+import "./Transportation.css";
 
 export const Transportation = () => {
-  const [needsFlight, setNeedsFlight] = useState(null);
-  const [transportType, setTransportType] = useState("");
+  const [selectedOption, setSelectedOption] = useState("");
 
   return (
-    <div className="transportation-container">
-      <h2>Do you need flights or any transportation?</h2>
+    <div className="transport">
+      <h2 className="transport__title">How are you getting to and from?</h2>
 
-      <div className="radio-buttons">
-        <label>
-          <input
-            type="radio"
-            name="flight"
-            value="yes"
-            checked={needsFlight === "yes"}
-            onChange={() => setNeedsFlight("yes")}
-          />
-          Yes, I need transportation.
-        </label>
-
-        <label>
-          <input
-            type="radio"
-            name="flight"
-            value="no"
-            checked={needsFlight === "no"}
-            onChange={() => setNeedsFlight("no")}
-          />
-          No, I have my own transportation.
-        </label>
+      {/* Background Section */}
+      <div className="transport__background">
       </div>
 
-      {needsFlight === "yes" && (
-        <div>
-          <h3>What type of transportation do you need?</h3>
-          <select value={transportType} onChange={(e) => setTransportType(e.target.value)}>
-            <option value="">Select an option</option>
-            <option value="flight">Flight</option>
-            <option value="train">Train</option>
-            <option value="bus">Bus</option>
-            <option value="rental">Rental Car</option>
-            <option value="other">Other</option>
-          </select>
-          {transportType && <p>You selected: {transportType}</p>}
-        </div>
-      )}
-      <style>
-      {`
-        .transportation-container {
-          margin: 20px;
-          padding: 20px;
-          border: 1px solid #ddd;
-          border-radius: 10px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-      `}
-      </style>
+      {/* Clickable Options */}
+      <div className="transport__options">
+        <button
+          className={`transport__option ${selectedOption === "rental" ? "selected" : ""}`}
+          onClick={() => setSelectedOption("rental")}
+        >
+          Rental Car
+        </button>
 
+        <button
+          className={`transport__option ${selectedOption === "flight" ? "selected" : ""}`}
+          onClick={() => setSelectedOption("flight")}
+        >
+          Flight
+        </button>
+
+        <button
+          className={`transport__option ${selectedOption === "train" ? "selected" : ""}`}
+          onClick={() => setSelectedOption("train")}
+        >
+          Train
+        </button>
+
+        <button
+          className={`transport__option ${selectedOption === "own" ? "selected" : ""}`}
+          onClick={() => setSelectedOption("own")}
+        >
+          No, I have my own transportation
+        </button>
+      </div>
+
+      {/* Display Selected Option */}
+      {selectedOption && (
+        <p className="transport__selected">
+          You selected: <strong>
+            {selectedOption === "own" ? "I have my own transportation" : selectedOption.charAt(0).toUpperCase() + selectedOption.slice(1)}
+          </strong>
+        </p>
+      )}
     </div>
   );
 };
