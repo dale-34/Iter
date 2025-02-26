@@ -8,6 +8,7 @@ import { Transportation } from '../components/Transportation';
 import { Destinations } from '../components/Destinations';
 import { useNavigate } from 'react-router-dom';
 
+
 const TripPlanning = () => {
     const navigate = useNavigate();
     const goToLoadingPage = () => {
