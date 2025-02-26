@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./specificPlaces.css";
+import "../css/specificPlaces.css";
 
 export const SpecificPlaces = ({ onClose }) => {
   const [places, setPlaces] = useState([]);

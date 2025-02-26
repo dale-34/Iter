@@ -1,5 +1,5 @@
 import React from 'react';
-import './LoadingGlobe.css';  // Import the CSS file for the specific styles
+import '../css/LoadingGlobe.css';  // Import the CSS file for the specific styles
 
 const LoadingGlobe = () => {
   return (

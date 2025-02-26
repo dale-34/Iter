@@ -1,6 +1,6 @@
 import React from "react";
 import { ActionButtons } from "./buttons/actionButtons";
-import "./homeHero.css";
+import "../css/homeHero.css";
 
 export const HomeHero = () => {
   return (

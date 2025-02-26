@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./HousingAccomodations.css";
+import "../css/HousingAccomodations.css";
 
 
 export const HousingAccommodations = ({ onHousingChange }) => {
