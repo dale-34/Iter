@@ -16,16 +16,23 @@ const openai = new OpenAI({
 
 app.post("/generate-vacation", async (req, res) => { // Defines API Endpoint
     try {
-        const { location, date } = req.body;
+        const {startDate, endDate} = req.body;
+        const location = "Hawaii";
+        // const destinationStr = Array.isArray(destination)
+        //     ? destination.join(", ")
+        //     : destination;
         
         // Prompt
-        const prompt = `Plan a vacation to ${location} on ${date}. Provide activities, accommodation options, and estimated costs.`;
+        console.log("Request Body:", req.body);
+        // const prompt = 'Say hello';
+        const prompt = `Plan a vacation to ${location} from ${startDate} to ${endDate}. Provide activities, accommodation options, and estimated costs.`;
+        console.log("Generated prompt:", prompt);
 
-        const completion = await openai.chat.completions.create({
-            model: "gpt-4o-mini",
-            messages: [{ "role": "user", "content": prompt }] 
-        });
-        res.json({ vacation: completion.choices[0].message.content });
+        // const completion = await openai.chat.completions.create({
+        //     model: "gpt-4o-mini",
+        //     messages: [{ "role": "user", "content": prompt }] 
+        // });
+        res.json({ vacation: "hello"});
     } catch (error) {
         console.error("OpenAI Error:", error);
         res.status(500).json({ error: "Failed to generate vacation" });
