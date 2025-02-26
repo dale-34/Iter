@@ -4,7 +4,7 @@ import "./header.css";
 export const Header = () => {
   return (
     <header className="header">
-      <nav className="max-w-[1168px] mx-auto">
+      <nav className="header-nav">
         <h1 className="header-title">
           <a href="/HomePage" className="header-link">Iter</a>
         </h1>

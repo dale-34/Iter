@@ -10,7 +10,7 @@
     width: 400px;
     height: 400px;
     object-fit: contain;
-    animation: spinHorizontal 10s linear infinite; /* Horizontal spin */
+    animation: spinHorizontal 5s linear infinite; /* Horizontal spin */
     margin: 0 auto;
 }
 

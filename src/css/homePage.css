@@ -1,0 +1,9 @@
+.homepage-container {
+    background-color: rgba(255, 232, 214, 1.0); /* Light beige background */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 100vh; /* Full screen height */
+    padding-bottom: 114px; /* Bottom padding for footer or other elements */
+  }
+  

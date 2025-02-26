@@ -6,6 +6,7 @@ import TripPlanning from "./pages/TripPlanning.js";
 import LoadingPage from "./pages/LoadingPage.js";
 import ItineraryPage from "./pages/ItineraryPage.js";
 
+
 function App() {
   return (
     <Router>

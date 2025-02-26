@@ -1,0 +1,87 @@
+/* Apply global font settings */
+.housing {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+    background: rgb(249, 232, 220);
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Title styling to match Trip Planning */
+.housing__title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Subtitle styling */
+.housing__subtitle {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Image Styling */
+.housing__image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.housing__img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Dropdown */
+.housing__dropdown {
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid black;
+    background: white;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Selected Option */
+.housing__selected {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Comparison Section */
+.housing__comparison-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 20px 0;
+}
+
+/* Three Image Columns */
+.housing__comparison {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.housing__comparison-box {
+    width: 30%;
+    height: auto;
+}
+
+.housing__comparison-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+}
