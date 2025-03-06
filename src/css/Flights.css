@@ -1,0 +1,19 @@
+.flights-container {
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.flights-card {
+    background: rgba(255, 232, 214, 1.0);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+}
+
+.flights-card p {
+    font-size: 16px;
+    margin: 8px 0;
+    line-height: 1.5;
+}
