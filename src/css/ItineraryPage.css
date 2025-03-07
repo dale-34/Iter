@@ -1,8 +1,101 @@
-.trip-name {
-    font-size: 1.5em;
+/* Ensure header spans full width */
+.header {
+    width: 100%;
+    background-color: #5d6546;
+    padding: 15px 0;
+    text-align: center;
+}
+
+/* Container for Itinerary Page */
+.itinerary-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 232, 214, 1.0); /* Light beige from previous styles */
+}
+
+/* Title Positioned at the Top */
+.trip-title {
+    font-size: 1.8em;
     font-weight: bold;
-    margin-bottom: 0.5em;
-    justify-content: center;
-    display: flex;
-    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+/* Vacation Plan Section */
+.vacation-plan {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+/* Sections Consistency */
+.recap-container {
+    background: rgba(230, 225, 220, 1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.flights-container {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+
+/* Section Titles */
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* General Card Styling */
+.itinerary-card {
+    background-color: rgba(245, 240, 235, 1); /* Soft neutral tone */
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle depth */
+    width: 60%;
+    margin: 20px auto;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Hover effect for a sleek modern feel */
+.itinerary-card:hover {
+    transform: scale(1.02);
+}
+
+/* Inner Content Box */
+.itinerary-card-content {
+    background-color: rgba(255, 250, 245, 1); /* Light but warm contrast */
+    padding: 18px;
+    border-radius: 12px;
+}
+
+/* Titles within the itinerary */
+.itinerary-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333; /* Darker contrast for readability */
+}
+
+/* Text Formatting */
+.itinerary-text {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Specific Styling for Flights Section */
+.flights-card {
+    background-color: rgba(230, 225, 220, 1); /* Soft elegant shade */
 }
