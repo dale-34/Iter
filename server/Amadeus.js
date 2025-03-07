@@ -41,4 +41,23 @@ export const getFlightDestinations = async () => {
   }
 };
 
-getFlightDestinations().then(console.log).catch(console.error);
+ //Calling this function
+
+//getFlightDestinations().then(console.log).catch(console.error);
+
+
+
+// Using the API in other files
+
+// import { getFlightDestinations } from './amadeusAPI.js';
+
+// const fetchFlights = async () => {
+//   try {
+//     const flights = await getFlightDestinations();
+//     console.log('Available Destinations:', flights);
+//   } catch (error) {
+//     console.error('Error:', error);
+//   }
+// };
+
+// fetchFlights();
