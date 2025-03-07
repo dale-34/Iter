@@ -1,8 +1,10 @@
-import mysql from "mysql2";
+
+import mysql from 'mysql2';
 
 console.log("Attempting to connect to MySQL...");
 
 const pool = mysql.createPool({
+
     host: "iterdb.c09eaia8aiys.us-east-1.rds.amazonaws.com",
     user: "admin",
     password: "IkBnnrITolHoLlG4gFl6",

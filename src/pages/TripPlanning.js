@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import SpecificPlaces from "../components/specificPlaces";
 
+
 const TripPlanning = () => {
     const navigate = useNavigate();
 

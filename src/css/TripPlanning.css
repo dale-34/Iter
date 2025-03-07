@@ -1,12 +1,8 @@
-/* Reset default styles */
-body, h1, p {
-    margin: 0;
-    padding: 0;
-}
+
+
 
 /* Global styles */
 body {
-    font-family: Arial, sans-serif;
     color: #333;
     min-height: 100vh;
 }
@@ -33,7 +29,7 @@ html, body {
     font-size: 54px;
     font-weight: bold;
     color: #333;
-    margin-bottom: 20px;
+    margin-top: 40px;
 }
 
 /* Paragraph styling */

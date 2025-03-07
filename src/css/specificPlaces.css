@@ -18,7 +18,7 @@
 
 /* Search Box */
 .specific-places__box {
-    background: #777;
+    background: rgb(249, 232, 220);
     padding: 20px;
     border-radius: 12px;
 }
@@ -72,5 +72,5 @@
 }
 
 .specific-places__back-button:hover {
-    background: #d0d0d0;
+    background: rgb(249, 232, 220);
 }
