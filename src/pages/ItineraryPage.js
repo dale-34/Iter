@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Header } from "../components/header";
 import { useLocation } from "react-router-dom";
 import Recap from "../components/Recap";
 import Flights from "../components/Flights";
-import ActivityCard from '../components/activityCard';
+import ActivityCarousel from "../components/activityCarousel";
+import FoodCarousel from "../components/foodCarousel";
 import '../css/ItineraryPage.css';
 
 function ItineraryPage() {
@@ -32,15 +33,12 @@ function ItineraryPage() {
 
                 {/* Flights Section */}
                 <Flights />
-
-        <div className='activity-container'>
-            <h2>Activities and Excursions</h2>
-            <ActivityCard />
+        <div className='activity-carousel'>
+            <ActivityCarousel />
         </div>
-        <div className='food-container'>
-            <h2>Food Options</h2>
-            <ActivityCard />
-        </div>
+        <div className='food-carousel'>
+            <FoodCarousel />
+        </div>    
         </div>
         </div>
     );

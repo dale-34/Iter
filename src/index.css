@@ -38,3 +38,16 @@ button, .btn {
 button:hover, .btn:hover {
   background-color: #caa891;
 }
+
+.slick-track { /*horizontal track where the slides are placed*/
+  overflow: visible; /* Allow items to overflow and be visible */
+  margin: 20px;
+}
+
+.slick-slide { /*individual slide*/
+}
+
+.carousel-track {
+  margin-left: 20px;
+  margin-right: 20px;
+}

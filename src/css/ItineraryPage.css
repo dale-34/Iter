@@ -19,7 +19,7 @@
     font-size: 1.8em;
     font-weight: bold;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 40px;
     margin-bottom: 30px;
 }
 
@@ -48,7 +48,6 @@
     max-width: 600px;
     margin: 20px auto;
 }
-
 
 /* Section Titles */
 h2 {
@@ -80,22 +79,33 @@ h2 {
     border-radius: 12px;
 }
 
-/* Titles within the itinerary */
-.itinerary-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #333; /* Darker contrast for readability */
-}
-
-/* Text Formatting */
-.itinerary-text {
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.6;
-}
-
 /* Specific Styling for Flights Section */
 .flights-card {
     background-color: rgba(230, 225, 220, 1); /* Soft elegant shade */
+}
+
+.activity-carousel {
+    max-width: 1250px;
+    margin: 0 auto; /* Center align horizontally */
+    margin-bottom: 40px;
+    padding: 20px;
+    }
+
+.activity-carousel h2 {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.food-carousel {
+    max-width: 1250px;
+    margin: 0 auto; /* Center align horizontally */
+    margin-bottom: 40px;
+    padding: 20px;
+}
+
+.food-carousel h2 {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.5rem;
 }
