@@ -18,28 +18,31 @@ function ItineraryPage() {
 
             {/* Trip Name Centered Below Header */}
             <div className="trip-title">
-                <h1>Costa Rica Trip 2025</h1>
+                <h1>New York Trip 2025</h1>
             </div>
 
             {/* Content Wrapper to Avoid Header Issues */}
             <div className="itinerary-content">
-                <div className="vacation-plan">
+                {/* <div className="vacation-plan">
                     <h3>Your Vacation Plan:</h3>
                     {vacationPlan ? <p>{vacationPlan}</p> : <p>No vacation plan available. Please go back and create one.</p>}
-                </div>
+                </div> */}
 
                 {/* Recap Section */}
                 <Recap />
 
                 {/* Flights Section */}
                 <Flights />
-        <div className='activity-carousel'>
-            <ActivityCarousel />
-        </div>
-        <div className='food-carousel'>
-            <FoodCarousel />
-        </div>    
-        </div>
+
+                {/* Carousel Sections */}
+                <div className='activity-carousel'>
+                    <ActivityCarousel />
+                </div>
+
+                <div className='food-carousel'>
+                    <FoodCarousel />
+                </div>    
+            </div>
         </div>
     );
 }

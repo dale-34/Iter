@@ -39,15 +39,17 @@ button:hover, .btn:hover {
   background-color: #caa891;
 }
 
-.slick-track { /*horizontal track where the slides are placed*/
-  overflow: visible; /* Allow items to overflow and be visible */
-  margin: 20px;
+ .slick-track { 
+  overflow: visible; 
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
-.slick-slide { /*individual slide*/
+.slick-slide { 
+  margin: 0px; 
 }
 
-.carousel-track {
+/* .carousel-track {
   margin-left: 20px;
   margin-right: 20px;
-}
+}  */

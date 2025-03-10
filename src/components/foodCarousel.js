@@ -12,7 +12,7 @@ const FoodCarousel = () => {
             description: 'A family-owned pizzeria known for its wood-fired pizzas and cozy atmosphere.',
             cuisine: 'Italian',
             location: 'New York, USA',
-            image: '/images/luigis-pizzeria.jpeg',
+            image: '/images/pizza.jpg',
         },
         {
             id: 2,
@@ -20,7 +20,7 @@ const FoodCarousel = () => {
             description: 'Traditional Japanese sushi and sashimi, freshly made daily.',
             cuisine: 'Japanese',
             location: 'Tokyo, Japan',
-            image: '/images/tokyo-sushi.jpeg',
+            image: '/images/sushi.jpg',
         },
         {
             id: 3,
@@ -28,7 +28,7 @@ const FoodCarousel = () => {
             description: 'Grilled steaks, burgers, and a variety of barbecue options.',
             cuisine: 'American',
             location: 'Austin, USA',
-            image: '/images/grill-house.jpeg',
+            image: '/images/steak.webp',
         },
         {
             id: 4,
@@ -36,7 +36,7 @@ const FoodCarousel = () => {
             description: 'Authentic Thai cuisine with spicy curries and flavorful stir-fries.',
             cuisine: 'Thai',
             location: 'Bangkok, Thailand',
-            image: '/images/thai-palace.jpeg',
+            image: '/images/thai.webp',
         },
     ];
     
