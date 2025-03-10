@@ -30,13 +30,19 @@ const ActivityCarousel = () => {
             description: 'Jump from 15,000 feet and feel the rush!',
             image: '/images/skydiving.jpg',
         },
+        {
+            id: 5,
+            title: 'Skydivings',
+            description: 'Jumps from 15,000 feet and feel the rush!',
+            image: '/images/skydiving.jpg',
+        },
     ];
 
     const settings = {
         dots: true,
         infinite: false,
         speed: 500,
-        slidesToShow: 1,
+        slidesToShow: 3,
         slidesToScroll: 1,
         draggable: true,
         swipeToSlide: true,

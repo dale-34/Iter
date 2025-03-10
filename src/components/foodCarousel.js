@@ -42,27 +42,13 @@ const FoodCarousel = () => {
     
 
     const settings = {
-        dots: true, // Try enabling this first to check if the carousel is loading
+        dots: true,
         infinite: false,
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1,
-        draggable: true, // Enables mouse dragging
-        swipeToSlide: true, // Enables direct slide movement on swipe
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                },
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 1,
-                },
-            },
-        ],
+        draggable: true,
+        swipeToSlide: true,
     };
 
     return (

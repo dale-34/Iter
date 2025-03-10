@@ -1,12 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 
 const ActivityCard = ({ title, description, image }) => {
+    const [favorited, setFavorite] = React.useState(false);
+
+    const handleFavorite = () => {
+        setFavorite(!favorited);
+    }
+
+    const handleReplace = () => {
+        
+    }
+
     return (
         <Card sx={{
             maxWidth: 345,
@@ -32,8 +44,20 @@ const ActivityCard = ({ title, description, image }) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Favorite</Button>
-                <Button size="small">Replace</Button>
+                {/* Favorite Button */}
+                <IconButton 
+                    size="small" 
+                    onClick={handleFavorite}
+                    color={favorited ? 'primary' : 'default'}>
+                    <FavoriteIcon />
+                </IconButton>
+                {/* Replace Button */}
+                <IconButton 
+                    size="small" 
+                    onClick={handleReplace}
+                    color="secondary">
+                    <SwapHorizIcon />
+                </IconButton>
             </CardActions>
         </Card>
     );
