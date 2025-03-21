@@ -32,9 +32,35 @@ const ActivityCarousel = () => {
         },
         {
             id: 5,
-            title: 'Skydivings',
-            description: 'Jumps from 15,000 feet and feel the rush!',
-            image: '/images/skydiving.jpg',
+            title: 'Luigi’s Pizzeria',
+            description: 'A family-owned pizzeria known for its wood-fired pizzas and cozy atmosphere.',
+            cuisine: 'Italian',
+            location: 'New York, USA',
+            image: '/images/pizza.jpg',
+        },
+        {
+            id: 6,
+            title: 'Tokyo Sushi Bar',
+            description: 'Traditional Japanese sushi and sashimi, freshly made daily.',
+            cuisine: 'Japanese',
+            location: 'Tokyo, Japan',
+            image: '/images/sushi.jpg',
+        },
+        {
+            id: 7,
+            title: 'Grill House',
+            description: 'Grilled steaks, burgers, and a variety of barbecue options.',
+            cuisine: 'American',
+            location: 'Austin, USA',
+            image: '/images/steak.webp',
+        },
+        {
+            id: 8,
+            title: 'Thai Palace',
+            description: 'Authentic Thai cuisine with spicy curries and flavorful stir-fries.',
+            cuisine: 'Thai',
+            location: 'Bangkok, Thailand',
+            image: '/images/thai.webp',
         },
     ];
 
@@ -50,7 +76,7 @@ const ActivityCarousel = () => {
 
     return (
         <div>
-            <h2>Activities and Excursions</h2>
+            <h2>Activities and Food</h2>
             <Slider {...settings}>
                 {activities.map((activity) => (
                     <ActivityCard

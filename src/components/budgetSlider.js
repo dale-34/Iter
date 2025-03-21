@@ -38,8 +38,8 @@ export const BudgetSlider = ({onBudgetChange}) => {
             <style>
                 {`
                     .slider {
-                        width: 80%;
-                        max-width: 600px;
+                        width: 50%;
+                        max-width: 1400px;
                         height: 10px;
                         margin: 0 auto;
                         margin-top: 40px;
@@ -76,7 +76,8 @@ export const BudgetSlider = ({onBudgetChange}) => {
                     .thumb {
                         height: 30px;
                         width: 30px;
-                        background-color: rgba(107, 112, 92, 1);
+                        // background-color: rgba(107, 112, 92, 1);
+                        background-color: rgb(26, 91, 189);
                         color: white;
                         border-radius: 50%;
                         display: flex;
@@ -89,7 +90,7 @@ export const BudgetSlider = ({onBudgetChange}) => {
                     }
                     
                     .track {
-                        background: white;
+                        background: lightgrey;
                         height: 100%;
                         border-radius: 5px;
                     }

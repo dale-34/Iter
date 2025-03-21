@@ -19,6 +19,7 @@ const TripPlanning = () => {
     const [accommodation, setAccommodation] = useState("");
     const [transport, setTransport] = useState("");
     const [destination, setDestination] = useState([]);
+    const [startLocation, setStartLocation] = useState("");
     //const [vacationPlan, setVacationPlan] = useState("");
 
     const handleDateChange = (start, end) => {
@@ -42,15 +43,25 @@ const TripPlanning = () => {
         setDestination(destinationLoc);
     };
 
+    const handleStartLocation = (startLocation) => {
+        setStartLocation(startLocation);
+    };
+
     const handleSubmit = () => {
-        navigate("/LoadingPage", {
+        // navigate("/LoadingPage", {
+        //     state: {
+        //         startDate,
+        //         endDate,
+        //         budget,
+        //         accommodation,
+        //         transport,
+        //         destination,
+        //     },
+        // });
+        navigate("/ItineraryPage", {
             state: {
                 startDate,
-                endDate,
-                budget,
-                accommodation,
-                transport,
-                destination,
+                endDate
             },
         });
     };

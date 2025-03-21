@@ -1,9 +1,6 @@
-
-
-
 /* Global styles */
 body {
-    color: #333;
+    color: white;
     min-height: 100vh;
 }
 
@@ -14,7 +11,8 @@ html, body {
 }
 
 .trip-planning {
-    background-color: rgba(255, 232, 214, 1.0); /* Light beige background */
+    /* background-color: rgba(255, 232, 214, 1.0); Light beige background */
+    background-color: white;
 }
 
 /* Centering container */
