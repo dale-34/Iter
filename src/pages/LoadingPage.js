@@ -17,7 +17,7 @@ const LoadingPage = () => {
     const { startDate, endDate, budget, accommodation, transport, destination } = location.state;
     
     const generateVacation = async () => {
-      // Send JSON data to OPENAI server
+      // Send JSON data to Amadeus server
       try {
         const response = await fetch("http://localhost:3000/generate-vacation", {
           method: "POST",
