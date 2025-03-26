@@ -76,7 +76,16 @@ app.post("/generate-vacation", async (req, res) => {
             console.log(completion.choices[0].message.content);
             const vacationPlan = JSON.parse(completion.choices[0].message.content); // Parse JSON
             console.log("AFTER PARSE ", vacationPlan);
-            // await db.insertPlan(vacationPlan); // Call function in DB to handle insertion
+
+            //To bring over the missing values from the vacationPlan
+            const extrInfo = [
+                startDate,
+                endDate,
+                budget,
+                destination
+            ];    
+            
+            // await db.insertPlan(vacationPlan, 1, extraInputs); // Call function in DB to handle insertion
             res.json({ 
                 success: true,
                 message: "Activities inserted successfully!"
