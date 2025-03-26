@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Header } from '../components/header';
 import '../css/LoadingPage.css';  // Import the main Loading Page CSS
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -7,11 +7,17 @@ import LoadingGlobe from '../components/LoadingGlobe'; // Import the LoadingGlob
 const LoadingPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const hasFetched = useRef(false);
 
   useEffect(() => {
+    // Ensure it only generates once
+    if (hasFetched.current) return;
+    hasFetched.current = true;
+    
     const { startDate, endDate, budget, accommodation, transport, destination } = location.state;
     
     const generateVacation = async () => {
+      // Send JSON data to OPENAI server
       try {
         const response = await fetch("http://localhost:3000/generate-vacation", {
           method: "POST",
