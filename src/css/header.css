@@ -29,10 +29,10 @@
 
 .header-title {
   font-size: 3rem;
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: 'Schabo Condensed', sans-serif;
   /* color: rgba(255, 232, 214, 1); */
   color: white;
-  font-weight: bold;
+  font-weight: 700;
   letter-spacing: 1.1px;
   margin: 0;
 }
