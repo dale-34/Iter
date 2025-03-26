@@ -35,7 +35,7 @@ export const CalendarComponent = ({ onDateChange }) => {
                     margin: 20px;
                 }
                 .react-calendar {
-                    width: 100%;
+                    width: 70%;
                     max-width: 1400px;
                     font-size: 1.5rem;
                     border-radius: 25px;
@@ -44,7 +44,7 @@ export const CalendarComponent = ({ onDateChange }) => {
                 }
                 .react-calendar__tile {
                     height: 100px;
-                    padding: 30px;
+                    padding: 35px;
                     font-size: 1.5rem;
                 }
                 .react-calendar button {
@@ -59,7 +59,7 @@ export const CalendarComponent = ({ onDateChange }) => {
                     cursor: pointer;
                 }
                 .react-calendar__tile--active {
-                    background-color: rgba(107, 112, 92, 1);
+                    background-color: rgb(26, 91, 189);
                 }
                 .react-calendar__tile--range {
 

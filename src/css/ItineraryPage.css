@@ -1,8 +1,92 @@
-.trip-name {
-    font-size: 1.5em;
+/* Container for Itinerary Page */
+.itinerary-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    /* background-color: rgba(255, 232, 214, 1.0); Light beige from previous styles */
+    background-color: white;
+}
+
+/* Title Positioned at the Top */
+.trip-title {
+    font-size: 1.8em;
     font-weight: bold;
-    margin-bottom: 0.5em;
-    justify-content: center;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+/* Vacation Plan Section */
+.vacation-plan {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+/* Section Titles */
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* General Card Styling */
+.itinerary-card {
+    background-color: rgba(245, 240, 235, 1); /* Soft neutral tone */
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle depth */
+    width: 60%;
+    margin: 20px auto;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Hover effect for a sleek modern feel */
+.itinerary-card:hover {
+    transform: scale(1.02);
+}
+
+/* Inner Content Box */
+.itinerary-card-content {
+    background-color: rgba(255, 250, 245, 1); /* Light but warm contrast */
+    padding: 18px;
+    border-radius: 12px;
+}
+
+.activity-carousel {
+    max-width: 1250px;
+    margin: 0 auto; /* Center align horizontally */
+    margin-bottom: 40px;
+    padding: 20px;
+    }
+
+.activity-carousel h2 {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 2.0rem;
+}
+
+.food-carousel {
+    max-width: 1250px;
+    margin: 0 auto; /* Center align horizontally */
+    margin-bottom: 40px;
+    padding: 20px;
+}
+
+.food-carousel h2 {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 2.0rem;
+}
+
+.day-list {
     display: flex;
-    align-items: center;
+    flex-direction: column; /* Stack DayCards vertically */
+    gap: 16px; /* Add spacing between DayCards */
+    padding: 16px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 1400px;
+    margin: 20px auto;
 }

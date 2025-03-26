@@ -7,7 +7,8 @@ body, h1, p {
 /* Global styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: rgba(255,232,214,1.0);
+    /* background-color: rgba(255,232,214,1.0); */
+    background-color: white;
     color: #333; /* Text color */
 }
 
@@ -18,7 +19,8 @@ body {
     align-items: center;
     justify-content: flex-start; /* Aligns the content to the top */
     height: 100vh;
-    background-color: rgba(255,232,214,1.0);
+    /* background-color: rgba(255,232,214,1.0); */
+    background-color: white;
     text-align: center;
 }
 

@@ -4,7 +4,7 @@
     max-width: 800px;
     margin: 20px auto;
     text-align: center;
-    background: rgb(249, 232, 220);
+    /* background: rgb(249, 232, 220); */
     padding: 20px;
     font-family: Arial, sans-serif;
     color: #333;
@@ -46,7 +46,8 @@
     width: 85%;
     padding: 15px;
     font-size: 18px;
-    background: rgb(248, 241, 235);
+    /* background: rgb(248, 241, 235); */
+    background-color: lightgrey;
     border: 0.5px solid #c8c8c8;
     border-radius: 5px;
     cursor: pointer;
@@ -68,10 +69,10 @@
     font-weight: bold;
 }
 
-/* Selected Option Display */
+/* Selected Option Display
 .transport__selected {
     margin-top: 15px;
     font-size: 16px;
     font-weight: bold;
-    color: #333;
-}
+    color: white;
+} */

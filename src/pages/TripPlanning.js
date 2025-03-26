@@ -7,7 +7,7 @@ import { Transportation } from "../components/Transportation";
 import { Destinations } from "../components/Destinations";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
-import SpecificPlaces from "../components/specificPlaces";
+//import SpecificPlaces from "../components/specificPlaces";
 
 
 const TripPlanning = () => {
@@ -19,7 +19,8 @@ const TripPlanning = () => {
     const [accommodation, setAccommodation] = useState("");
     const [transport, setTransport] = useState("");
     const [destination, setDestination] = useState([]);
-    const [vacationPlan, setVacationPlan] = useState("");
+    const [startLocation, setStartLocation] = useState("");
+    //const [vacationPlan, setVacationPlan] = useState("");
 
     const handleDateChange = (start, end) => {
         setStartDate(start);
@@ -42,15 +43,25 @@ const TripPlanning = () => {
         setDestination(destinationLoc);
     };
 
+    const handleStartLocation = (startLocation) => {
+        setStartLocation(startLocation);
+    };
+
     const handleSubmit = () => {
-        navigate("/LoadingPage", {
+        // navigate("/LoadingPage", {
+        //     state: {
+        //         startDate,
+        //         endDate,
+        //         budget,
+        //         accommodation,
+        //         transport,
+        //         destination,
+        //     },
+        // });
+        navigate("/ItineraryPage", {
             state: {
                 startDate,
-                endDate,
-                budget,
-                accommodation,
-                transport,
-                destination,
+                endDate
             },
         });
     };

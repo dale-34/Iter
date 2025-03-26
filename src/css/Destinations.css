@@ -68,7 +68,8 @@
 }
 
 .destinations__filter {
-    background: rgb(248, 241, 235);
+    /* background: rgb(248, 241, 235); */
+    background-color: white;
     border: none;
     padding: 8px 15px;
     font-size: 14px;
@@ -110,7 +111,7 @@
 .destinations__carousel-card {
     width: 250px; /* Consistent width */
     height: 220px; /* Adjusted height */
-    background: rgb(250, 236, 226);
+    /* background: rgb(250, 236, 226); */
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -153,7 +154,8 @@
     font-size: 16px;
     font-weight: bold;
     color: black;
-    background: rgb(248, 241, 235);
+    /* background: rgb(248, 241, 235); */
+    background: lightgray;
     border: none;
     border-radius: 8px;
     cursor: pointer;
