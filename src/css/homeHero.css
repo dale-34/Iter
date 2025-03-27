@@ -19,7 +19,7 @@
   
   .home-hero-title {
     font-size: 72px;
-    font-family: 'Figtree Bold', sans-serif;
+    font-family: 'Monsterrat', sans-serif;
     font-weight: bold;
     width: 700px;
     line-height: 1.2;
@@ -27,18 +27,16 @@
   }
   
   .home-hero-globe {
-    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 300px;
+    margin-left: 100px;
     margin-top: 60px; /* Increased margin to move the globe down */
 }
 
   
   .home-hero-globe img {
-    width: 500px;
-    height: 500px;
+    width: 800px;
     object-fit: contain;
   }
   

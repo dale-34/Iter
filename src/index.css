@@ -8,20 +8,16 @@
     --secondary-color: #DDBEA9;
     --background-color: #FFE8D6;
     --font-montserrat: "Montserrat", sans-serif;
-    --font-montserrat-alternates: "Montserrat Alternates", sans-serif;
-    --font-anek-gujarati: "Anek Gujarati", sans-serif;
-    --font-figtree-bold: "figtree bold", sans-serif;
-    --font-schabo-condensed: "Schabo Condensed", sans-serif;
   }
 }
 
 body {
   background-color: var(--background-color);
-  font-family: var(--font-schabo-condensed);
+  font-family: var(--font-montserrat);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-schabo-condensed);
+  font-family: var(--font-montserrat);
 }
 
 header {

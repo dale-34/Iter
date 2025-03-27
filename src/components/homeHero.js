@@ -18,7 +18,8 @@ export const HomeHero = () => {
       {/* Right Section: Globe */}
       <section className="home-hero-globe">
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Rotating_earth_animated_transparent.gif"
+          // src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Rotating_earth_animated_transparent.gif"
+          src="./images/global.gif"
           alt="Earth"
           loading="lazy"
         />
