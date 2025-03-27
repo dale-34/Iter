@@ -48,22 +48,22 @@ const TripPlanning = () => {
     };
 
     const handleSubmit = () => {
-        // navigate("/LoadingPage", {
-        //     state: {
-        //         startDate,
-        //         endDate,
-        //         budget,
-        //         accommodation,
-        //         transport,
-        //         destination,
-        //     },
-        // });
-        navigate("/ItineraryPage", {
+        navigate("/LoadingPage", {
             state: {
                 startDate,
-                endDate
+                endDate,
+                budget,
+                accommodation,
+                transport,
+                destination,
             },
         });
+        // navigate("/ItineraryPage", {
+        //     state: {
+        //         startDate,
+        //         endDate
+        //     },
+        // });
     };
 
     return (
