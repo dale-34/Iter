@@ -1,11 +1,12 @@
 import mysql from "mysql2";
+import dotenv from "dotenv";
 
 console.log("Attempting to connect to MySQL...");
 
 const pool = mysql.createPool({
-    host: "iterdb.c09eaia8aiys.us-east-1.rds.amazonaws.com",
-    user: "admin",
-    password: "IkBnnrITolHoLlG4gFl6",
+    host: process.env.DATABASE_HOST,
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
     database: "iterdb",
     waitForConnections: true,
     connectionLimit: 10,
