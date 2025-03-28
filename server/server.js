@@ -1,6 +1,5 @@
 import express from "express";
 import OpenAI from "openai";
-import cors from "cors";
 import dotenv from "dotenv";
 import fs from "fs";
 // import db from "./iterdb.js";
@@ -9,7 +8,6 @@ dotenv.config(); // Load environment variables
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors()); // Allow frontend requests
 app.use(express.json()); // Parse JSON bodies
 
 const openai = new OpenAI({

@@ -14,7 +14,7 @@ const generateDayList = (startDate, endDate) => {
     const start = new Date(startDate);
     const end = new Date(endDate);
 
-    let currentDate = start;
+    let currentDate = new Date(start);
     while (currentDate <= end) {
         dayList.push(new Date(currentDate));  // Push each day to the list
         currentDate.setDate(currentDate.getDate() + 1); // Move to the next day

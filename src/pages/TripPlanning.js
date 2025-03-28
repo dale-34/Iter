@@ -7,7 +7,6 @@ import { Transportation } from "../components/Transportation";
 import { Destinations } from "../components/Destinations";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
-//import SpecificPlaces from "../components/specificPlaces";
 
 
 const TripPlanning = () => {
@@ -20,7 +19,6 @@ const TripPlanning = () => {
     const [transport, setTransport] = useState("");
     const [destination, setDestination] = useState([]);
     const [startLocation, setStartLocation] = useState("");
-    //const [vacationPlan, setVacationPlan] = useState("");
 
     const handleDateChange = (start, end) => {
         setStartDate(start);
