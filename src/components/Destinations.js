@@ -48,7 +48,11 @@ export const Destinations = ({ onDestinationChange }) => {
               <button
                 key={continent}
                 className={`destinations__continent ${selectedRegion === continent ? "selected" : ""}`}
-                onClick={() => setSelectedRegion(continent)}
+                onClick={() => {
+                    setSelectedRegion(continent);
+                    onDestinationChange(continent);
+                  }
+                }
                 style={{
                   backgroundImage: continentImages[continent] ? `url(${continentImages[continent]})` : "none",
                   filter: selectedRegion === continent ? "none" : "grayscale(50%)",
