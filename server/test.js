@@ -74,7 +74,7 @@ const vacationPlan = {
             description: 'Grab a plate lunch at this beloved local diner known for its hearty portions.',
             cost: 15,
             day: 6,
-            relevant_link: 'http://rainbowdriveinhawaii.com/'
+            relevant_link: 'https://rainbowdriveinhawaii.com/'
         }
     }
 };
