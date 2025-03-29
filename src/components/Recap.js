@@ -8,7 +8,7 @@ const Recap = ({ vacationPlan = [], startDate, endDate, destination, budget }) =
             <div className="recap-card">
                 <p><strong>Destination:</strong> {destination}</p>
                 <p><strong>Dates:</strong> {startDate} - {endDate}</p>
-                <p><strong>Budget:</strong> {budget}</p>
+                <p><strong>Budget:</strong> ${budget[0]} - ${budget[1]}</p>
                 <p><strong>Weather:</strong> {vacationPlan.vacation.climate} </p>
             </div>
         </div>

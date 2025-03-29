@@ -10,6 +10,7 @@ import '../css/ItineraryPage.css';
 function ItineraryPage() {
     const location = useLocation();
     const { startDate, endDate, budget, destination } = location.state;
+    console.log(location.state);
     const [vacationPlan] = useState({   
     "accomodations": {
       "reservations": [
@@ -187,11 +188,9 @@ function ItineraryPage() {
     return (
         <div className="itinerary-wrapper">
             <Header />
-
             <div className="trip-title">
-                <h1>New York Trip 2025</h1>
+                <h1>{destination || "No destination provided"}</h1>
             </div>
-
             <div className="itinerary-content">
                 <Recap 
                     vacationPlan={vacationPlan}
@@ -201,15 +200,16 @@ function ItineraryPage() {
                     budget={budget}
                 />
                 <Flights flights={vacationPlan?.accomodations?.transportation || []} />
-
                 <div className="day-list">
                     {Object.keys(vacationPlan?.vacation || {}).map((day, index) => {
                         const dayData = vacationPlan.vacation[day];
                         if (day.startsWith('day')) {
+                            const date = new Date(startDate);
+                            date.setDate(date.getDate() + index);
                             return (
                                 <DayCard
                                     dayNumber={index}
-                                    date={dayData[index]?.toLocaleDateString()}
+                                    date={date.toLocaleDateString()}
                                     description={dayData.day_description}
                                     activities={dayData.activities}
                                 />
