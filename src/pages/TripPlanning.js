@@ -26,10 +26,17 @@ const TripPlanning = () => {
     };
 
     const handleSubmit = () => {
-        if (!startDate || !endDate || !accommodation || !transport) {
-            alert("Please complete all required fields before submitting.");
+        if (
+            !startDate ||
+            !endDate ||
+            !accommodation ||
+            !transport ||
+            !startLocation.trim()
+          ) {
+            alert("Please complete all required fields, including your starting location.");
             return;
-        }
+          }
+          
     
         // At least one destination required
         if (destination.length === 0) {
@@ -55,8 +62,8 @@ const TripPlanning = () => {
                 endDate,
                 budget,
                 accommodation,
-                transport,
                 startLocation,
+                transport,
                 destination,
                 endLocation: selectedCustomPlace ? endLocation : "",
             },
@@ -96,6 +103,7 @@ const TripPlanning = () => {
                     <Transportation
                         onTransportChange={setTransport}
                         onStartLocationChange={setStartLocation}
+                        startLocation={startLocation}
                     />
                 </div>
 
