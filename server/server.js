@@ -110,7 +110,7 @@ app.post("/generate-vacation", async (req, res) => {
             fs.writeFileSync('vacationPlan.json', jsonData);
 
             //To bring over the missing values from the vacationPlan
-            const extrInfo = [startDate, endDate, budget, destination];
+            const extrInfo = [startDate, endDate, budget, destination, startLocation];
 
             // await db.insertPlan(vacationPlan, 1, extraInputs); // Call function in DB to handle insertion
             res.json({
