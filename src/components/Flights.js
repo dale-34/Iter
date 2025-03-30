@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/Flights.css";
 
-const Flights = ({ flights = [] }) => {
+const Flights = ({ flights = [], hotels = [] }) => {
     return (
         <div className="flights-container">
             <h2 className="section-title">Flights</h2>
@@ -15,6 +15,22 @@ const Flights = ({ flights = [] }) => {
                         <p>{flight.description}</p>
                         <p>Cost: {flight.estimated_cost}</p>
                         <a href={flight.reservation_link} target="_blank" rel="noopener noreferrer">
+                            Book Now
+                        </a>
+                    </div>
+                ))}
+            </div>
+            <h2 className="section-title">Hotels</h2>
+            <div className="flights-card">
+                {(!hotels || hotels.length === 0) && (
+                    <p>No hotels populated.</p>
+                )}
+                {hotels.map((hotel, index) => (
+                    <div key={index} className="hotel">
+                        <h3>{hotel.name}</h3>
+                        <p>{hotel.description}</p>
+                        <p>Cost: {hotel.estimated_cost}</p>
+                        <a href={hotel.reservation_link} target="_blank" rel="noopener noreferrer">
                             Book Now
                         </a>
                     </div>

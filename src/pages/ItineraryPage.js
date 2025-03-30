@@ -199,7 +199,10 @@ function ItineraryPage() {
                     destination={destination}
                     budget={budget}
                 />
-                <Flights flights={vacationPlan?.accomodations?.transportation || []} />
+                <Flights 
+                  flights={vacationPlan?.accomodations?.transportation || []}
+                  hotels={vacationPlan?.accomodations?.reservations || []}
+                />
                 <div className="day-list">
                     {Object.keys(vacationPlan?.vacation || {}).map((day, index) => {
                         const dayData = vacationPlan.vacation[day];
