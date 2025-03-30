@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/Destinations.css";
-import {SpecificPlaces} from "./specificPlaces.js";
+import { SpecificPlaces } from "./specificPlaces.js";
 
 export const Destinations = ({ onDestinationChange }) => {
   const [showSpecificPlaces, setShowSpecificPlaces] = useState(false);
-  const [selectedRegion, setSelectedRegion] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("Popular");
+  const [selectedDestination, setSelectedDestination] = useState([]);
 
   // Continent Images
   const continentImages = {
@@ -36,22 +36,38 @@ export const Destinations = ({ onDestinationChange }) => {
     ],
   };
 
+   // Select or deselect a continent
+   const handleContinentClick = (continent) => {
+    setSelectedDestination(continent);
+  };
+
+  const handleCardClick = (title) => {
+    setSelectedDestination(title);
+  };
+
+  useEffect(() => {
+    // Wrap destination in an array since parent expects an array
+    if (selectedDestination) {
+      onDestinationChange([selectedDestination]);
+    }
+  }, [selectedDestination, onDestinationChange]);
+
   return (
     <div className="destinations">
       {!showSpecificPlaces ? (
         <>
           <h2 className="destinations__title">Where are you looking to go?</h2>
 
-          {/* Continent Selection Grid */}
+          {/* 🌍 Continent Selection */}
           <div className="destinations__grid">
             {Object.keys(continentImages).map((continent) => (
               <button
                 key={continent}
-                className={`destinations__continent ${selectedRegion === continent ? "selected" : ""}`}
-                onClick={() => setSelectedRegion(continent)}
+                className={`destinations__continent ${selectedDestination === continent ? "selected" : ""}`}
+                onClick={() => handleContinentClick(continent)}
                 style={{
-                  backgroundImage: continentImages[continent] ? `url(${continentImages[continent]})` : "none",
-                  filter: selectedRegion === continent ? "none" : "grayscale(50%)",
+                  backgroundImage: `url(${continentImages[continent]})`,
+                  filter: selectedDestination === continent ? "none" : "grayscale(50%)",
                 }}
               >
                 {continent}
@@ -59,7 +75,7 @@ export const Destinations = ({ onDestinationChange }) => {
             ))}
           </div>
 
-          {/* Filter Buttons */}
+          {/* 📁 Filter Buttons */}
           <div className="destinations__filters">
             {Object.keys(recommendations).map((filter) => (
               <button
@@ -72,27 +88,39 @@ export const Destinations = ({ onDestinationChange }) => {
             ))}
           </div>
 
-          {/* Recommendation Carousel */}
-          <h3 className="destinations__carousel-title">Carousel Cards</h3>
+          {/* 🖼 Destination Carousel */}
+          <h3 className="destinations__carousel-title">{selectedFilter} Destinations</h3>
           <div className="destinations__carousel">
             {recommendations[selectedFilter].map((place, index) => (
-              <div key={index} className="destinations__carousel-card">
+              <div
+                key={index}
+                className={`destinations__carousel-card ${selectedDestination === place.title ? "selected" : ""}`}
+                onClick={() => handleCardClick(place.title)}
+              >
                 <img src={place.img} alt={place.title} className="carousel-image" />
-                <p>{place.title}</p>
+                <p style={{ color: selectedDestination === place.title ? "black" : "#333", fontWeight: selectedDestination === place.title ? "bold" : "normal" }}>
+                  {place.title}
+                </p>
               </div>
             ))}
           </div>
 
-          {/* "I Have a Place in Mind" Button */}
-          <button 
+          {/* 📍 "I have a place in mind" */}
+          <button
             className="destinations__custom-button"
-            onClick={() => setShowSpecificPlaces(true)}
+            onClick={() => {
+              setSelectedDestination("I have a place in mind");
+              setShowSpecificPlaces(true);
+            }}
           >
             I have a place in mind
           </button>
         </>
       ) : (
-        <SpecificPlaces onClose={() => setShowSpecificPlaces(false)} onSpecificChange={onDestinationChange} />
+        <SpecificPlaces
+          onClose={() => setShowSpecificPlaces(false)}
+          onSpecificChange={(specificPlace) => setSelectedDestination(specificPlace)}
+        />
       )}
     </div>
   );

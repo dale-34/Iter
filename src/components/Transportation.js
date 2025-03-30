@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import "../css/Transportation.css";
 
 
-export const Transportation = ({ onTransportChange }) => {
+export const Transportation = ({ onTransportChange, onStartLocationChange }) => {
+  
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleTransportChange = (transport) => {
-    setSelectedOption(selectedOption);
+    setSelectedOption(transport);
     if (onTransportChange) {
       onTransportChange(transport);
     }
@@ -15,6 +16,20 @@ export const Transportation = ({ onTransportChange }) => {
   return (
     <div className="transport">
       <h2 className="transport__title">How are you getting to and from?</h2>
+
+      {/* Start Location Input */}
+      <div style={{ marginBottom: "20px" }}>
+        <label htmlFor="start-location" style={{ display: "block", fontWeight: "bold", marginBottom: "8px" }}>
+          
+        </label>
+        <input
+          type="text"
+          id="start-location"
+          placeholder="Enter your starting city or airport"
+          onChange={(e) => onStartLocationChange && onStartLocationChange(e.target.value)}
+          className="transport__input"
+        />
+      </div>
 
       {/* Background Section */}
       <div className="transport__background">
