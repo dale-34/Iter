@@ -12,6 +12,22 @@ export const BudgetSlider = ({onBudgetChange}) => {
         setValues(newValues); // Update the state with new values
     };
 
+    const incrementMin = () => {
+        setValues(([min, max]) => [Math.min(min + 100, max), max]);
+    };
+
+    const decrementMin = () => {
+        setValues(([min, max]) => [Math.max(min - 100, 0), max]);
+    };
+
+    const incrementMax = () => {
+        setValues(([min, max]) => [min, Math.min(max + 100, 15000)]);
+    };
+
+    const decrementMax = () => {
+        setValues(([min, max]) => [min, Math.max(max - 100, min)]);
+    };
+
     return (
         <div className="slider-container">
             <ReactSlider
@@ -26,12 +42,20 @@ export const BudgetSlider = ({onBudgetChange}) => {
                 step={100}
             />
             <div className="slider-values">
-                <button className="decrement"> - </button>
+                <button className="decrement"
+                    onClick={decrementMin}
+                > - </button>
                 <p>Value Budget: ${values[0]}</p>
-                <button className="increment"> + </button>
-                <button className="decrement"> - </button>
+                <button className="increment"
+                    onClick={incrementMin}
+                > + </button>
+                <button className="decrement"
+                    onClick={decrementMax}
+                > - </button>
                 <p>Maximum Budget: ${values[1]}</p>
-                <button className="increment"> + </button>
+                <button className="increment"
+                    onClick={incrementMax}
+                > + </button>
             </div>
 
             {/* Inline styles using the <style> tag */}
@@ -58,7 +82,7 @@ export const BudgetSlider = ({onBudgetChange}) => {
                         padding: 10px 10px; /* Smaller padding */
                         font-size: 1rem; /* Adjust font size */
                         border-radius: 50%;
-                        background-color: dark green;
+                        background-color: transparent;
                     }
 
                     .decrement {
@@ -70,7 +94,7 @@ export const BudgetSlider = ({onBudgetChange}) => {
                         padding: 10px 10px; /* Smaller padding */
                         font-size: 1rem; /* Adjust font size */
                         border-radius: 50%;
-                        background-color: dark red;
+                        background-color: transparent;
                     }
                     
                     .thumb {
