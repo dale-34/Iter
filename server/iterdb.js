@@ -1,10 +1,10 @@
 import mysql from 'mysql2';
-require("dotenv").config();
+import dotenv from 'dotenv'; // Change this to use 'import'
+dotenv.config(); // Load environment variables
 
 console.log("Attempting to connect to MySQL...");
 
 const pool = mysql.createPool({
-
     host: process.env.DATABASE_HOST,
     user: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD,
@@ -14,8 +14,7 @@ const pool = mysql.createPool({
     queueLimit: 0,
 });
 
-
-// Function for database insertion after a trip is generated
+// Insert vacation plan into the database
 async function insertPlan(vacationPlan, userId, extraInputs) {
     try {
         const [startDate, endDate, budget, destination, startingLocation] = extraInputs;
@@ -93,7 +92,7 @@ async function insertPlan(vacationPlan, userId, extraInputs) {
     }
 }
 
-// Function for database retrieval for when a trip needs to be displayed
+// Retrieve vacation plan for a user
 async function getVacationPlan(userId) {
     try {
         // Step 1: Get the user's trip details from the trips table
@@ -193,7 +192,6 @@ async function getVacationPlan(userId) {
 
 console.log("Attempting to connect to MySQL...");
 
-// Test connection
 pool.query("SELECT * FROM users", (err, results) => {
     if (err) {
         console.error("Database query error:", err);
@@ -202,6 +200,4 @@ pool.query("SELECT * FROM users", (err, results) => {
     console.log("Database connected. Query results:", results);
 });
 
-export { getVacationPlan };
-export { insertPlan };
-export { pool };
+export { getVacationPlan, insertPlan, pool };
