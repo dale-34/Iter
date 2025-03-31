@@ -6,7 +6,8 @@ const Recap = ({ vacationPlan = [], startDate, endDate, destination, budget }) =
         <div className="recap-container">
             <h2 className="section-title">Overview</h2>
             <div className="recap-card">
-                <p><strong>Destination:</strong> {destination}</p>
+                {/* <p><strong>Start Destination:</strong> {destination}</p> */}
+                <p><strong>End Destination:</strong> {destination}</p>
                 <p><strong>Dates:</strong> {startDate} - {endDate}</p>
                 <p><strong>Budget:</strong> ${budget[0]} - ${budget[1]}</p>
                 <p><strong>Weather:</strong> {vacationPlan.vacation.climate} </p>

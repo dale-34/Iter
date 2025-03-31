@@ -4,6 +4,8 @@ import "../css/Flights.css";
 const Flights = ({ flights = [], hotels = [] }) => {
     return (
         <div className="flights-container">
+            <h1 className="section-title">Reservations</h1>
+            <div className="reservation-card">
             <h2 className="section-title">Flights</h2>
             <div className="flights-card">
                 {(!flights || flights.length === 0) && (
@@ -35,6 +37,7 @@ const Flights = ({ flights = [], hotels = [] }) => {
                         </a>
                     </div>
                 ))}
+            </div>
             </div>
         </div>
     );

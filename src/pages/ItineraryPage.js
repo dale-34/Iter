@@ -33,7 +33,7 @@ function ItineraryPage() {
       ]
     },
     "vacation": {
-      "climate": "March in New York City is generally cool, with temperatures ranging from 40°F to 55°F. Layered clothing recommended.",
+      "climate": "April in New York City is generally cool, with temperatures ranging from 55°F to 66°F. Layered clothing recommended.",
       "day1": {
         "day_description": "Arrive in New York City and explore Times Square and Central Park.",
         "activities": [
@@ -189,7 +189,7 @@ function ItineraryPage() {
         <div className="itinerary-wrapper">
             <Header />
             <div className="trip-title">
-                <h1>{destination || "No destination provided"}</h1>
+                <h1>{destination || "No destination provided"} Trip</h1>
             </div>
             <div className="itinerary-content">
                 <Recap 
@@ -208,7 +208,7 @@ function ItineraryPage() {
                         const dayData = vacationPlan.vacation[day];
                         if (day.startsWith('day')) {
                             const date = new Date(startDate);
-                            date.setDate(date.getDate() + index);
+                            date.setDate(date.getDate() + index - 1);
                             return (
                                 <DayCard
                                     dayNumber={index}
