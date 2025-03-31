@@ -24,7 +24,7 @@ const ActivityCarousel = ({activities = []}) => {
                         // key={activity.id}
                         title={activity.title}
                         description={activity.description}
-                        // image={activity.image}
+                        image={activity.image}
                         cost={activity.cost}
                     />
                 ))}

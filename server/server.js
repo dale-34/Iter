@@ -2,7 +2,6 @@ import express from "express";
 import OpenAI from "openai";
 import dotenv from "dotenv";
 import fs from "fs";
-// import db from "./iterdb.js";
 
 dotenv.config(); // Load environment variables
 const app = express();

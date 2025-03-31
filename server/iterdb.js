@@ -1,5 +1,6 @@
 import mysql from "mysql2";
 import dotenv from "dotenv";
+import { getImageURL } from "./google-server.js";
 
 dotenv.config();
 console.log("Attempting to connect to MySQL...");
@@ -66,9 +67,10 @@ async function insertPlan(vacationPlan, userId, extraInputs) {
         const activityQueries = Object.values(vacationPlan.vacation);
 
         for (const activity of activityQueries) {
+            const image = await getImageURL(activity.title);
             const activityQuery = `
-                INSERT INTO activities (trip_id, type, title, cost, day, relevant_link, description)
-                VALUES (?, ?, ?, ?, ?, ?, ?);
+                INSERT INTO activities (trip_id, type, title, cost, day, relevant_link, description, image)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?);
             `;
             await pool
                 .promise()
@@ -80,6 +82,7 @@ async function insertPlan(vacationPlan, userId, extraInputs) {
                     activity.day,
                     activity.relevant_link,
                     activity.description,
+                    image
                 ]);
         }
 
