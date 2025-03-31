@@ -1,14 +1,13 @@
 import express from "express";
 import OpenAI from "openai";
-import cors from "cors";
 import dotenv from "dotenv";
+import fs from "fs";
 // import db from "./iterdb.js";
 
 dotenv.config(); // Load environment variables
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors()); // Allow frontend requests
 app.use(express.json()); // Parse JSON bodies
 
 const openai = new OpenAI({
@@ -37,30 +36,56 @@ app.post("/generate-vacation", async (req, res) => {
         IMPORTANT: 
         - Return ONLY valid JSON (no markdown, no code blocks).
         - Use this exact structure:
+        - For each day, list 2 different food AND 2 different activities for each day
         - Use REAL and RELEVANT website links, if the activity/place/accomodation do not have a website use "NULL" instead
         {
         "accomodations": {
-            "accomodation1": {
-                "type": "hotel, flight, or car_rental",
+            "reservations": [
+                {
+                "name": "name of the booking",
+                "type": "hotel, apartment, house, hostel",
+                "estimated_cost": "estimated cost of the booking",
+                "description": "brief description to the booking",
                 "reservation_link": "URL to the booking"
-            }
+                }
+            ],
+            "transportation": [
+                {
+                "name": "name of the booking",
+                "type": "rental car, train, flight, or N/A",
+                "estimated_cost": "estimated cost of the booking",
+                "description": "brief description to the booking",
+                "reservation_link": "URL to the booking"
+                }
+            ]
         },
         "vacation": {
+            "climate": "general climate of the destination location",   
             "day1": {
-            "type": "food or entertainment",
-            "title": "name of activity or food place",
-            "description": "short description of activity/place"
-            "cost": 29.3,
-            "day": 1,
-            "relevant_link": "relevant link to activity/place"
+                "day_description": "general description going over agenda for the day"
+                "activities": [
+                    {
+                    "type": "food or activity",
+                    "title": "name of activity or food place",
+                    "description": "short description of activity/place",
+                    "cost": 29.30,
+                    "day": 1,
+                    "relevant_link": "relevant link to activity/place"
+                    }
+                ]
             },
             "day2": {
-            "type": "food or entertainment",
-            "title": "name of activity or food place",
-            "description": "short description of activity/place"
-            "cost": 29.3,
-            "day": 1,
-            "relevant_link": "relevant link to activity/place"
+                "day_description": "general description going over agenda for the day"
+                "activities": [
+                    {
+                    "type": "food or activity",
+                    "title": "name of activity or food place",
+                    "description": "short description of activity/place",
+                    "cost": 30.30,
+                    "day": 2,
+                    "relevant_link": "relevant link to activity/place"
+                    }
+                ]
             }
         }
         }`;
@@ -74,21 +99,23 @@ app.post("/generate-vacation", async (req, res) => {
 
         try {
             console.log(completion.choices[0].message.content);
-            const vacationPlan = JSON.parse(completion.choices[0].message.content); // Parse JSON
-            console.log("AFTER PARSE ", vacationPlan);
+            
+            // Parse JSON
+            const vacationPlan = JSON.parse(
+                completion.choices[0].message.content
+            ); 
+
+            // Write to a file to see JSON format
+            const jsonData = JSON.stringify(vacationPlan, null, 2);
+            fs.writeFileSync('vacationPlan.json', jsonData);
 
             //To bring over the missing values from the vacationPlan
-            const extrInfo = [
-                startDate,
-                endDate,
-                budget,
-                destination
-            ];    
-            
+            const extrInfo = [startDate, endDate, budget, destination];
+
             // await db.insertPlan(vacationPlan, 1, extraInputs); // Call function in DB to handle insertion
-            res.json({ 
+            res.json({
                 success: true,
-                message: "Activities inserted successfully!"
+                message: "Activities inserted successfully!",
             });
         } catch (parseError) {
             console.error("JSON parse error:", parseError);
