@@ -1,12 +1,13 @@
 import mysql from 'mysql2';
+require("dotenv").config();
 
 console.log("Attempting to connect to MySQL...");
 
 const pool = mysql.createPool({
 
-    host: "iterdb.c09eaia8aiys.us-east-1.rds.amazonaws.com",
-    user: "admin",
-    password: "IkBnnrITolHoLlG4gFl6",
+    host: process.env.DATABASE_HOST,
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
     database: "iterdb",
     waitForConnections: true,
     connectionLimit: 10,
@@ -50,7 +51,7 @@ async function insertPlan(vacationPlan, userId, extraInputs) {
                 tripId,
                 reservation.type,
                 reservation.name,
-                reservation.estimated_cost,
+                parseFloat(reservation.estimated_cost.replace(/[^0-9.]/g, '')), // Convert "$600" -> 600
                 reservation.description,
                 reservation.reservation_link
             ]);
@@ -92,6 +93,104 @@ async function insertPlan(vacationPlan, userId, extraInputs) {
     }
 }
 
+// Function for database retrieval for when a trip needs to be displayed
+async function getVacationPlan(userId) {
+    try {
+        // Step 1: Get the user's trip details from the trips table
+        const tripQuery = `
+            SELECT start_date, end_date, budget, destination, starting_point, climate
+            FROM trips
+            WHERE user_id = ?;
+        `;
+        const [tripResults] = await pool.promise().query(tripQuery, [userId]);
+
+        if (tripResults.length === 0) {
+            console.log("No trip found for this user.");
+            return;
+        }
+
+        // Destructure the result to get user inputs (start date, end date, budget, destination, start location, climate)
+        const { start_date, end_date, budget, destination, starting_point, climate } = tripResults[0];
+
+        // Step 2: Get the vacation activities details from the activities table
+        const activityQuery = `
+            SELECT type, title, cost, day, relevant_link, description, day_description
+            FROM activities 
+            WHERE trip_id = (SELECT id FROM trips WHERE user_id = ?);
+        `;
+        const [activityResults] = await pool.promise().query(activityQuery, [userId]);
+
+        // Organize the activities by day
+        const vacation = {};
+        activityResults.forEach((activity) => {
+            const { day, day_description } = activity;  // Extract day and day_description from the activity
+            if (!vacation[`day${day}`]) {
+                vacation[`day${day}`] = {
+                    day_description: day_description,  // Use day_description directly
+                    activities: []
+                };
+            }
+            vacation[`day${day}`].activities.push({
+                type: activity.type,
+                title: activity.title,
+                description: activity.description,
+                cost: activity.cost,
+                day: activity.day,
+                relevant_link: activity.relevant_link
+            });
+        });
+
+        // Step 3: Get the reservations (accommodation and transportation) from the reservations table
+        const reservationQuery = `
+            SELECT type, title, estimated_cost, description, reservation_link
+            FROM reservations 
+            WHERE trip_id = (SELECT id FROM trips WHERE user_id = ?);
+        `;
+        const [reservationResults] = await pool.promise().query(reservationQuery, [userId]);
+
+        // Organize the reservations into transportation and accommodation
+        const accomodations = {
+            reservations: [],
+            transportation: []
+        };
+        reservationResults.forEach((reservation) => {
+            const formattedReservation = {
+                name: reservation.title,  // Rename title to name
+                type: reservation.type,
+                estimated_cost: reservation.estimated_cost,
+                description: reservation.description,
+                reservation_link: reservation.reservation_link
+            };
+
+            if (reservation.type === 'hotel' || reservation.type === 'car_rental') {
+                accomodations.reservations.push(formattedReservation);
+            } else if (reservation.type === 'flight') {
+                accomodations.transportation.push(formattedReservation);
+            }
+        });
+
+        // Step 4: Structure the final vacation plan object
+        const vacationPlan = {
+            accomodations,
+            vacation: {
+                climate,
+                ...vacation
+            }
+        };
+
+        // Step 5: Create the userInputs array with the retrieved data
+        const userInputs = [start_date, end_date, budget, destination, starting_point];
+
+        // Print both the vacation plan and userInputs to the console
+        console.log("Vacation Plan:", JSON.stringify(vacationPlan, null, 2));
+        console.log("User Inputs:", JSON.stringify(userInputs, null, 2));
+
+        return { vacationPlan, userInputs };
+    } catch (err) {
+        console.error("Error retrieving vacation plan:", err);
+    }
+}
+
 console.log("Attempting to connect to MySQL...");
 
 // Test connection
@@ -103,5 +202,6 @@ pool.query("SELECT * FROM users", (err, results) => {
     console.log("Database connected. Query results:", results);
 });
 
+export { getVacationPlan };
 export { insertPlan };
 export { pool };
