@@ -1,62 +1,62 @@
-const express = require("express");
-const axios = require("axios");
-const cors = require("cors");
-require("dotenv").config();
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+import axios from "axios";
 
+dotenv.config(); // Load environment variables
 const app = express();
+const PORT = process.env.PORT || 3000;
+
 app.use(cors());
-const PORT = process.env.PORT || 5000;
+
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 
-app.get("/api/place-photo", async (req, res) => {
-    const { query } = req.query;
+// app.get("/test-photo", async (req, res) => {
+//     const placeName = req.query.place || "Katz's Delicatessen"; // fallback to test place
+//     const imageUrl = await getImageURL(placeName);
+
+//     if (imageUrl) {
+//         res.json({ placeName, imageUrl });
+//         console.log(res.json({ placeName, imageUrl }));
+//     } else {
+//         res.status(404).json({ error: "Image not found for the given place." });
+//     }
+// });
+
+async function getImageURL(placeName) {
     try {
-        // Find Place ID
-        const placeSearchRes = await axios.get(
-            "https://maps.googleapis.com/maps/api/place/findplacefromtext/json",
-            {
-                params: {
-                    input: query,
-                    inputtype: "textquery",
-                    fields: "place_id",
-                    key: GOOGLE_API_KEY,
-                },
+        const placeSearchRes = await axios.get('https://maps.googleapis.com/maps/api/place/findplacefromtext/json', {
+            params: {
+                input: placeName,
+                inputtype: 'textquery',
+                fields: 'place_id',
+                key: GOOGLE_API_KEY
             }
-        );
+        });
 
         const placeId = placeSearchRes.data.candidates?.[0]?.place_id;
-        if (!placeId) {
-            return res.status(404).json({ error: "Place not found" });
-        }
+        if (!placeId) return null;
 
-        // Get Photo from Place ID
-        const detailsRes = await axios.get(
-            "https://maps.googleapis.com/maps/api/place/details/json",
-            {
-                params: {
-                    place_id: placeId,
-                    fields: "photos",
-                    key: GOOGLE_API_KEY,
-                },
+        const detailsRes = await axios.get('https://maps.googleapis.com/maps/api/place/details/json', {
+            params: {
+                place_id: placeId,
+                fields: 'photos',
+                key: GOOGLE_API_KEY
             }
-        );
+        });
 
         const photoRef = detailsRes.data.result.photos?.[0]?.photo_reference;
-        if (!photoRef) {
-            return res
-                .status(404)
-                .json({ error: "No photos found for this place" });
-        }
+        if (!photoRef) return null;
 
-        // Return Photo URL
-        const photoUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=${photoRef}&key=${GOOGLE_API_KEY}`;
-        res.json({ photoUrl });
-    } catch (error) {
-        console.error(error.response?.data || error.message);
-        res.status(500).json({ error: "Something went wrong" });
+        return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=${photoRef}&key=${process.env.GOOGLE_API_KEY}`;
+    } catch (err) {
+        console.error(`Image LookUp Failed for ${placeName}:`, err.message);
+        return null;
     }
-});
+}
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+export { getImageURL };
+
+// app.listen(PORT, () => {
+//     console.log(`Server running on port ${PORT}`);
+// });
