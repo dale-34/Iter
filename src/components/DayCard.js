@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-const DayCard = ({ dayNumber, date }) => {
+const DayCard = ({ dayNumber, date, description, activities = [] }) => {
     const [expanded, setExpanded] = useState(false);
 
     const handleExpandClick = () => {
@@ -24,7 +24,7 @@ const DayCard = ({ dayNumber, date }) => {
                     {date}
                 </Typography>
                 <Typography paragraph>
-                        Possibly ChatGPT quick summary of day here.
+                        {description}
                 </Typography>
                 <IconButton
                     onClick={handleExpandClick}
@@ -38,7 +38,9 @@ const DayCard = ({ dayNumber, date }) => {
             </CardContent>
             <Collapse in={expanded}>
                 <CardContent>
-                    <ActivityCarousel />
+                    <ActivityCarousel
+                        activities={activities}
+                    />
                 </CardContent>
             </Collapse>
         </Card>

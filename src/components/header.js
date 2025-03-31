@@ -8,7 +8,6 @@ export const Header = () => {
       <nav className="header-nav">
         <h1 className="header-title">
           <a href="/HomePage" className="header-link">Iter</a>
-          <a href= "/ItineraryPage" className="header-link"> --- Itinerary Shortcut</a>
         </h1>
       </nav>
       <div className="LoginButton">

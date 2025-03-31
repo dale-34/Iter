@@ -31,8 +31,15 @@ const LoadingPage = () => {
             destination,
           }),
         });
-        const data = await response.json();
-        navigate("/ItineraryPage", { state: { vacationPlan: data.vacation } }); // Go to itinerary when plan is generated
+        // const data = await response.json(); TODO: uncomment at time of integration
+        navigate("/ItineraryPage", { 
+          state: { 
+            // vacationPlan: data.vacation, TODO: uncomment at time of integration
+            startDate,
+            endDate,
+            budget,
+            destination,
+           } }); // Go to itinerary when plan is generated
       } catch (error) {
         console.error("Error generating vacation:", error);
       }
