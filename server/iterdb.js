@@ -19,6 +19,8 @@ async function insertPlan(vacationPlan, userId, extraInputs) {
     try {
         const [startDate, endDate, budget, destination, startingLocation] = extraInputs;
         const tripName = "MyTrip";
+
+        const averageBudget = (budget[0] + budget[1]) / 2;
         
         // Step 1: Insert into `trips` Table (including climate info)
         const tripQuery = `
@@ -30,7 +32,7 @@ async function insertPlan(vacationPlan, userId, extraInputs) {
             tripName,
             startDate,
             endDate,
-            budget,
+            averageBudget,
             startingLocation,
             destination,
             vacationPlan.vacation.climate

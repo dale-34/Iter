@@ -2,6 +2,7 @@ import express from "express";
 import OpenAI from "openai";
 import dotenv from "dotenv";
 import fs from "fs";
+import { insertPlan } from "./iterdb.js"; // Adjust path as necessary
 
 dotenv.config(); // Load environment variables
 const router = express.Router();
@@ -86,6 +87,7 @@ router.post("/generate-vacation", async (req, res) => {
         }
         }`;
 
+        // Generate Plan
         console.log("Generated prompt:", prompt);
         const completion = await openai.chat.completions.create({
             model: "gpt-4o-mini",
@@ -94,23 +96,35 @@ router.post("/generate-vacation", async (req, res) => {
 
         try {
             console.log(completion.choices[0].message.content);
-            const vacationPlan = JSON.parse(completion.choices[0].message.content);
 
-            // Save JSON output
-            fs.writeFileSync('vacationPlan.json', JSON.stringify(vacationPlan, null, 2));
+            // Parse JSON
+            const vacationPlan = JSON.parse(
+                completion.choices[0].message.content
+            ); 
 
-            // Include extra trip details
+            // Write to a file to see JSON format
+            const jsonData = JSON.stringify(vacationPlan, null, 2);
+            fs.writeFileSync('vacationPlan.json', jsonData);
+
+            // To bring over the missing values from the vacationPlan
             const extraInputs = [startDate, endDate, budget, destination, startLocation];
+
+            // Call function in DB to handle insertion with default userid = 1
+            console.log("Calling insertPlan function...");
+            await insertPlan(vacationPlan, 1, extraInputs);
+            console.log("insertPlan function executed.");
 
             res.json({
                 success: true,
-                message: "Vacation plan generated successfully!",
+                message: "Activities inserted successfully!",
                 vacationPlan,
                 extraInputs,
             });
         } catch (parseError) {
             console.error("JSON parse error:", parseError);
-            return res.status(500).json({ error: "Error parsing vacation plan response" });
+            return res
+                .status(500)
+                .json({ error: "Error parsing vacation plan response" });
         }
     } catch (error) {
         console.error("OpenAI Error:", error);

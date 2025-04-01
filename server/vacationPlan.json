@@ -1,0 +1,88 @@
+{
+  "accomodations": {
+    "reservations": [
+      {
+        "name": "Hôtel Le 123 Sébastopol - Astotel",
+        "type": "hotel",
+        "estimated_cost": "600",
+        "description": "Modern hotel located in the heart of Paris, offering stylish rooms and complimentary refreshments.",
+        "reservation_link": "https://www.astotel.com/en/hotel-123-sebastopol"
+      }
+    ],
+    "transportation": [
+      {
+        "name": "Round-trip Flight from Gainesville to Paris",
+        "type": "flight",
+        "estimated_cost": "1200",
+        "description": "Round-trip economy flight from Gainesville Regional Airport to Charles de Gaulle Airport.",
+        "reservation_link": "https://www.kayak.com/"
+      }
+    ]
+  },
+  "vacation": {
+    "climate": "April in Paris typically experiences mild temperatures ranging from 50°F to 65°F (10°C to 18°C) with occasional rain.",
+    "day1": {
+      "day_description": "Arrival in Paris and introduction to the city, starting with famous landmarks.",
+      "activities": [
+        {
+          "type": "activity",
+          "title": "Eiffel Tower Visit",
+          "description": "Experience breathtaking views of Paris from the top of the iconic Eiffel Tower.",
+          "cost": 29.3,
+          "day": 1,
+          "relevant_link": "https://www.toureiffel.paris/en"
+        },
+        {
+          "type": "food",
+          "title": "Café de Flore",
+          "description": "Famous café known for its literary history, serving delicious French pastries and coffee.",
+          "cost": 15,
+          "day": 1,
+          "relevant_link": "https://cafedeflore.fr/en"
+        }
+      ]
+    },
+    "day2": {
+      "day_description": "Explore the artistic history of Paris, visiting notable museums and enjoying local cuisine.",
+      "activities": [
+        {
+          "type": "activity",
+          "title": "Louvre Museum Tour",
+          "description": "Visit the world-renowned art museum housing thousands of works including the Mona Lisa.",
+          "cost": 30.3,
+          "day": 2,
+          "relevant_link": "https://www.louvre.fr/en"
+        },
+        {
+          "type": "food",
+          "title": "Le Relais de l'Entrecôte",
+          "description": "Enjoy a classic French steak-frites experience at this popular bistro.",
+          "cost": 25,
+          "day": 2,
+          "relevant_link": "https://www.relaisentrecote.fr/"
+        }
+      ]
+    },
+    "day3": {
+      "day_description": "Last day for shopping and relaxation, indulging in traditional French desserts.",
+      "activities": [
+        {
+          "type": "activity",
+          "title": "Shopping in Le Marais",
+          "description": "Explore trendy boutiques and vintage shops in this historic district of Paris.",
+          "cost": 0,
+          "day": 3,
+          "relevant_link": "NULL"
+        },
+        {
+          "type": "food",
+          "title": "Pierre Hermé",
+          "description": "Treat yourself to exquisite French pastries and macarons from this renowned patisserie.",
+          "cost": 20,
+          "day": 3,
+          "relevant_link": "https://www.pierreherme.com/"
+        }
+      ]
+    }
+  }
+}

@@ -14,11 +14,17 @@ const LoadingPage = () => {
     if (hasFetched.current) return;
     hasFetched.current = true;
 
-    const { startDate, endDate, budget, accommodation, transport, destination } = location.state;
+    //change back to const after debugging
+    let { startDate, endDate, budget, accommodation, transport, destination } = location.state;
+
+    // Because destination was empty:
+    if (Array.isArray(destination) && destination.length === 0) {
+      destination = "New York";
+    }
 
     const generateVacation = async () => {
       try {
-        const response = await axios.post("http://localhost:3000/openai/generate-vacation", {
+        const response = await axios.post("/openai/generate-vacation", {
           startDate,
           endDate,
           budget,
