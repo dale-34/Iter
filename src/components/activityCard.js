@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 
-const ActivityCard = ({ title, description, image }) => {
+const ActivityCard = ({ title, description, image, cost }) => {
     const [favorited, setFavorite] = React.useState(false);
 
     const handleFavorite = () => {

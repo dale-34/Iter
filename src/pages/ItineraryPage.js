@@ -44,6 +44,8 @@ function ItineraryPage() {
             "cost": 20,
             "day": 1,
             "relevant_link": "https://www.katzsdelicatessen.com/"
+            "relevant_link": "https://www.katzsdelicatessen.com/",
+            // "image": "https://lh3.googleusercontent.com/places/ANXAkqHOikyTY7JKDu-4UB9o1knCKKvuTrgnl67VaBGyHX3z_00qaJpIhMAApMWidM3Gh5OPtN8M_3zkbZFAoU8zGC7PalvdMEKWh2Q=s1600-w800"
           },
           {
             "type": "food",

@@ -1,6 +1,7 @@
 import mysql from 'mysql2';
 import dotenv from 'dotenv'; // Change this to use 'import'
 dotenv.config(); // Load environment variables
+import { getImageURL } from "./google-server.js";
 
 console.log("Attempting to connect to MySQL...");
 
@@ -75,6 +76,15 @@ async function insertPlan(vacationPlan, userId, extraInputs) {
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
                 `;
                 await pool.promise().query(activityQuery, [
+        // Step 3 with images:
+//         const activityQueries = Object.values(vacationPlan.vacation);
+
+//         for (const activity of activityQueries) {
+//             const image = await getImageURL(activity.title);
+//             const activityQuery = `
+//                 INSERT INTO activities (trip_id, type, title, cost, day, relevant_link, description, image)
+//                 VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+//             `;
                     tripId,
                     activity.type,
                     activity.title,
@@ -84,6 +94,7 @@ async function insertPlan(vacationPlan, userId, extraInputs) {
                     dayDate.toISOString().split('T')[0], // Format as YYYY-MM-DD
                     activity.relevant_link,
                     activity.description
+                    //image
                 ]);
             }
         }

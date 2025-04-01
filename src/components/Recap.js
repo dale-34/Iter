@@ -1,17 +1,16 @@
 import React from "react";
 import "../css/Recap.css";
 
-const Recap = () => {
+const Recap = ({ vacationPlan = [], startDate, endDate, destination, budget }) => {
     return (
         <div className="recap-container">
             <h2 className="section-title">Overview</h2>
             <div className="recap-card">
-                <p><strong>Destination:</strong> </p>
-                <p><strong>Dates:</strong> </p>
-                <p><strong>Budget:</strong> </p>
-                <p><strong>Accommodation:</strong> </p>
-                <p><strong>Weather:</strong> </p>
-                <p><strong>Activities:</strong> </p>
+                {/* <p><strong>Start Destination:</strong> {destination}</p> */}
+                <p><strong>End Destination:</strong> {destination}</p>
+                <p><strong>Dates:</strong> {startDate} - {endDate}</p>
+                <p><strong>Budget:</strong> ${budget[0]} - ${budget[1]}</p>
+                <p><strong>Weather:</strong> {vacationPlan.vacation.climate} </p>
             </div>
         </div>
     );
