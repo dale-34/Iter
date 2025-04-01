@@ -1,6 +1,6 @@
 import React from "react";
 import "../css/header.css";
-import { Login } from "./Login.js";
+import { Login } from "./Login";
 
 export const Header = () => {
   return (
