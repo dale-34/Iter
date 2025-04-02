@@ -69,11 +69,14 @@ async function insertPlan(vacationPlan, userId, extraInputs) {
             // Calculate day_date (start_date + dayNumber - 1)
             const dayDate = new Date(startDate);
             dayDate.setDate(dayDate.getDate() + dayNumber - 1);
+
+            
             
             for (const activity of dayData.activities) {
+                const image = await getImageURL(activity.title);
                 const activityQuery = `
-                    INSERT INTO activities (trip_id, type, title, cost, day, day_description, day_date, relevant_link, description)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+                    INSERT INTO activities (trip_id, type, title, cost, day, day_description, day_date, relevant_link, description, image)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
                 `;
                 await pool.promise().query(activityQuery, [
         // Step 3 with images:
@@ -93,8 +96,8 @@ async function insertPlan(vacationPlan, userId, extraInputs) {
                     dayData.day_description,
                     dayDate.toISOString().split('T')[0], // Format as YYYY-MM-DD
                     activity.relevant_link,
-                    activity.description
-                    //image
+                    activity.description,
+                    image
                 ]);
             }
         }
@@ -126,7 +129,7 @@ async function getVacationPlan(userId) {
 
         // Step 2: Get the vacation activities details from the activities table
         const activityQuery = `
-            SELECT type, title, cost, day, relevant_link, description, day_description
+            SELECT type, title, cost, day, relevant_link, description, day_description, image
             FROM activities 
             WHERE trip_id = (SELECT id FROM trips WHERE user_id = ?);
         `;
@@ -148,13 +151,14 @@ async function getVacationPlan(userId) {
                 description: activity.description,
                 cost: activity.cost,
                 day: activity.day,
-                relevant_link: activity.relevant_link
+                relevant_link: activity.relevant_link,
+                image: activity.image
             });
         });
 
         // Step 3: Get the reservations (accommodation and transportation) from the reservations table
         const reservationQuery = `
-            SELECT type, title, estimated_cost, description, reservation_link
+            SELECT type, title, estimated_cost, description, reservation_link, image
             FROM reservations 
             WHERE trip_id = (SELECT id FROM trips WHERE user_id = ?);
         `;
@@ -171,7 +175,8 @@ async function getVacationPlan(userId) {
                 type: reservation.type,
                 estimated_cost: reservation.estimated_cost,
                 description: reservation.description,
-                reservation_link: reservation.reservation_link
+                reservation_link: reservation.reservation_link,
+                image: reservation.image
             };
 
             if (reservation.type === 'hotel' || reservation.type === 'car_rental') {

@@ -5,7 +5,7 @@ import { insertPlan } from './iterdb.js';  // Import the insertPlan function
 const userInputs = [
     '2025-03-07',  // startDate
     '2025-03-12',  // endDate
-    1000.00,       // budget
+    [1000, 2000],       // budget
     'New York',      // destination
     'Gainesville'  // starting location
 ];
