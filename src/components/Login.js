@@ -1,69 +1,212 @@
-import React, { useState } from 'react';
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField} from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  TextField,
+  Typography,
+  Box,
+} from '@mui/material';
 
 export const Login = () => {
-    const [open, setOpen] = useState(false);
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [createOpen, setCreateOpen] = useState(false);
 
-    const handleClickOpen = () => {
-        setOpen(true); // Opens the modal
+  const [userProfile, setUserProfile] = useState(null);
+
+  // Login form state
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  // Create account form state
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [newUsername, setNewUsername] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  useEffect(() => {
+    const stored = localStorage.getItem('userProfile');
+    if (stored) {
+      setUserProfile(JSON.parse(stored));
+    }
+  }, []);
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+
+    if (!username || !password) {
+      alert('Please enter both fields.');
+      return;
+    }
+
+    const profile = {
+      username,
+      loginTime: new Date().toISOString(),
     };
 
-    const handleClose = () => {
-        setOpen(false); // Closes the modal
-    };
+    setUserProfile(profile);
+    localStorage.setItem('userProfile', JSON.stringify(profile));
+    setLoginOpen(false);
+    setUsername('');
+    setPassword('');
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle login form submission here (e.g., validate, send API request, etc.)
-        console.log('Username:', username);
-        console.log('Password:', password);
-    };
+  const handleCreateSubmit = (e) => {
+    e.preventDefault();
 
-    return (
-        <div>
-            {/* Button to trigger the modal */}
-            <Button variant="outlined" onClick={handleClickOpen}>
-                Login
-            </Button>
+    if (newPassword !== confirmPassword) {
+      alert("Passwords do not match.");
+      return;
+    }
 
-            {/* Dialog Modal */}
-            <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>Login</DialogTitle>
-                <DialogContent>
-                    <form onSubmit={handleSubmit}>
-                        <TextField
-                            autoFocus
-                            margin="dense"
-                            label="Username"
-                            fullWidth
-                            variant="standard"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                        />
-                        <TextField
-                            margin="dense"
-                            label="Password"
-                            type="password"
-                            fullWidth
-                            variant="standard"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </form>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose} color="primary">
-                        Cancel
-                    </Button>
-                    <Button onClick={handleSubmit} color="primary">
-                        Login
-                    </Button>
-                </DialogActions>
-            </Dialog>
-        </div>
-    );
+    console.log('Account Created:', {
+      firstName,
+      lastName,
+      newUsername,
+      newPassword,
+    });
+
+    setUsername(newUsername);
+    setCreateOpen(false);
+    setLoginOpen(true);
+
+    setFirstName('');
+    setLastName('');
+    setNewUsername('');
+    setNewPassword('');
+    setConfirmPassword('');
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('userProfile');
+    setUserProfile(null);
+  };
+
+  return (
+    <div>
+      {!userProfile ? (
+        <Button variant="outlined" onClick={() => setLoginOpen(true)}>
+          Login
+        </Button>
+      ) : (
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <Typography variant="body1" sx={{ fontWeight: 500 }}>
+            Welcome, {userProfile.username}!
+          </Typography>
+          <Button variant="text" color="error" onClick={handleLogout}>
+            Logout
+          </Button>
+        </Box>
+      )}
+
+      {/* Login Dialog */}
+      <Dialog open={loginOpen} onClose={() => setLoginOpen(false)} fullWidth maxWidth="xs">
+        <DialogTitle>Login</DialogTitle>
+        <DialogContent>
+          <Box
+            component="form"
+            onSubmit={handleLoginSubmit}
+            sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 1 }}
+          >
+            <TextField
+              label="Username"
+              fullWidth
+              variant="outlined"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <TextField
+              label="Password"
+              type="password"
+              fullWidth
+              variant="outlined"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Typography variant="body2" sx={{ textAlign: 'center' }}>
+              Don&apos;t have an account?{' '}
+              <Button
+                onClick={() => {
+                  setLoginOpen(false);
+                  setCreateOpen(true);
+                }}
+                sx={{ fontWeight: 600, textTransform: 'none', padding: 0, minWidth: 0 }}
+              >
+                Create Account
+              </Button>
+            </Typography>
+          </Box>
+        </DialogContent>
+        <DialogActions sx={{ px: 3, pb: 2 }}>
+          <Button onClick={() => setLoginOpen(false)} variant="outlined" fullWidth>
+            Cancel
+          </Button>
+          <Button onClick={handleLoginSubmit} variant="contained" fullWidth>
+            Login
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      {/* Create Account Dialog */}
+      <Dialog open={createOpen} onClose={() => setCreateOpen(false)} fullWidth maxWidth="xs">
+        <DialogTitle>Create Account</DialogTitle>
+        <DialogContent>
+          <Box
+            component="form"
+            onSubmit={handleCreateSubmit}
+            sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 1 }}
+          >
+            <TextField
+              label="First Name"
+              fullWidth
+              variant="outlined"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+            <TextField
+              label="Last Name"
+              fullWidth
+              variant="outlined"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+            <TextField
+              label="Username"
+              fullWidth
+              variant="outlined"
+              value={newUsername}
+              onChange={(e) => setNewUsername(e.target.value)}
+            />
+            <TextField
+              label="Password"
+              type="password"
+              fullWidth
+              variant="outlined"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+            />
+            <TextField
+              label="Confirm Password"
+              type="password"
+              fullWidth
+              variant="outlined"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+          </Box>
+        </DialogContent>
+        <DialogActions sx={{ px: 3, pb: 2 }}>
+          <Button onClick={() => setCreateOpen(false)} variant="outlined" fullWidth>
+            Cancel
+          </Button>
+          <Button onClick={handleCreateSubmit} variant="contained" fullWidth>
+            Create
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+  );
 };
-
-export default Login;
