@@ -37,8 +37,9 @@ function ItineraryPage() {
         return <div>Loading...</div>;
     }
 
-    const [startDate, endDate, budget, destination] = userInputs || ["", "", "", ""]; 
-
+    const [startDate, endDate, budget, destination, startLocation] = userInputs || ["", "", "", ""]; 
+    const startDateFixed =  new Date(startDate);
+    const endDateFixed =  new Date(endDate);
     
 
     return (
@@ -50,10 +51,11 @@ function ItineraryPage() {
             <div className="itinerary-content">
                 <Recap 
                     vacationPlan={vacationPlan}
-                    startDate={startDate}
-                    endDate={endDate}
+                    startDate={startDateFixed}
+                    endDate={endDateFixed}
                     destination={destination}
                     budget={budget}
+                    startLocation={startLocation}
                 />
                 <Flights 
                   flights={vacationPlan?.accomodations?.transportation || []}
