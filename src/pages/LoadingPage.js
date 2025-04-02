@@ -15,12 +15,7 @@ const LoadingPage = () => {
     hasFetched.current = true;
 
     //change back to const after debugging
-    let { startDate, endDate, budget, accommodation, transport, destination } = location.state;
-
-    // Because destination was empty:
-    if (Array.isArray(destination) && destination.length === 0) {
-      destination = "New York";
-    }
+    let { startDate, endDate, budget, accommodation, transport, destination, startLocation } = location.state;
 
     const generateVacation = async () => {
       try {
@@ -31,6 +26,7 @@ const LoadingPage = () => {
           accommodation,
           transport,
           destination,
+          startLocation
         });
 
         navigate("/ItineraryPage", { state: { vacationPlan: response.data.vacationPlan } });

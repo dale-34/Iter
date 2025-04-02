@@ -21,9 +21,9 @@ router.post("/generate-vacation", async (req, res) => {
             accommodation,
             transport,
             destination,
+            startLocation
         } = req.body;
 
-        const startLocation = "Gainesville, Florida";
         console.log("Request Body:", req.body);
 
         // OpenAI Prompt
