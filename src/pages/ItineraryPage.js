@@ -10,15 +10,6 @@ import axios from "axios";
 function ItineraryPage() {
     const location = useLocation();
 
-    // Temporary values for testing
-    // const { startDate, endDate, budget, destination } = {
-    //     startDate: "2025-04-02",
-    //     endDate: "2025-04-04",
-    //     budget: 3000, // Hardcoded average of 2000 and 4000
-    //     destination: "New York"
-    //   };
-    // const { startDate, endDate, budget, destination } = location.state;
-
     const [vacationPlan, setVacationPlan] = useState(null);
     const [userInputs, setUserInputs] = useState([]);
 

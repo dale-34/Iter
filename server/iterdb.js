@@ -21,22 +21,30 @@ async function insertPlan(vacationPlan, userId, extraInputs) {
         const [startDate, endDate, budget, destination, startingLocation] = extraInputs;
         const tripName = "MyTrip";
 
-        const averageBudget = (budget[0] + budget[1]) / 2;
+        // Formatting dates:
+        function convertToISO(dateString) {
+            const dateObj = new Date(dateString); // Convert string to Date object
+            return dateObj.toISOString().split('T')[0]; // Extract YYYY-MM-DD part
+        }
+
+        const formattedStartDate = convertToISO(startDate);
+        const formattedEndDate = convertToISO(endDate);
         
         // Step 1: Insert into `trips` Table (including climate info)
         const tripQuery = `
-            INSERT INTO trips (user_id, trip_name, start_date, end_date, budget, starting_point, destination, climate, created_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW());
+            INSERT INTO trips (user_id, trip_name, start_date, end_date, starting_point, destination, climate, created_at, min_budget, max_budget)
+            VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), ?, ?);
         `;
         const [tripResult] = await pool.promise().query(tripQuery, [
             userId,
             tripName,
-            startDate,
-            endDate,
-            averageBudget,
+            formattedStartDate,
+            formattedEndDate,
             startingLocation,
             destination,
-            vacationPlan.vacation.climate
+            vacationPlan.vacation.climate,
+            budget[0],
+            budget[1]
         ]);
         
         const tripId = tripResult.insertId; // Get the newly created trip ID
@@ -79,15 +87,6 @@ async function insertPlan(vacationPlan, userId, extraInputs) {
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
                 `;
                 await pool.promise().query(activityQuery, [
-        // Step 3 with images:
-//         const activityQueries = Object.values(vacationPlan.vacation);
-
-//         for (const activity of activityQueries) {
-//             const image = await getImageURL(activity.title);
-//             const activityQuery = `
-//                 INSERT INTO activities (trip_id, type, title, cost, day, relevant_link, description, image)
-//                 VALUES (?, ?, ?, ?, ?, ?, ?, ?);
-//             `;
                     tripId,
                     activity.type,
                     activity.title,
@@ -113,7 +112,7 @@ async function getVacationPlan(userId) {
     try {
         // Step 1: Get the user's trip details from the trips table
         const tripQuery = `
-            SELECT start_date, end_date, budget, destination, starting_point, climate
+            SELECT start_date, end_date, destination, starting_point, climate, min_budget, max_budget
             FROM trips
             WHERE user_id = ?;
         `;
@@ -125,7 +124,9 @@ async function getVacationPlan(userId) {
         }
 
         // Destructure the result to get user inputs (start date, end date, budget, destination, start location, climate)
-        const { start_date, end_date, budget, destination, starting_point, climate } = tripResults[0];
+        const { start_date, end_date, destination, starting_point, climate, min_budget, max_budget } = tripResults[0];
+
+        const budget = [min_budget, max_budget];
 
         // Step 2: Get the vacation activities details from the activities table
         const activityQuery = `

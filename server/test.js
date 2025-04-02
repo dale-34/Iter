@@ -3,8 +3,8 @@ import { insertPlan } from './iterdb.js';  // Import the insertPlan function
 
 // Mock user inputs and vacation plan for testing
 const userInputs = [
-    '2025-03-07',  // startDate
-    '2025-03-12',  // endDate
+    'Mon Apr 01 2025',  // startDate
+    'MWed Apr 03 2025',  // endDate
     [1000, 2000],       // budget
     'New York',      // destination
     'Gainesville'  // starting location
