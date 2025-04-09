@@ -1,0 +1,130 @@
+{
+  "accomodations": {
+    "reservations": [
+      {
+        "name": "Hampton Inn Manhattan",
+        "type": "hotel",
+        "estimated_cost": "800",
+        "description": "A centrally located hotel with comfortable rooms and free breakfast.",
+        "reservation_link": "https://www.hilton.com/en/hotels/nycmmhx-hampton-manhattan/"
+      }
+    ],
+    "transportation": [
+      {
+        "name": "Delta Airlines Flight",
+        "type": "flight",
+        "estimated_cost": "300",
+        "description": "Round trip flight from Gainesville to New York.",
+        "reservation_link": "https://www.delta.com/"
+      }
+    ]
+  },
+  "vacation": {
+    "climate": "May in New York is usually mild with average temperatures ranging from 55°F to 75°F.",
+    "day1": {
+      "day_description": "Arrival in New York and exploring Times Square.",
+      "activities": [
+        {
+          "type": "food",
+          "title": "Shake Shack",
+          "description": "Famous for its burgers and milkshakes.",
+          "cost": 15,
+          "day": 1,
+          "relevant_link": "https://www.shakeshack.com/"
+        },
+        {
+          "type": "activity",
+          "title": "Visit Times Square",
+          "description": "Explore the vibrant heart of the city with bright billboards and entertainment.",
+          "cost": 0,
+          "day": 1,
+          "relevant_link": "https://www.timessquarenyc.org/"
+        }
+      ]
+    },
+    "day2": {
+      "day_description": "Visit the Statue of Liberty and Ellis Island.",
+      "activities": [
+        {
+          "type": "food",
+          "title": "Liberty Island Cafe",
+          "description": "Convenient cafe for light meals and snacks on Liberty Island.",
+          "cost": 20,
+          "day": 2,
+          "relevant_link": "NULL"
+        },
+        {
+          "type": "activity",
+          "title": "Statue of Liberty Tour",
+          "description": "Take a ferry to Liberty Island and tour the Statue.",
+          "cost": 24,
+          "day": 2,
+          "relevant_link": "https://www.statueoflibertytickets.com/"
+        }
+      ]
+    },
+    "day3": {
+      "day_description": "Explore Central Park and visit nearby museums.",
+      "activities": [
+        {
+          "type": "food",
+          "title": "The Loeb Boathouse",
+          "description": "Charming lakeside restaurant offering a full menu.",
+          "cost": 35,
+          "day": 3,
+          "relevant_link": "https://www.boathousecentralpark.com/"
+        },
+        {
+          "type": "activity",
+          "title": "Central Park Walking Tour",
+          "description": "Guided tour showcasing the history and highlights of Central Park.",
+          "cost": 45,
+          "day": 3,
+          "relevant_link": "https://www.centralparktours.com/"
+        }
+      ]
+    },
+    "day4": {
+      "day_description": "Visit the Metropolitan Museum of Art and enjoy dinner at a local restaurant.",
+      "activities": [
+        {
+          "type": "food",
+          "title": "Café Sabarsky",
+          "description": "A Viennese café in the Met offering pastries and coffee.",
+          "cost": 25,
+          "day": 4,
+          "relevant_link": "https://www.metmuseum.org/visit/cafes/cafe-sabarsky"
+        },
+        {
+          "type": "activity",
+          "title": "Visit The Met",
+          "description": "Explore the extensive art collections at the Metropolitan Museum.",
+          "cost": 25,
+          "day": 4,
+          "relevant_link": "https://www.metmuseum.org/"
+        }
+      ]
+    },
+    "day5": {
+      "day_description": "Last day in New York, shopping and return flight.",
+      "activities": [
+        {
+          "type": "food",
+          "title": "Eataly NYC Flatiron",
+          "description": "An Italian marketplace with restaurants, cafés, and a high-quality grocery.",
+          "cost": 40,
+          "day": 5,
+          "relevant_link": "https://www.eataly.com/us_en/stores/new-york-flatiron/"
+        },
+        {
+          "type": "activity",
+          "title": "Shopping on Fifth Avenue",
+          "description": "Enjoy shopping at iconic stores along Fifth Avenue.",
+          "cost": 0,
+          "day": 5,
+          "relevant_link": "NULL"
+        }
+      ]
+    }
+  }
+}
