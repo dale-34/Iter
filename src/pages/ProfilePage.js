@@ -12,8 +12,8 @@ const ProfilePage = () => {
                     <h1>FirstName LastName</h1>
                     <img src="./images/albert.png" alt="Profile Picture" className="profile-pic"/>
                 </div>
-                <WorldMap className='map'/>
             </div>
+            <WorldMap className='map'/>
             <div className='upcoming-trips'>
 
             </div>

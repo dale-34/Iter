@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import {
   Button,
   Dialog,
@@ -8,12 +9,13 @@ import {
   TextField,
   Typography,
   Box,
+  Menu, MenuItem,
 } from '@mui/material';
 
 export const Login = () => {
   const [loginOpen, setLoginOpen] = useState(false);
   const [createOpen, setCreateOpen] = useState(false);
-
+  const navigate = useNavigate();
   const [userProfile, setUserProfile] = useState(null);
 
   // Login form state
@@ -26,6 +28,9 @@ export const Login = () => {
   const [newUsername, setNewUsername] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
 
   useEffect(() => {
     const stored = localStorage.getItem('userProfile');
@@ -83,8 +88,24 @@ export const Login = () => {
   const handleLogout = () => {
     localStorage.removeItem('userProfile');
     setUserProfile(null);
+    handleMenuClose();
+    navigate('/'); // Redirect to home page after logout
   };
 
+  // Handle welcome name click to open the menu
+  const handleWelcomeClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  // Example handler for "Go to Profile"
+  const handleProfileClick = () => {
+    navigate('/ProfilePage');
+    handleMenuClose();
+  };
   return (
     <div>
       {!userProfile ? (
@@ -93,12 +114,17 @@ export const Login = () => {
         </Button>
       ) : (
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <Typography variant="body1" sx={{ fontWeight: 500 }}>
+          <Typography onClick={handleWelcomeClick} variant="body1" sx={{ fontWeight: 500 }}>
             Welcome, {userProfile.username}!
           </Typography>
-          <Button variant="text" color="error" onClick={handleLogout}>
-            Logout
-          </Button>
+          <Menu
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleMenuClose}
+          >
+            <MenuItem onClick={handleProfileClick}>Go to Profile</MenuItem>
+            <MenuItem onClick={handleLogout}>Logout</MenuItem>
+          </Menu>
         </Box>
       )}
 

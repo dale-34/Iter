@@ -33,7 +33,7 @@ const TripPlanning = () => {
       !transport ||
       !startLocation.trim()
     ) {
-      alert("Please complete all required fields, including your starting location.");
+      alert("Please complete all required fields");
       return;
     }
 
@@ -122,7 +122,7 @@ const TripPlanning = () => {
         )}
 
         {/* ⬇️ Moved Housing section to the bottom ⬇️ */}
-        <div className="question-container mt-6">
+        <div className="accomodations">
           <HousingAccommodations onHousingChange={setAccommodation} />
         </div>
 
