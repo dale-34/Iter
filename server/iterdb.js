@@ -102,21 +102,31 @@ async function insertPlan(vacationPlan, userId, extraInputs) {
         }
         
         console.log("Vacation plan successfully inserted!");
+        return tripId;
     } catch (err) {
         console.error("Error inserting vacation plan:", err);
     }
 }
 
 // Retrieve vacation plan for a user
-async function getVacationPlan(userId) {
+async function getVacationPlan(tripId) {
     try {
+
+        console.log("Received tripId:", tripId);
+        console.log("Type of tripId:", typeof tripId);
+
+        // Make sure tripId is int
+        if (typeof tripId === 'string') {
+            tripId = parseInt(tripId, 10);
+        }
+
         // Step 1: Get the user's trip details from the trips table
         const tripQuery = `
             SELECT start_date, end_date, destination, starting_point, climate, min_budget, max_budget
             FROM trips
-            WHERE user_id = ?;
+            WHERE id = ?;
         `;
-        const [tripResults] = await pool.promise().query(tripQuery, [userId]);
+        const [tripResults] = await pool.promise().query(tripQuery, [tripId]);
 
         if (tripResults.length === 0) {
             console.log("No trip found for this user.");
@@ -132,9 +142,9 @@ async function getVacationPlan(userId) {
         const activityQuery = `
             SELECT type, title, cost, day, relevant_link, description, day_description, image
             FROM activities 
-            WHERE trip_id = (SELECT id FROM trips WHERE user_id = ?);
+            WHERE trip_id = ?;
         `;
-        const [activityResults] = await pool.promise().query(activityQuery, [userId]);
+        const [activityResults] = await pool.promise().query(activityQuery, [tripId]);
 
         // Organize the activities by day
         const vacation = {};
@@ -161,9 +171,9 @@ async function getVacationPlan(userId) {
         const reservationQuery = `
             SELECT type, title, estimated_cost, description, reservation_link, image
             FROM reservations 
-            WHERE trip_id = (SELECT id FROM trips WHERE user_id = ?);
+            WHERE trip_id = ?;
         `;
-        const [reservationResults] = await pool.promise().query(reservationQuery, [userId]);
+        const [reservationResults] = await pool.promise().query(reservationQuery, [tripId]);
 
         // Organize the reservations into transportation and accommodation
         const accomodations = {

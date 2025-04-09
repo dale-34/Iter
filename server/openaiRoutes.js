@@ -111,14 +111,16 @@ router.post("/generate-vacation", async (req, res) => {
 
             // Call function in DB to handle insertion with default userid = 1
             console.log("Calling insertPlan function...");
-            await insertPlan(vacationPlan, 1, extraInputs);
+            const tripId = await insertPlan(vacationPlan, 1, extraInputs);
             console.log("insertPlan function executed.");
+            console.log(tripId);
 
             res.json({
                 success: true,
                 message: "Activities inserted successfully!",
                 vacationPlan,
                 extraInputs,
+                tripId
             });
         } catch (parseError) {
             console.error("JSON parse error:", parseError);

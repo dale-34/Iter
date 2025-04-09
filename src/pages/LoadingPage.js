@@ -28,8 +28,9 @@ const LoadingPage = () => {
           destination,
           startLocation
         });
-
-        navigate("/ItineraryPage", { state: { vacationPlan: response.data.vacationPlan } });
+        
+        console.log('Response tripId:', response.data.tripId);  // Ensure this is logged to see if tripId is available
+        navigate("/ItineraryPage", { state: { vacationPlan: response.data.vacationPlan, tripId: response.data.tripId } });
       } catch (error) {
         console.error("Error generating vacation:", error);
       }
