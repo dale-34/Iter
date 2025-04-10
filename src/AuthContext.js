@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
     if (storedToken) {
       setToken(storedToken);
       const decodedToken = jwtDecode(storedToken);
-      setUserProfile({ username: decodedToken.username });
+      setUserProfile({ username: decodedToken.username, profilePhoto: decodedToken.profilePhoto });
       setUserId({ userId: decodedToken.userId });
     }
   }, []);
@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
     sessionStorage.setItem("token", newToken); // Optionally, use localStorage
 
     const decodedToken = jwtDecode(newToken);
-    setUserProfile({ username: decodedToken.username });
+    setUserProfile({ username: decodedToken.username, profilePhoto: decodedToken.profilePhoto });
     setUserId({ userId: decodedToken.userId });
   };
 

@@ -231,6 +231,59 @@ async function getVacationPlan(tripId) {
     }
 }
 
+// Retrieves all of the trips for a user to be displayed on profile page
+async function getUserTrips(userId) {
+    try {
+
+        console.log("Received userId:", userId);
+
+        // Step 1: Get the user's trips from the trips table
+        const tripQuery = `
+            SELECT id, trip_name, start_date, end_date, starting_point, destination, min_budget, max_budget
+            FROM trips
+            WHERE user_id = ?;
+        `;
+        const [userTrips] = await pool.promise().query(tripQuery, [userId]);
+
+        if (userTrips.length === 0) {
+            console.log("No trip found for this user.");
+            return;
+        }
+
+        return { userTrips };
+    
+    } catch (err) {
+        console.error("Error retrieving users\' trips:", err);
+    }
+}
+
+// Sets a profile photo for the user
+async function setProfilePhoto(userId, profilePhoto) {
+    try {
+
+        const query = `
+            UPDATE users
+            SET profile_photo = ?
+            WHERE id = ?;
+        `;
+
+        const [result] = await pool.promise().query(query, [profilePhoto, userId]);
+
+        if (result.affectedRows === 1) {
+        console.log(`Profile photo updated for user ${userId}`);
+        return { success: true, message: 'Profile photo updated successfully.' };
+        } else {
+        console.log('No user found with the given userId');
+        return { success: false, message: 'User not found or profile photo not updated.' };
+        }
+    
+    } catch (err) {
+        console.error('Error updating profile photo:', err);
+        return { success: false, message: 'Error updating profile photo.' };
+    }
+}
+
+
 console.log("Attempting to connect to MySQL...");
 
 pool.query("SELECT * FROM users", (err, results) => {
@@ -241,4 +294,4 @@ pool.query("SELECT * FROM users", (err, results) => {
     console.log("Database connected. Query results:", results);
 });
 
-export { getVacationPlan, insertPlan, pool };
+export { getVacationPlan, insertPlan, getUserTrips, setProfilePhoto, pool };
