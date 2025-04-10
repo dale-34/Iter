@@ -2,127 +2,106 @@
   "accomodations": {
     "reservations": [
       {
-        "name": "Hampton Inn Manhattan",
+        "name": "Shinjuku Granbell Hotel",
         "type": "hotel",
         "estimated_cost": "800",
-        "description": "A centrally located hotel with comfortable rooms and free breakfast.",
-        "reservation_link": "https://www.hilton.com/en/hotels/nycmmhx-hampton-manhattan/"
+        "description": "A stylish hotel located in the heart of Shinjuku with modern amenities and great city views.",
+        "reservation_link": "https://www.granbellhotel.com/shinjuku"
       }
     ],
     "transportation": [
       {
-        "name": "Delta Airlines Flight",
+        "name": "Round-trip flight from Gainesville to Tokyo",
         "type": "flight",
-        "estimated_cost": "300",
-        "description": "Round trip flight from Gainesville to New York.",
-        "reservation_link": "https://www.delta.com/"
+        "estimated_cost": "1200",
+        "description": "Round-trip airfare from Gainesville, FL to Tokyo, Japan.",
+        "reservation_link": "https://www.expedia.com/Flights"
       }
     ]
   },
   "vacation": {
-    "climate": "May in New York is usually mild with average temperatures ranging from 55°F to 75°F.",
+    "climate": "Spring in Tokyo is mild and pleasant, with temperatures ranging from 50°F to 70°F.",
     "day1": {
-      "day_description": "Arrival in New York and exploring Times Square.",
+      "day_description": "On your first day, explore the vibrant streets of Shibuya and visit the iconic Shibuya Crossing.",
       "activities": [
         {
           "type": "food",
-          "title": "Shake Shack",
-          "description": "Famous for its burgers and milkshakes.",
+          "title": "Ichiran Ramen",
+          "description": "Famous ramen restaurant where you can enjoy personalized ramen in a unique setting.",
           "cost": 15,
           "day": 1,
-          "relevant_link": "https://www.shakeshack.com/"
+          "relevant_link": "https://ichiran.com"
         },
         {
           "type": "activity",
-          "title": "Visit Times Square",
-          "description": "Explore the vibrant heart of the city with bright billboards and entertainment.",
+          "title": "Visit the Meiji Shrine",
+          "description": "A beautiful Shinto shrine surrounded by a serene forest, perfect for a peaceful stroll.",
           "cost": 0,
           "day": 1,
-          "relevant_link": "https://www.timessquarenyc.org/"
+          "relevant_link": "https://www.meijijingu.or.jp/english/"
         }
       ]
     },
     "day2": {
-      "day_description": "Visit the Statue of Liberty and Ellis Island.",
+      "day_description": "Explore the historic Asakusa district and experience traditional Japanese culture.",
       "activities": [
         {
           "type": "food",
-          "title": "Liberty Island Cafe",
-          "description": "Convenient cafe for light meals and snacks on Liberty Island.",
+          "title": "Senso-ji Temple Street Food",
+          "description": "Try a variety of local street foods like Ningyo-Yaki and melon bread along the path to Senso-ji.",
           "cost": 20,
           "day": 2,
           "relevant_link": "NULL"
         },
         {
           "type": "activity",
-          "title": "Statue of Liberty Tour",
-          "description": "Take a ferry to Liberty Island and tour the Statue.",
-          "cost": 24,
+          "title": "Visit Senso-ji Temple",
+          "description": "Tokyo's oldest temple, renowned for its stunning architecture and rich history.",
+          "cost": 0,
           "day": 2,
-          "relevant_link": "https://www.statueoflibertytickets.com/"
+          "relevant_link": "https://www.senso-ji.jp/about/index_e.html"
         }
       ]
     },
     "day3": {
-      "day_description": "Explore Central Park and visit nearby museums.",
+      "day_description": "Discover the fashionable Harajuku district and enjoy shopping and people-watching.",
       "activities": [
         {
           "type": "food",
-          "title": "The Loeb Boathouse",
-          "description": "Charming lakeside restaurant offering a full menu.",
-          "cost": 35,
+          "title": "Harajuku Crepes",
+          "description": "Amazing crepes filled with a variety of delicious ingredients, a must-try in Harajuku.",
+          "cost": 10,
           "day": 3,
-          "relevant_link": "https://www.boathousecentralpark.com/"
+          "relevant_link": "NULL"
         },
         {
           "type": "activity",
-          "title": "Central Park Walking Tour",
-          "description": "Guided tour showcasing the history and highlights of Central Park.",
-          "cost": 45,
+          "title": "Explore Takeshita Street",
+          "description": "A bustling street lined with trendy shops, cafes, and unique fashion boutiques.",
+          "cost": 0,
           "day": 3,
-          "relevant_link": "https://www.centralparktours.com/"
+          "relevant_link": "NULL"
         }
       ]
     },
     "day4": {
-      "day_description": "Visit the Metropolitan Museum of Art and enjoy dinner at a local restaurant.",
+      "day_description": "Visit Tokyo Tower and enjoy panoramic views of the city, followed by a relaxing afternoon in Ueno Park.",
       "activities": [
         {
           "type": "food",
-          "title": "Café Sabarsky",
-          "description": "A Viennese café in the Met offering pastries and coffee.",
+          "title": "Tokyo Tower's Cafe",
+          "description": "Enjoy a meal with a view at the cafe located atop Tokyo Tower.",
           "cost": 25,
           "day": 4,
-          "relevant_link": "https://www.metmuseum.org/visit/cafes/cafe-sabarsky"
-        },
-        {
-          "type": "activity",
-          "title": "Visit The Met",
-          "description": "Explore the extensive art collections at the Metropolitan Museum.",
-          "cost": 25,
-          "day": 4,
-          "relevant_link": "https://www.metmuseum.org/"
-        }
-      ]
-    },
-    "day5": {
-      "day_description": "Last day in New York, shopping and return flight.",
-      "activities": [
-        {
-          "type": "food",
-          "title": "Eataly NYC Flatiron",
-          "description": "An Italian marketplace with restaurants, cafés, and a high-quality grocery.",
-          "cost": 40,
-          "day": 5,
-          "relevant_link": "https://www.eataly.com/us_en/stores/new-york-flatiron/"
-        },
-        {
-          "type": "activity",
-          "title": "Shopping on Fifth Avenue",
-          "description": "Enjoy shopping at iconic stores along Fifth Avenue.",
-          "cost": 0,
-          "day": 5,
           "relevant_link": "NULL"
+        },
+        {
+          "type": "activity",
+          "title": "Visit Tokyo Tower",
+          "description": "An iconic symbol of Tokyo, offering breathtaking views from its observation decks.",
+          "cost": 20,
+          "day": 4,
+          "relevant_link": "https://www.tokyotower.co.jp/en.html"
         }
       ]
     }

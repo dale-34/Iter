@@ -16,7 +16,7 @@ const pool = mysql.createPool({
 });
 
 // Insert vacation plan into the database
-async function insertPlan(vacationPlan, userId, extraInputs) {
+async function insertPlan(vacationPlan, correctuserId, extraInputs) {
     try {
         const [startDate, endDate, budget, destination, startingLocation] = extraInputs;
         const tripName = "MyTrip";
@@ -30,13 +30,25 @@ async function insertPlan(vacationPlan, userId, extraInputs) {
         const formattedStartDate = convertToISO(startDate);
         const formattedEndDate = convertToISO(endDate);
         
+        console.log("Inserting trip with:", {
+            correctuserId,
+            tripName,
+            formattedStartDate,
+            formattedEndDate,
+            startingLocation,
+            destination,
+            climate: vacationPlan.vacation.climate,
+            minBudget: budget[0],
+            maxBudget: budget[1]
+          });          
+
         // Step 1: Insert into `trips` Table (including climate info)
         const tripQuery = `
             INSERT INTO trips (user_id, trip_name, start_date, end_date, starting_point, destination, climate, created_at, min_budget, max_budget)
             VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), ?, ?);
         `;
         const [tripResult] = await pool.promise().query(tripQuery, [
-            userId,
+            correctuserId,
             tripName,
             formattedStartDate,
             formattedEndDate,
