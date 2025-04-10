@@ -6,21 +6,25 @@ const router = express.Router();
 
 // User Registration (without hashing password)
 router.post("/signup", async (req, res) => {
-    const { username, password } = req.body;
-    try {
-        // Insert new user into database (no password hashing)
-        const query = `
-            INSERT INTO users (username, password)
-            VALUES (?, ?);
-        `;
-        await pool.promise().query(query, [username, password]);
+    const { name, username, password } = req.body;
 
-        res.status(201).json({ message: "User created successfully!" });
+    try {
+      const query = `
+        INSERT INTO users (name, username, password)
+        VALUES (?, ?, ?);
+      `;
+      await pool.promise().query(query, [name, username, password]);
+  
+      res.status(201).json({ message: "User created successfully!" });
     } catch (err) {
-        console.error(err);
+      console.error("Error during signup:", err);
+      if (err.code === "ER_DUP_ENTRY") {
+        res.status(400).json({ error: "Username is already in use." });
+      } else {
         res.status(500).json({ error: "Error creating user." });
+      }
     }
-});
+  });  
 
 // User Login (plain-text password comparison)
 router.post("/login", async (req, res) => {
@@ -43,7 +47,7 @@ router.post("/login", async (req, res) => {
 
         // Generate JWT token
         const token = jwt.sign(
-            { userId: user.id, username: user.username },
+            { userId: user.id, username: user.username, profilePhoto: user.profile_photo },
             process.env.JWT_SECRET, // Store this secret in .env
             { expiresIn: "1h" } // Token expires in 1 hour
         );

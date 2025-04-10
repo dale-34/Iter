@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
 import {
   Button,
   Dialog,
@@ -9,32 +11,25 @@ import {
   Typography,
   Box,
 } from '@mui/material';
+import { useAuth } from '../AuthContext'; // Use real auth context
 
 export const Login = () => {
   const [loginOpen, setLoginOpen] = useState(false);
   const [createOpen, setCreateOpen] = useState(false);
-
-  const [userProfile, setUserProfile] = useState(null);
-
-  // Login form state
+  
+  // Hardcoded user profile
+  const [userProfile, setUserProfile] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
-  // Create account form state
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [newUsername, setNewUsername] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  useEffect(() => {
-    const stored = localStorage.getItem('userProfile');
-    if (stored) {
-      setUserProfile(JSON.parse(stored));
-    }
-  }, []);
+  const { login, logout, token } = useAuth(); // access token + auth methods
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
 
     if (!username || !password) {
@@ -42,47 +37,54 @@ export const Login = () => {
       return;
     }
 
-    const profile = {
-      username,
-      loginTime: new Date().toISOString(),
-    };
+    try {
+      const response = await axios.post('/auth/login', { username, password });
+      login(response.data.token); // store in context
+      
+      // Decode the token to get the username
+      const decodedToken = jwtDecode(response.data.token);
+      setUserProfile({ username: decodedToken.username }); // Set username from decoded token
 
-    setUserProfile(profile);
-    localStorage.setItem('userProfile', JSON.stringify(profile));
-    setLoginOpen(false);
-    setUsername('');
-    setPassword('');
+      setLoginOpen(false);
+      setUsername('');
+      setPassword('');
+    } catch (err) {
+      alert('Login failed. Check your credentials.');
+      console.error(err.response?.data || err.message);
+    }
   };
 
-  const handleCreateSubmit = (e) => {
+  const handleCreateSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (newPassword !== confirmPassword) {
-      alert("Passwords do not match.");
+      alert('Passwords do not match.');
       return;
     }
-
-    console.log('Account Created:', {
-      firstName,
-      lastName,
-      newUsername,
-      newPassword,
-    });
-
-    setUsername(newUsername);
-    setCreateOpen(false);
-    setLoginOpen(true);
-
-    setFirstName('');
-    setLastName('');
-    setNewUsername('');
-    setNewPassword('');
-    setConfirmPassword('');
-  };
+  
+    try {
+      const response = await axios.post("http://localhost:3000/auth/signup", {
+        name: `${firstName} ${lastName}`,
+        username: newUsername, // assuming newUsername is their email
+        password: newPassword,
+      });
+  
+      alert("Account created successfully!");
+      setCreateOpen(false);
+      setLoginOpen(true);
+    } catch (error) {
+      console.error("Signup error:", error);
+      if (error.response && error.response.data && error.response.data.error) {
+        alert(error.response.data.error);
+      } else {
+        alert("Server error. Please try again later.");
+      }
+    }
+  };  
 
   const handleLogout = () => {
-    localStorage.removeItem('userProfile');
-    setUserProfile(null);
+    logout(); // Clear the token
+    setUserProfile(null); // Clear the hardcoded user profile
   };
 
   return (

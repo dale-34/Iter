@@ -21,7 +21,8 @@ router.post("/generate-vacation", async (req, res) => {
             accommodation,
             transport,
             destination,
-            startLocation
+            startLocation,
+            correctuserId
         } = req.body;
 
         console.log("Request Body:", req.body);
@@ -109,9 +110,11 @@ router.post("/generate-vacation", async (req, res) => {
             // To bring over the missing values from the vacationPlan
             const extraInputs = [startDate, endDate, budget, destination, startLocation];
 
-            // Call function in DB to handle insertion with default userid = 1
+            // Call function in DB to handle insertion with userId
+            console.log("userId is as follows...");
+            console.log(correctuserId);
             console.log("Calling insertPlan function...");
-            const tripId = await insertPlan(vacationPlan, 1, extraInputs);
+            const tripId = await insertPlan(vacationPlan, correctuserId, extraInputs);
             console.log("insertPlan function executed.");
             console.log(tripId);
 
