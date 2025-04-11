@@ -2,106 +2,96 @@
   "accomodations": {
     "reservations": [
       {
-        "name": "Shinjuku Granbell Hotel",
+        "name": "The Wharf Inn",
         "type": "hotel",
-        "estimated_cost": "800",
-        "description": "A stylish hotel located in the heart of Shinjuku with modern amenities and great city views.",
-        "reservation_link": "https://www.granbellhotel.com/shinjuku"
+        "estimated_cost": "$300",
+        "description": "A comfortable hotel located near Fisherman's Wharf with easy access to major attractions.",
+        "reservation_link": "https://www.wharfinn.com"
       }
     ],
     "transportation": [
       {
-        "name": "Round-trip flight from Gainesville to Tokyo",
+        "name": "Round Trip Flight from Gainesville, FL to San Francisco, CA",
         "type": "flight",
-        "estimated_cost": "1200",
-        "description": "Round-trip airfare from Gainesville, FL to Tokyo, Japan.",
-        "reservation_link": "https://www.expedia.com/Flights"
+        "estimated_cost": "$400",
+        "description": "Round trip flight covering the distance from Gainesville to San Francisco.",
+        "reservation_link": "https://www.google.com/flights"
       }
     ]
   },
   "vacation": {
-    "climate": "Spring in Tokyo is mild and pleasant, with temperatures ranging from 50°F to 70°F.",
+    "climate": "Mild and pleasant with temperatures ranging from 55°F to 70°F.",
     "day1": {
-      "day_description": "On your first day, explore the vibrant streets of Shibuya and visit the iconic Shibuya Crossing.",
+      "day_description": "Arrival in San Francisco. Explore Fisherman's Wharf and enjoy the local seafood.",
       "activities": [
         {
           "type": "food",
-          "title": "Ichiran Ramen",
-          "description": "Famous ramen restaurant where you can enjoy personalized ramen in a unique setting.",
-          "cost": 15,
+          "title": "Boudin Bakery",
+          "description": "Famous for its sourdough bread and delicious clam chowder served in bread bowls.",
+          "cost": 12.5,
           "day": 1,
-          "relevant_link": "https://ichiran.com"
+          "relevant_link": "https://www.boudinbakery.com"
         },
         {
           "type": "activity",
-          "title": "Visit the Meiji Shrine",
-          "description": "A beautiful Shinto shrine surrounded by a serene forest, perfect for a peaceful stroll.",
+          "title": "Aquarium of the Bay",
+          "description": "Explore the underwater world of San Francisco with interactive exhibits and walking through underwater tunnels.",
+          "cost": 29.3,
+          "day": 1,
+          "relevant_link": "https://www.aquariumofthebay.org"
+        },
+        {
+          "type": "food",
+          "title": "Fish Hopper",
+          "description": "A popular seafood restaurant overlooking the bay, offering fresh seafood dishes.",
+          "cost": 25,
+          "day": 1,
+          "relevant_link": "https://www.fishhopper.com"
+        },
+        {
+          "type": "activity",
+          "title": "Visit Pier 39",
+          "description": "A bustling marketplace featuring sea lions, shops, and dining options.",
           "cost": 0,
           "day": 1,
-          "relevant_link": "https://www.meijijingu.or.jp/english/"
+          "relevant_link": "http://www.pier39.com"
         }
       ]
     },
     "day2": {
-      "day_description": "Explore the historic Asakusa district and experience traditional Japanese culture.",
+      "day_description": "Visit iconic landmarks like the Golden Gate Bridge and explorations in the city.",
       "activities": [
         {
           "type": "food",
-          "title": "Senso-ji Temple Street Food",
-          "description": "Try a variety of local street foods like Ningyo-Yaki and melon bread along the path to Senso-ji.",
-          "cost": 20,
-          "day": 2,
-          "relevant_link": "NULL"
-        },
-        {
-          "type": "activity",
-          "title": "Visit Senso-ji Temple",
-          "description": "Tokyo's oldest temple, renowned for its stunning architecture and rich history.",
-          "cost": 0,
-          "day": 2,
-          "relevant_link": "https://www.senso-ji.jp/about/index_e.html"
-        }
-      ]
-    },
-    "day3": {
-      "day_description": "Discover the fashionable Harajuku district and enjoy shopping and people-watching.",
-      "activities": [
-        {
-          "type": "food",
-          "title": "Harajuku Crepes",
-          "description": "Amazing crepes filled with a variety of delicious ingredients, a must-try in Harajuku.",
+          "title": "Café Trieste",
+          "description": "A historic café famous for its coffee and live music performances.",
           "cost": 10,
-          "day": 3,
-          "relevant_link": "NULL"
+          "day": 2,
+          "relevant_link": "http://www.cafetrieste.com"
         },
         {
           "type": "activity",
-          "title": "Explore Takeshita Street",
-          "description": "A bustling street lined with trendy shops, cafes, and unique fashion boutiques.",
+          "title": "Golden Gate Bridge",
+          "description": "Walk or bike across this iconic bridge with stunning views of the Bay.",
           "cost": 0,
-          "day": 3,
-          "relevant_link": "NULL"
-        }
-      ]
-    },
-    "day4": {
-      "day_description": "Visit Tokyo Tower and enjoy panoramic views of the city, followed by a relaxing afternoon in Ueno Park.",
-      "activities": [
+          "day": 2,
+          "relevant_link": "https://www.goldengatebridge.org"
+        },
         {
           "type": "food",
-          "title": "Tokyo Tower's Cafe",
-          "description": "Enjoy a meal with a view at the cafe located atop Tokyo Tower.",
-          "cost": 25,
-          "day": 4,
-          "relevant_link": "NULL"
+          "title": "Mama's on Washington Square",
+          "description": "A popular breakfast spot known for its delicious brunch menu.",
+          "cost": 20,
+          "day": 2,
+          "relevant_link": "https://www.mamasonwashingtonsquare.com"
         },
         {
           "type": "activity",
-          "title": "Visit Tokyo Tower",
-          "description": "An iconic symbol of Tokyo, offering breathtaking views from its observation decks.",
-          "cost": 20,
-          "day": 4,
-          "relevant_link": "https://www.tokyotower.co.jp/en.html"
+          "title": "Lombard Street",
+          "description": "Famous for being the crookedest street in the world, great for a photo op.",
+          "cost": 0,
+          "day": 2,
+          "relevant_link": "https://www.sfcityguides.org/lombard-street/"
         }
       ]
     }

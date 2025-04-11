@@ -8,9 +8,9 @@ export const ActionButtons = () => {
   const goToTripPlanning = () => {
     navigate('/TripPlanning');
   };
-
-  const goToSurpriseMe = () => {
-    navigate('/SurpriseMe');
+  
+  const goToSurpriseMe = async () => {
+    navigate("/LoadingPage", { state: { surpriseMode: true } });
   };
 
   return (
