@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import {
-  Button,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
   TextField,
-  Typography,
+  Button,
   Box,
-  Menu, MenuItem,
+  Menu,
+  MenuItem,
+  IconButton,
 } from '@mui/material';
 
 export const Login = () => {
+  const navigate = useNavigate();
+
+  const [userProfile, setUserProfile] = useState(null);
   const [loginOpen, setLoginOpen] = useState(false);
   const [createOpen, setCreateOpen] = useState(false);
-  const navigate = useNavigate();
-  const [userProfile, setUserProfile] = useState(null);
 
-  // Login form state
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  // Create account form state
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [newUsername, setNewUsername] = useState('');
@@ -30,7 +30,7 @@ export const Login = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
+  const menuOpen = Boolean(anchorEl);
 
   useEffect(() => {
     const stored = localStorage.getItem('userProfile');
@@ -43,7 +43,7 @@ export const Login = () => {
     e.preventDefault();
 
     if (!username || !password) {
-      alert('Please enter both fields.');
+      alert('Please enter both username and password.');
       return;
     }
 
@@ -52,8 +52,8 @@ export const Login = () => {
       loginTime: new Date().toISOString(),
     };
 
-    setUserProfile(profile);
     localStorage.setItem('userProfile', JSON.stringify(profile));
+    setUserProfile(profile);
     setLoginOpen(false);
     setUsername('');
     setPassword('');
@@ -67,17 +67,9 @@ export const Login = () => {
       return;
     }
 
-    console.log('Account Created:', {
-      firstName,
-      lastName,
-      newUsername,
-      newPassword,
-    });
-
     setUsername(newUsername);
     setCreateOpen(false);
     setLoginOpen(true);
-
     setFirstName('');
     setLastName('');
     setNewUsername('');
@@ -89,43 +81,47 @@ export const Login = () => {
     localStorage.removeItem('userProfile');
     setUserProfile(null);
     handleMenuClose();
-    navigate('/'); // Redirect to home page after logout
+    navigate('/');
   };
 
-  // Handle welcome name click to open the menu
-  const handleWelcomeClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleMenuClick = (e) => {
+    if (userProfile) {
+      setAnchorEl(e.currentTarget);
+    } else {
+      setLoginOpen(true);
+    }
   };
 
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
 
-  // Example handler for "Go to Profile"
   const handleProfileClick = () => {
     navigate('/ProfilePage');
     handleMenuClose();
   };
+
   return (
     <div>
-      {!userProfile ? (
-        <Button variant="outlined" onClick={() => setLoginOpen(true)}>
-          Login
-        </Button>
-      ) : (
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <Typography onClick={handleWelcomeClick} variant="body1" sx={{ fontWeight: 500 }}>
-            Welcome, {userProfile.username}!
-          </Typography>
-          <Menu
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleMenuClose}
-          >
-            <MenuItem onClick={handleProfileClick}>Go to Profile</MenuItem>
-            <MenuItem onClick={handleLogout}>Logout</MenuItem>
-          </Menu>
-        </Box>
+      <IconButton onClick={handleMenuClick}>
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
+          alt="profile"
+          style={{
+            width: 32,
+            height: 32,
+            borderRadius: '50%',
+            backgroundColor: 'white',
+            padding: 2
+          }}
+        />
+      </IconButton>
+
+      {userProfile && (
+        <Menu anchorEl={anchorEl} open={menuOpen} onClose={handleMenuClose}>
+          <MenuItem onClick={handleProfileClick}>Go to Profile</MenuItem>
+          <MenuItem onClick={handleLogout}>Logout</MenuItem>
+        </Menu>
       )}
 
       {/* Login Dialog */}
@@ -152,18 +148,15 @@ export const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Typography variant="body2" sx={{ textAlign: 'center' }}>
-              Don&apos;t have an account?{' '}
-              <Button
-                onClick={() => {
-                  setLoginOpen(false);
-                  setCreateOpen(true);
-                }}
-                sx={{ fontWeight: 600, textTransform: 'none', padding: 0, minWidth: 0 }}
-              >
-                Create Account
-              </Button>
-            </Typography>
+            <Button
+              onClick={() => {
+                setLoginOpen(false);
+                setCreateOpen(true);
+              }}
+              sx={{ textTransform: 'none', fontWeight: 500 }}
+            >
+              Don't have an account? Create one
+            </Button>
           </Box>
         </DialogContent>
         <DialogActions sx={{ px: 3, pb: 2 }}>
