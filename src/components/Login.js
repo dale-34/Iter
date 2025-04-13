@@ -93,28 +93,8 @@ export const Login = () => {
 //     setConfirmPassword('');
 //   };
 
-//   const handleLogout = () => {
-//     localStorage.removeItem('userProfile');
-//     setUserProfile(null);
-//     handleMenuClose();
-//     navigate('/');
-//   };
 
-//   const handleMenuClick = (e) => {
-//     if (userProfile) {
-//       setAnchorEl(e.currentTarget);
-//     } else {
-//       setLoginOpen(true);
-//     }
-//   };
 
-//   const handleMenuClose = () => {
-//     setAnchorEl(null);
-//   };
-
-//   const handleProfileClick = () => {
-//     navigate('/ProfilePage');
-//     handleMenuClose();  
     try {
       const response = await axios.post("http://localhost:3000/auth/signup", {
         name: `${firstName} ${lastName}`,
@@ -135,9 +115,35 @@ export const Login = () => {
     }
   };  
 
+  // const handleLogout = () => {
+  //   logout(); // Clear the token
+  //   setUserProfile(null); // Clear the hardcoded user profile
+  // };
+
   const handleLogout = () => {
     logout(); // Clear the token
     setUserProfile(null); // Clear the hardcoded user profile
+    localStorage.removeItem('userProfile');
+    setUserProfile(null);
+    handleMenuClose();
+    navigate('/');
+  };
+
+  const handleMenuClick = (e) => {
+    if (userProfile) {
+      setAnchorEl(e.currentTarget);
+    } else {
+      setLoginOpen(true);
+    }
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleProfileClick = () => {
+    navigate('/ProfilePage');
+    handleMenuClose();  
   };
 
   return (
