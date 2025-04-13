@@ -23,8 +23,6 @@ export const CalendarComponent = ({ onDateChange }) => {
                 className="react-calendar" // Custom class for styling
                 calendarType="gregory" // Set the calendar type to US
             />
-            <p>Selected Start Date: {dateRange[0]?.toDateString()}</p> 
-            <p>Selected End Date: {dateRange[1]?.toDateString()}</p> 
             <style>
             {`
                 .calendar-container {
@@ -32,15 +30,15 @@ export const CalendarComponent = ({ onDateChange }) => {
                     flex-direction: column;
                     align-items: center;
                     justify-content: center;
-                    margin: 20px;
                 }
                 .react-calendar {
-                    width: 70%;
+                    width: 80%;
                     max-width: 1400px;
                     font-size: 1.5rem;
-                    border-radius: 25px;
+                    border-radius: 10px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                    background-color: white;
+                    background-color: rgb(255, 243, 230);
+                    margin-bottom: 40px;
                 }
                 .react-calendar__tile {
                     height: 100px;

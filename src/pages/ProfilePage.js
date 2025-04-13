@@ -9,10 +9,14 @@ const ProfilePage = () => {
             <Header />
             <div className='profile-container'>
                 <div className='profile-info'>
-                    <h1>FirstName LastName</h1>
+                    <img src='./images/island.jpg' alt='Profile Background' className='profile-bg'/>
                     <img src="./images/albert.png" alt="Profile Picture" className="profile-pic"/>
+                    <h1>Welcome, <br />FirstName LastName!</h1>
                 </div>
-                <WorldMap className='map'/>
+            </div>
+            <div className = 'map'>
+                <h1>Your Trips</h1>
+                <WorldMap />
             </div>
             <div className='upcoming-trips'>
 

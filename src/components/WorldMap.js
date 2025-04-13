@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -23,18 +24,31 @@ const locations = [
   { name: "Rio de Janeiro, Brazil", coords: [-22.9068, -43.1729] }
 ];
 
+
+
 export const WorldMap = () => {
+  const navigate = useNavigate();
+
+  const handleTripClick = (e) => {
+    // Handle popup click event
+    navigate('/ItineraryPage');
+  }
+
   return (
-    <MapContainer center={[20, 0]} zoom={2} style={{ height: "500px", width: "60%" }}>
+    <MapContainer center={[20, 0]} zoom={2} style={{ height: "500px", width: "65%" }}>
       {/* OpenStreetMap Tile Layer */}
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       
       {/* Add Markers */}
       {locations.map((loc, index) => (
         <Marker key={index} position={loc.coords} icon={customIcon}>
-          <Popup>{loc.name}</Popup>
+          <Popup>
+            {`${loc.name}`}
+            <button onClick={handleTripClick}>Trip Plan</button>
+          </Popup>
         </Marker>
       ))}
     </MapContainer>
   );
 };
+

@@ -1,46 +1,41 @@
 .home-hero {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-    max-width: 1168px;
-    margin-top: 81px;
-    padding: 0 24px;
-  }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  margin: auto;
+  max-width: 1600px;
+}
   
   .home-hero-text {
     width: 50%;
     font-weight: bold;
     color: black;
-    margin-top: 65px;
   }
   
   .home-hero-title {
-    font-size: 72px;
-    font-family: 'Monsterrat', sans-serif;
+    font-size: 88px;
     font-weight: bold;
-    width: 700px;
+    width: 800px;
     line-height: 1.2;
-    margin-left: 200px;
+    margin-left: 300px;
   }
   
   .home-hero-globe {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 100px;
-    margin-top: 60px; /* Increased margin to move the globe down */
+    margin-left: 50px;
 }
 
   
   .home-hero-globe img {
-    width: 800px;
+    width: 1000px;
     object-fit: contain;
   }
-  
-  /* Responsive Styles */
+/*   
   @media (max-width: 1024px) {
     .home-hero-globe img {
       width: 300px;
@@ -60,7 +55,6 @@
   
     .home-hero-globe {
       width: 100%;
-      margin-top: 20px;
     }
   
     .home-hero-globe img {
@@ -78,5 +72,5 @@
       width: 100%;
       height: auto;
     }
-  }
+  } */
   

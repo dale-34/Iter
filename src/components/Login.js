@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import {
-  Button,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
   TextField,
-  Typography,
+  Button,
   Box,
+  Menu,
+  MenuItem,
+  IconButton,
 } from '@mui/material';
 import { useAuth } from '../AuthContext'; // Use real auth context
 
 export const Login = () => {
+  const navigate = useNavigate();
   const [loginOpen, setLoginOpen] = useState(false);
   const [createOpen, setCreateOpen] = useState(false);
   
@@ -26,17 +30,35 @@ export const Login = () => {
   const [newUsername, setNewUsername] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [anchorEl, setAnchorEl] = useState(null);
+  const menuOpen = Boolean(anchorEl);
 
+  useEffect(() => {
+    const stored = localStorage.getItem('userProfile');
+    if (stored) {
+      setUserProfile(JSON.parse(stored));
+    }
+  }, []);
   const { login, logout, token } = useAuth(); // access token + auth methods
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
 
     if (!username || !password) {
-      alert('Please enter both fields.');
+      alert('Please enter both username and password.');
       return;
     }
 
+//     const profile = {
+//       username,
+//       loginTime: new Date().toISOString(),
+//     };
+
+//     localStorage.setItem('userProfile', JSON.stringify(profile));
+//     setUserProfile(profile);
+//     setLoginOpen(false);
+//     setUsername('');
+//     setPassword('');
     try {
       const response = await axios.post('/auth/login', { username, password });
       login(response.data.token); // store in context
@@ -61,7 +83,38 @@ export const Login = () => {
       alert('Passwords do not match.');
       return;
     }
-  
+//     setUsername(newUsername);
+//     setCreateOpen(false);
+//     setLoginOpen(true);
+//     setFirstName('');
+//     setLastName('');
+//     setNewUsername('');
+//     setNewPassword('');
+//     setConfirmPassword('');
+//   };
+
+//   const handleLogout = () => {
+//     localStorage.removeItem('userProfile');
+//     setUserProfile(null);
+//     handleMenuClose();
+//     navigate('/');
+//   };
+
+//   const handleMenuClick = (e) => {
+//     if (userProfile) {
+//       setAnchorEl(e.currentTarget);
+//     } else {
+//       setLoginOpen(true);
+//     }
+//   };
+
+//   const handleMenuClose = () => {
+//     setAnchorEl(null);
+//   };
+
+//   const handleProfileClick = () => {
+//     navigate('/ProfilePage');
+//     handleMenuClose();  
     try {
       const response = await axios.post("http://localhost:3000/auth/signup", {
         name: `${firstName} ${lastName}`,
@@ -89,19 +142,25 @@ export const Login = () => {
 
   return (
     <div>
-      {!userProfile ? (
-        <Button variant="outlined" onClick={() => setLoginOpen(true)}>
-          Login
-        </Button>
-      ) : (
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <Typography variant="body1" sx={{ fontWeight: 500 }}>
-            Welcome, {userProfile.username}!
-          </Typography>
-          <Button variant="text" color="error" onClick={handleLogout}>
-            Logout
-          </Button>
-        </Box>
+      <IconButton onClick={handleMenuClick}>
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
+          alt="profile"
+          style={{
+            width: 32,
+            height: 32,
+            borderRadius: '50%',
+            backgroundColor: 'white',
+            padding: 2
+          }}
+        />
+      </IconButton>
+
+      {userProfile && (
+        <Menu anchorEl={anchorEl} open={menuOpen} onClose={handleMenuClose}>
+          <MenuItem onClick={handleProfileClick}>Go to Profile</MenuItem>
+          <MenuItem onClick={handleLogout}>Logout</MenuItem>
+        </Menu>
       )}
 
       {/* Login Dialog */}
@@ -128,18 +187,15 @@ export const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Typography variant="body2" sx={{ textAlign: 'center' }}>
-              Don&apos;t have an account?{' '}
-              <Button
-                onClick={() => {
-                  setLoginOpen(false);
-                  setCreateOpen(true);
-                }}
-                sx={{ fontWeight: 600, textTransform: 'none', padding: 0, minWidth: 0 }}
-              >
-                Create Account
-              </Button>
-            </Typography>
+            <Button
+              onClick={() => {
+                setLoginOpen(false);
+                setCreateOpen(true);
+              }}
+              sx={{ textTransform: 'none', fontWeight: 500 }}
+            >
+              Don't have an account? Create one
+            </Button>
           </Box>
         </DialogContent>
         <DialogActions sx={{ px: 3, pb: 2 }}>

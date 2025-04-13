@@ -12,7 +12,7 @@ html, body {
 
 .trip-planning {
     /* background-color: rgba(255, 232, 214, 1.0); Light beige background */
-    background-color: white;
+    background-color: rgb(255, 243, 230);
 }
 
 /* Centering container */
@@ -53,13 +53,18 @@ p {
     background-color: #0056b3;
 }
 
+.calendar {
+    background-color: #5b8e89;
+    margin: 80px 200px;
+    border-radius: 30px;
+}
+
 .calendarTitle {
     font-size: 24px;
     font-weight: bold;
     color: #333;
-    margin-bottom: 10px;
+    padding-top: 40px;
     text-align: center;
-    padding-top: 5%;
 }
 
 .calendarSubtitle {
@@ -69,13 +74,19 @@ p {
     text-align: center;
 }
 
+.budget {
+    background-color: #5b8e89;;
+    margin: 50px 200px;
+    border-radius: 30px;
+}
+
 .budgetTitle {
     font-size: 24px;
     font-weight: bold;
     color: #333;
     margin-bottom: 10px;
     text-align: center;
-    padding-top: 5%;
+    padding-top: 40px;
 }
 
 .budgetSubtitle {
@@ -83,4 +94,22 @@ p {
     color: #333;
     margin-bottom: 10px;
     text-align: center;
+}
+
+.transportation {
+    background-color: #5b8e89;;
+    margin: 50px 200px;
+    border-radius: 30px;
+}
+
+.destinations {
+    background-color: #5b8e89;;
+    margin: 50px 200px;
+    border-radius: 30px;
+}
+
+.accomodations {
+    background-color: #5b8e89;;
+    margin: 50px 200px;
+    border-radius: 30px;
 }
