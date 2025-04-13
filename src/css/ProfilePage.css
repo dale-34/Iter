@@ -1,31 +1,48 @@
 .profile-pic {
-    width:200px;  /* Adjust as needed */
-    height: 200px;
-    object-fit: cover;  /* Ensures the image fills the circle */
-    border-radius: 50%;  /* Makes it circular */
-    border: 3px solid #fff; /* Optional border */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.profile-bg {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-size: cover;       /* Ensures image fills container without distortion */
+    background-position: center;  /* Center the image */
+    background-repeat: no-repeat;
+    position: relative;           /* Needed for absolute positioning of PFP */
+    overflow: hidden;             /* Clips anything that overflows */
+    transform: translateX(50%);
+    z-index: 0;
 }
 
 .profile-container {
     display: flex;
-    margin: 20px auto;
-    padding: 20px;
-    max-width: 1400px;
-    width: 80%;
+    padding-top: 40px;
+    flex-direction: column;
+    align-items: center;
+    margin: auto; /* Add top space to account for the overhanging profile pic */
 }
 
 .profile-info {
-    margin-right: 50px;
-    align-items: center;
+    font-size: 20px;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .map {
     margin: 20px auto;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
 }
 
 .leaflet-popup-content{
