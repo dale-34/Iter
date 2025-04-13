@@ -1,65 +1,102 @@
-import React, { useRef, useEffect } from 'react';
-import { Header } from '../components/header';
-import '../css/LoadingPage.css';  // Import the main Loading Page CSS
-import { useLocation, useNavigate } from 'react-router-dom';
-import LoadingGlobe from '../components/LoadingGlobe'; // Import the LoadingGlobe component
+import axios from "axios";
+import React, { useRef, useEffect } from "react";
+import { Header } from "../components/header";
+import "../css/LoadingPage.css";
+import { useLocation, useNavigate } from "react-router-dom";
+import LoadingGlobe from "../components/LoadingGlobe";
+import { useAuth } from "../AuthContext";
 
 const LoadingPage = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const hasFetched = useRef(false);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const hasFetched = useRef(false);
+    const { surpriseMode } = location.state || {};
 
-  useEffect(() => {
-    // Ensure it only generates once
-    if (hasFetched.current) return;
-    hasFetched.current = true;
-    
-    const { startDate, endDate, budget, accommodation, transport, destination } = location.state;
-    
-    const generateVacation = async () => {
-      // Send JSON data to OPENAI server
-      try {
-        const response = await fetch("http://localhost:3000/generate-vacation", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
+    // Fetching current userId if logged in
+    const { userId } = useAuth();
+    let correctuserId;
+
+    if (!userId) {
+        correctuserId = 999;
+    } else {
+        correctuserId = userId.userId;
+    }
+
+    useEffect(() => {
+        if (hasFetched.current) return;
+        hasFetched.current = true;
+
+        //change back to const after debugging
+        let {
             startDate,
             endDate,
             budget,
             accommodation,
             transport,
             destination,
-          }),
-        });
-        // const data = await response.json(); TODO: uncomment at time of integration
-        navigate("/ItineraryPage", { 
-          state: { 
-            // vacationPlan: data.vacation, TODO: uncomment at time of integration
-            startDate,
-            endDate,
-            budget,
-            destination,
-           } }); // Go to itinerary when plan is generated
-      } catch (error) {
-        console.error("Error generating vacation:", error);
-      }
-    };
-    generateVacation();
-  }, [location.state, navigate]);
+            startLocation,
+        } = location.state;
 
+        // Fetching userId if user is logged in, and if not setting userId to guest id which is 999
 
-  return (
-    <div className="loading-container"> {/* Single Parent Element */}
-      <div className="header">
-        <Header />
-      </div>
-      <div className="loading-content">
-        {/* Use the separate LoadingGlobe component */}
-        <LoadingGlobe />
-        <p className="loading-text">Curating your dream vacation...</p>
-      </div>
-    </div>
-  );
+        const generateVacation = async () => {
+            if (surpriseMode) {
+                try {
+                    const response = await axios.post("/openai/surprise-me",
+                      {
+                        correctuserId
+                      }
+                    );
+                    console.log("Response tripId:", response.data.tripId); // Ensure this is logged to see if tripId is available
+                    navigate("/ItineraryPage", {
+                        state: {
+                            vacationPlan: response.data.vacationPlan,
+                            tripId: response.data.tripId,
+                        },
+                    });
+                } catch (error) {
+                    console.error("Error generating surprise vacation:", error);
+                }
+            } else {
+                try {
+                    const response = await axios.post("/openai/generate-vacation",
+                        {
+                            startDate,
+                            endDate,
+                            budget,
+                            accommodation,
+                            transport,
+                            destination,
+                            startLocation,
+                            correctuserId,
+                        }
+                    );
+                    console.log("Response tripId:", response.data.tripId); // Ensure this is logged to see if tripId is available
+                    navigate("/ItineraryPage", {
+                        state: {
+                            vacationPlan: response.data.vacationPlan,
+                            tripId: response.data.tripId,
+                        },
+                    });
+                } catch (error) {
+                    console.error("Error generating vacation:", error);
+                }
+            }
+        };
+        generateVacation();
+    }, [location.state, navigate]);
+
+    return (
+        <div className="loading-container">
+            <div className="header">
+                <Header />
+            </div>
+            <div className="loading-content">
+                <LoadingGlobe />
+                <p className="loading-text">Curating your dream vacation...</p>
+            </div>
+        </div>
+    );
 };
 
 export default LoadingPage;

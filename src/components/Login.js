@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
 import {
   Dialog,
   DialogActions,
@@ -12,23 +14,22 @@ import {
   MenuItem,
   IconButton,
 } from '@mui/material';
+import { useAuth } from '../AuthContext'; // Use real auth context
 
 export const Login = () => {
   const navigate = useNavigate();
-
-  const [userProfile, setUserProfile] = useState(null);
   const [loginOpen, setLoginOpen] = useState(false);
   const [createOpen, setCreateOpen] = useState(false);
-
+  
+  // Hardcoded user profile
+  const [userProfile, setUserProfile] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [newUsername, setNewUsername] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-
   const [anchorEl, setAnchorEl] = useState(null);
   const menuOpen = Boolean(anchorEl);
 
@@ -38,8 +39,9 @@ export const Login = () => {
       setUserProfile(JSON.parse(stored));
     }
   }, []);
+  const { login, logout, token } = useAuth(); // access token + auth methods
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
 
     if (!username || !password) {
@@ -47,58 +49,95 @@ export const Login = () => {
       return;
     }
 
-    const profile = {
-      username,
-      loginTime: new Date().toISOString(),
-    };
+//     const profile = {
+//       username,
+//       loginTime: new Date().toISOString(),
+//     };
 
-    localStorage.setItem('userProfile', JSON.stringify(profile));
-    setUserProfile(profile);
-    setLoginOpen(false);
-    setUsername('');
-    setPassword('');
+//     localStorage.setItem('userProfile', JSON.stringify(profile));
+//     setUserProfile(profile);
+//     setLoginOpen(false);
+//     setUsername('');
+//     setPassword('');
+    try {
+      const response = await axios.post('/auth/login', { username, password });
+      login(response.data.token); // store in context
+      
+      // Decode the token to get the username
+      const decodedToken = jwtDecode(response.data.token);
+      setUserProfile({ username: decodedToken.username }); // Set username from decoded token
+
+      setLoginOpen(false);
+      setUsername('');
+      setPassword('');
+    } catch (err) {
+      alert('Login failed. Check your credentials.');
+      console.error(err.response?.data || err.message);
+    }
   };
 
-  const handleCreateSubmit = (e) => {
+  const handleCreateSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (newPassword !== confirmPassword) {
-      alert("Passwords do not match.");
+      alert('Passwords do not match.');
       return;
     }
+//     setUsername(newUsername);
+//     setCreateOpen(false);
+//     setLoginOpen(true);
+//     setFirstName('');
+//     setLastName('');
+//     setNewUsername('');
+//     setNewPassword('');
+//     setConfirmPassword('');
+//   };
 
-    setUsername(newUsername);
-    setCreateOpen(false);
-    setLoginOpen(true);
-    setFirstName('');
-    setLastName('');
-    setNewUsername('');
-    setNewPassword('');
-    setConfirmPassword('');
-  };
+//   const handleLogout = () => {
+//     localStorage.removeItem('userProfile');
+//     setUserProfile(null);
+//     handleMenuClose();
+//     navigate('/');
+//   };
+
+//   const handleMenuClick = (e) => {
+//     if (userProfile) {
+//       setAnchorEl(e.currentTarget);
+//     } else {
+//       setLoginOpen(true);
+//     }
+//   };
+
+//   const handleMenuClose = () => {
+//     setAnchorEl(null);
+//   };
+
+//   const handleProfileClick = () => {
+//     navigate('/ProfilePage');
+//     handleMenuClose();  
+    try {
+      const response = await axios.post("http://localhost:3000/auth/signup", {
+        name: `${firstName} ${lastName}`,
+        username: newUsername, // assuming newUsername is their email
+        password: newPassword,
+      });
+  
+      alert("Account created successfully!");
+      setCreateOpen(false);
+      setLoginOpen(true);
+    } catch (error) {
+      console.error("Signup error:", error);
+      if (error.response && error.response.data && error.response.data.error) {
+        alert(error.response.data.error);
+      } else {
+        alert("Server error. Please try again later.");
+      }
+    }
+  };  
 
   const handleLogout = () => {
-    localStorage.removeItem('userProfile');
-    setUserProfile(null);
-    handleMenuClose();
-    navigate('/');
-  };
-
-  const handleMenuClick = (e) => {
-    if (userProfile) {
-      setAnchorEl(e.currentTarget);
-    } else {
-      setLoginOpen(true);
-    }
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleProfileClick = () => {
-    navigate('/ProfilePage');
-    handleMenuClose();
+    logout(); // Clear the token
+    setUserProfile(null); // Clear the hardcoded user profile
   };
 
   return (
