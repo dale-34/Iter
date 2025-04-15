@@ -4,7 +4,7 @@ import ActivityCard from './activityCard';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-const ActivityCarousel = ({activities = []}) => {
+const ActivityCarousel = ({activities = [], onActivityReplace}) => {
     const settings = {
         dots: true,
         infinite: false,
@@ -14,18 +14,18 @@ const ActivityCarousel = ({activities = []}) => {
         draggable: true,
         swipeToSlide: true,
     };
-
     return (
         <div>
             <h2>Activities and Food</h2>
             <Slider {...settings}>
                 {activities.map((activity) => (
                     <ActivityCard
-                        // key={activity.id}
+                        id={activity.id}
                         title={activity.title}
                         description={activity.description}
                         image={activity.image}
                         cost={activity.cost}
+                        onActivityReplace={onActivityReplace}
                     />
                 ))}
             </Slider>
