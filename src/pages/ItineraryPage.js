@@ -4,18 +4,32 @@ import { useLocation } from "react-router-dom";
 import Recap from "../components/Recap";
 import Flights from "../components/Flights";
 import DayCard from "../components/DayCard";
-import '../css/ItineraryPage.css';
+import "../css/ItineraryPage.css";
 import axios from "axios";
 
 function ItineraryPage() {
     const location = useLocation();
-    console.log('Location state:', location.state);  // Ensure this contains tripId
+    console.log("Location state:", location.state); // Ensure this contains tripId
     const { tripId } = location.state || {};
-    console.log('TripId:', tripId);  // Ensure tripId is not undefined
+    console.log("TripId:", tripId); // Ensure tripId is not undefined
 
     const [vacationPlan, setVacationPlan] = useState(null);
     const [userInputs, setUserInputs] = useState([]);
 
+    const handleActivityReplace = (activityId, newActivity) => {
+        setVacationPlan(prevPlan => {
+            const updatedVacation = { ...prevPlan.vacation };
+            Object.keys(updatedVacation).forEach(dayKey => {
+                const dayData = updatedVacation[dayKey];
+                if (dayData.activities) {
+                    dayData.activities = dayData.activities.map(activity =>
+                        (activity.id === activityId) ? { ...activity, ...newActivity } : activity
+                    );
+                }
+            });
+            return { ...prevPlan, vacation: updatedVacation };
+        });
+    };
 
     useEffect(() => {
         const retrieveVacation = async () => {
@@ -39,10 +53,10 @@ function ItineraryPage() {
         return <div>Loading...</div>;
     }
 
-    const [startDate, endDate, budget, destination, startLocation] = userInputs || ["", "", "", ""]; 
-    const startDateFixed =  new Date(startDate);
-    const endDateFixed =  new Date(endDate);
-    
+    const [startDate, endDate, budget, destination, startLocation] =
+        userInputs || ["", "", "", ""];
+    const startDateFixed = new Date(startDate);
+    const endDateFixed = new Date(endDate);
 
     return (
         <div className="itinerary-wrapper">
@@ -51,7 +65,7 @@ function ItineraryPage() {
                 <h1>{destination || "No destination provided"} Trip</h1>
             </div>
             <div className="itinerary-content">
-                <Recap 
+                <Recap
                     vacationPlan={vacationPlan}
                     startDate={startDateFixed}
                     endDate={endDateFixed}
@@ -59,27 +73,30 @@ function ItineraryPage() {
                     budget={budget}
                     startLocation={startLocation}
                 />
-                <Flights 
-                  flights={vacationPlan?.accomodations?.transportation || []}
-                  hotels={vacationPlan?.accomodations?.reservations || []}
+                <Flights
+                    flights={vacationPlan?.accomodations?.transportation || []}
+                    hotels={vacationPlan?.accomodations?.reservations || []}
                 />
                 <div className="day-list">
-                    {Object.keys(vacationPlan?.vacation || {}).map((day, index) => {
-                        const dayData = vacationPlan.vacation[day];
-                        if (day.startsWith('day')) {
-                            const date = new Date(startDate);
-                            date.setDate(date.getDate() + index - 1);
-                            return (
-                                <DayCard
-                                    dayNumber={index}
-                                    date={date.toLocaleDateString()}
-                                    description={dayData.day_description}
-                                    activities={dayData.activities}
-                                />
-                            );
+                    {Object.keys(vacationPlan?.vacation || {}).map(
+                        (day, index) => {
+                            const dayData = vacationPlan.vacation[day];
+                            if (day.startsWith("day")) {
+                                const date = new Date(startDate);
+                                date.setDate(date.getDate() + index - 1);
+                                return (
+                                    <DayCard
+                                        dayNumber={index}
+                                        date={date.toLocaleDateString()}
+                                        description={dayData.day_description}
+                                        activities={dayData.activities}
+                                        onActivityReplace={handleActivityReplace}
+                                    />
+                                );
+                            }
+                            return null;
                         }
-                        return null;
-                    })}
+                    )}
                 </div>
             </div>
         </div>

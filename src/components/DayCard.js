@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-const DayCard = ({ dayNumber, date, description, activities = [] }) => {
+const DayCard = ({ dayNumber, date, description, activities = [], onActivityReplace}) => {
     const [expanded, setExpanded] = useState(false);
 
     const handleExpandClick = () => {
@@ -40,6 +40,7 @@ const DayCard = ({ dayNumber, date, description, activities = [] }) => {
                 <CardContent>
                     <ActivityCarousel
                         activities={activities}
+                        onActivityReplace={onActivityReplace}
                     />
                 </CardContent>
             </Collapse>

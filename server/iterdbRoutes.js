@@ -1,5 +1,5 @@
 import express from 'express';
-import { insertPlan, getVacationPlan, getUserTrips, setProfilePhoto } from './iterdb.js';
+import { insertPlan, getVacationPlan, getUserTrips, setProfilePhoto, updateActivity } from './iterdb.js';
 
 const router = express.Router();
 
@@ -11,6 +11,17 @@ router.post('/insert-vacation', async (req, res) => {
         res.status(200).json({ success: true, message: 'Vacation plan inserted successfully!', tripId: tripId });
     } catch (err) {
         res.status(500).json({ success: false, message: 'Failed to insert vacation plan', error: err.message });
+    }
+});
+
+// POST route to update vacation plan into the database
+router.post('/replace-plan', async (req, res) => {
+    const { activityId, newActivity} = req.body;
+    try {
+        await updateActivity(activityId, newActivity);
+        res.status(200).json({ success: true, newActivity });
+    } catch (err) {
+        res.status(500).json({ success: false, message: 'Failed to replace activity', error: err.message });
     }
 });
 
