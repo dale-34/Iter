@@ -291,22 +291,22 @@ async function updateActivity(activityId, newActivity) {
             title = ?,
             description = ?,
             cost = ?,
-            relevant_link = ?
+            relevant_link = ?,
+            image = ?
         WHERE id = ?;
         `;
-        console.log("ACTIVITY ID: ", activityId);
+    
         const values = [
             newActivity.type,
             newActivity.title,
             newActivity.description,
             newActivity.cost,
             newActivity.relevant_link,
+            newActivity.image,
             activityId
         ];
 
-        // Execute the query
         const [result] = await pool.promise().query(updateQuery, values);
-
         if (result.affectedRows === 0) {
             console.warn("No activity found with the given ID to update.");
         } else {

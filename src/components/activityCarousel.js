@@ -14,7 +14,6 @@ const ActivityCarousel = ({activities = [], onActivityReplace}) => {
         draggable: true,
         swipeToSlide: true,
     };
-    console.log("CAROUSEL ID: ", activities.id);
     return (
         <div>
             <h2>Activities and Food</h2>

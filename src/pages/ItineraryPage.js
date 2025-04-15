@@ -19,17 +19,30 @@ function ItineraryPage() {
     // Static for testing, needs to be dynamic
     // const userId = 1;
 
+    // const handleActivityReplace = (activityId, newActivity) => {
+    //     setVacationPlan((prevPlan) => {
+    //         const updatedVacation = { ...prevPlan.vacation };
+    //         Object.keys(updatedVacation).forEach((dayKey) => {
+    //             const dayData = updatedVacation[dayKey];
+    //             if (dayData.activities) { 
+    //                 dayData.activities = dayData.activities.map((activity) =>
+    //                     activity.id === activityId
+    //                         ? { ...activity, ...newActivity } // If match activityID, replace the activity with updated
+    //                         : activity
+    //                 );
+    //             }
+    //         });
+    //         return { ...prevPlan, vacation: updatedVacation };
+    //     });
+    // };
     const handleActivityReplace = (activityId, newActivity) => {
-        setVacationPlan((prevPlan) => {
+        setVacationPlan(prevPlan => {
             const updatedVacation = { ...prevPlan.vacation };
-            console.log("ITINERARY ID: ", activityId);
-            Object.keys(updatedVacation).forEach((dayKey) => {
+            Object.keys(updatedVacation).forEach(dayKey => {
                 const dayData = updatedVacation[dayKey];
-                if (dayData.activities) { 
-                    dayData.activities = dayData.activities.map((activity) =>
-                        activity.id === activityId
-                            ? { ...activity, ...newActivity } // If match activityID, replace the activity with updated
-                            : activity
+                if (dayData.activities) {
+                    dayData.activities = dayData.activities.map(activity =>
+                        (activity.id === activityId) ? { ...activity, ...newActivity } : activity
                     );
                 }
             });

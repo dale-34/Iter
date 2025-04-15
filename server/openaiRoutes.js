@@ -3,6 +3,7 @@ import OpenAI from "openai";
 import dotenv from "dotenv";
 import fs from "fs";
 import { insertPlan, updateActivity } from "./iterdb.js"; // Adjust path as necessary
+import { getImageURL } from "./google-server.js";
 
 dotenv.config(); // Load environment variables
 const router = express.Router();
@@ -293,9 +294,13 @@ router.post("/replace-activity", async (req, res) => {
 
         console.log("New Activity: ", newActivity);
 
-        // Update in database
-        console.log("ACTIVITY ID AI: ", activityId);
+        // Generate new image
+        const image = await getImageURL(newActivity.title);
+        newActivity.image = image;
+        console.log("New image URL:", image);
+        console.log("New JSON URL:", newActivity.image);
 
+        // Update in database
         const insertUpdate = await updateActivity(activityId, newActivity);
         console.log("Updating Database...", insertUpdate);
 
