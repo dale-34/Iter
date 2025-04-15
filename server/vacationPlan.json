@@ -1,0 +1,67 @@
+{
+  "accomodations": {
+    "reservations": [
+      {
+        "name": "Holiday Inn Express New York City Times Square South",
+        "type": "hotel",
+        "estimated_cost": "350",
+        "description": "Modern hotel in the heart of Times Square with great amenities.",
+        "reservation_link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/new-york/nycso/hoteldetail"
+      }
+    ],
+    "transportation": [
+      {
+        "name": "American Airlines Flight",
+        "type": "flight",
+        "estimated_cost": "170",
+        "description": "Direct flight from Naples, FL to New York, NY.",
+        "reservation_link": "https://www.aa.com"
+      }
+    ]
+  },
+  "vacation": {
+    "climate": "Spring weather in New York; mild temperatures ranging from 50°F to 70°F with occasional rain.",
+    "day1": {
+      "day_description": "Arrive in New York; explore Times Square and visit Central Park.",
+      "activities": [
+        {
+          "type": "food",
+          "title": "Joe's Pizza",
+          "description": "Famous local pizza place known for its classic New York slices.",
+          "cost": 25,
+          "day": 1,
+          "relevant_link": "https://www.joespizza.com"
+        },
+        {
+          "type": "activity",
+          "title": "Central Park",
+          "description": "A vast green oasis in the middle of the city, perfect for a leisurely walk.",
+          "cost": 0,
+          "day": 1,
+          "relevant_link": "https://www.centralparknyc.org"
+        }
+      ]
+    },
+    "day2": {
+      "day_description": "Visit the Statue of Liberty and enjoy a Broadway show in the evening.",
+      "activities": [
+        {
+          "type": "food",
+          "title": "Shake Shack",
+          "description": "Popular fast-casual burger chain known for its delicious burgers and shakes.",
+          "cost": 20,
+          "day": 2,
+          "relevant_link": "https://www.shakeshack.com"
+        },
+        {
+          "type": "activity",
+          "title": "Statue of Liberty",
+          "description": "Iconic American landmark; take a ferry for a closer view and explore Liberty Island.",
+          "cost": 24,
+          "day": 2,
+          "relevant_link": "https://www.nps.gov/stli/index.htm"
+        }
+      ]
+    }
+  }
+}
