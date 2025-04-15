@@ -22,7 +22,6 @@ export const Login = () => {
   const [createOpen, setCreateOpen] = useState(false);
   
   // Hardcoded user profile
-  const [userProfile, setUserProfile] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -32,14 +31,7 @@ export const Login = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [anchorEl, setAnchorEl] = useState(null);
   const menuOpen = Boolean(anchorEl);
-
-  useEffect(() => {
-    const stored = localStorage.getItem('userProfile');
-    if (stored) {
-      setUserProfile(JSON.parse(stored));
-    }
-  }, []);
-  const { login, logout, token } = useAuth(); // access token + auth methods
+  const { login, logout, userProfile} = useAuth(); // access token + auth methods
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
@@ -49,23 +41,9 @@ export const Login = () => {
       return;
     }
 
-//     const profile = {
-//       username,
-//       loginTime: new Date().toISOString(),
-//     };
-
-//     localStorage.setItem('userProfile', JSON.stringify(profile));
-//     setUserProfile(profile);
-//     setLoginOpen(false);
-//     setUsername('');
-//     setPassword('');
     try {
-      const response = await axios.post('/auth/login', { username, password });
+      const response = await axios.post('http://localhost:3001/auth/login', { username, password });
       login(response.data.token); // store in context
-      
-      // Decode the token to get the username
-      const decodedToken = jwtDecode(response.data.token);
-      setUserProfile({ username: decodedToken.username }); // Set username from decoded token
 
       setLoginOpen(false);
       setUsername('');
@@ -83,20 +61,9 @@ export const Login = () => {
       alert('Passwords do not match.');
       return;
     }
-//     setUsername(newUsername);
-//     setCreateOpen(false);
-//     setLoginOpen(true);
-//     setFirstName('');
-//     setLastName('');
-//     setNewUsername('');
-//     setNewPassword('');
-//     setConfirmPassword('');
-//   };
-
-
 
     try {
-      const response = await axios.post("http://localhost:3000/auth/signup", {
+      const response = await axios.post("http://localhost:3001/auth/signup", {
         name: `${firstName} ${lastName}`,
         username: newUsername, // assuming newUsername is their email
         password: newPassword,
@@ -113,18 +80,10 @@ export const Login = () => {
         alert("Server error. Please try again later.");
       }
     }
-  };  
-
-  // const handleLogout = () => {
-  //   logout(); // Clear the token
-  //   setUserProfile(null); // Clear the hardcoded user profile
-  // };
+  };
 
   const handleLogout = () => {
     logout(); // Clear the token
-    setUserProfile(null); // Clear the hardcoded user profile
-    localStorage.removeItem('userProfile');
-    setUserProfile(null);
     handleMenuClose();
     navigate('/');
   };
@@ -161,13 +120,6 @@ export const Login = () => {
           }}
         />
       </IconButton>
-
-      {userProfile && (
-        <Menu anchorEl={anchorEl} open={menuOpen} onClose={handleMenuClose}>
-          <MenuItem onClick={handleProfileClick}>Go to Profile</MenuItem>
-          <MenuItem onClick={handleLogout}>Logout</MenuItem>
-        </Menu>
-      )}
 
       {/* Login Dialog */}
       <Dialog open={loginOpen} onClose={() => setLoginOpen(false)} fullWidth maxWidth="xs">

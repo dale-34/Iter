@@ -6,7 +6,6 @@ import TripPlanning from "./pages/TripPlanning.js";
 import LoadingPage from "./pages/LoadingPage.js";
 import ItineraryPage from "./pages/ItineraryPage.js";
 import ProfilePage from "./pages/ProfilePage.js";
-import TestLoginPage from "./pages/TestLoginPage.js";
 
 
 function App() {
@@ -19,7 +18,6 @@ function App() {
         <Route path="/LoadingPage" element={<LoadingPage />} />
         <Route path="/ItineraryPage" element={<ItineraryPage />} />
         <Route path="/ProfilePage" element={<ProfilePage />} />
-        <Route path="/TestLoginPage" element={<TestLoginPage />} />
       </Routes>
     </Router>
   );

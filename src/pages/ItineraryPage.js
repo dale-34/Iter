@@ -16,14 +16,11 @@ function ItineraryPage() {
     const [vacationPlan, setVacationPlan] = useState(null);
     const [userInputs, setUserInputs] = useState([]);
 
-    // Static for testing, needs to be dynamic
-    // const userId = 1;
-
 
     useEffect(() => {
         const retrieveVacation = async () => {
             try {
-                const response = await axios.get(`/db/get-vacation/${tripId}`);
+                const response = await axios.get(`http://localhost:3001/db/get-vacation/${tripId}`);
                 
                 // Store vacation data in state
                 setVacationPlan(response.data.vacationPlan);
