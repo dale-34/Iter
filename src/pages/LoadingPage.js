@@ -41,9 +41,12 @@ const LoadingPage = () => {
         const generateVacation = async () => {
             if (surpriseMode) {
                 try {
-                    const response = await axios.post("/openai/surprise-me", {
-                        correctuserId,
-                    });
+                    const response = await axios.post(
+                        "http://localhost:3001/openai/surprise-me",
+                        {
+                            correctuserId,
+                        }
+                    );
                     console.log("Response tripId:", response.data.tripId); // Ensure this is logged to see if tripId is available
                     navigate("/ItineraryPage", {
                         state: {
@@ -56,7 +59,8 @@ const LoadingPage = () => {
                 }
             } else {
                 try {
-                    const response = await axios.post("/openai/generate-vacation",
+                    const response = await axios.post(
+                        "http://localhost:3001/openai/generate-vacation",
                         {
                             startDate,
                             endDate,

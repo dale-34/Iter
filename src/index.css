@@ -2,22 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer theme {
-  :root {
-    --primary-color: #6B705C;
-    --secondary-color: #DDBEA9;
-    --background-color: #FFE8D6;
-    --font-montserrat: "Montserrat", sans-serif;
-  }
-}
-
 body {
-  background-color: var(--background-color);
-  font-family: var(--font-montserrat);
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-montserrat);
+  font-family: 'Poppins', sans-serif;
 }
 
 header {
@@ -32,10 +23,10 @@ button, .btn {
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
-
+/* 
 button:hover, .btn:hover {
   background-color: #caa891;
-}
+} */
 
  .slick-track { 
   overflow: visible; 

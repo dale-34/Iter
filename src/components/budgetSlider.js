@@ -3,7 +3,7 @@ import ReactSlider from "react-slider"; // Import react-slider
 
 export const BudgetSlider = ({onBudgetChange}) => {
     // State for the two handles
-    const [values, setValues] = useState([0, 14999]); // Initial values for the two handles
+    const [values, setValues] = useState([100, 14999]); // Initial values for the two handles
 
     const handleSliderChange = (newValues) => {
         if (onBudgetChange) {
@@ -31,8 +31,8 @@ export const BudgetSlider = ({onBudgetChange}) => {
     return (
         <div className="slider-container">
             <ReactSlider
-                min={0} // Minimum value of the slider
-                max={15000} // Maximum value of the slider
+                min={100} // Minimum value of the slider
+                max={14999} // Maximum value of the slider
                 value={values} // Current values of the two handles
                 onChange={handleSliderChange} // Function to update state when the slider value changes
                 className="slider" // Custom class for styling
@@ -45,7 +45,7 @@ export const BudgetSlider = ({onBudgetChange}) => {
                 <button className="decrement"
                     onClick={decrementMin}
                 > - </button>
-                <p>Value Budget: ${values[0]}</p>
+                <p>Minimum Budget: ${values[0]}</p>
                 <button className="increment"
                     onClick={incrementMin}
                 > + </button>
@@ -114,20 +114,20 @@ export const BudgetSlider = ({onBudgetChange}) => {
                     }
                     
                     .track {
-                        background: lightgrey;
+                        background: white;
                         height: 100%;
                         border-radius: 5px;
                     }
                     
                     .slider-values {
-                        font-size: 1.7rem;
                         display: flex;
                         justify-content: space-between;
                         width: 50%;
                         max-width: 600px;
-                        margin: 10px auto;
+                        margin: auto;
                         font-size: 1.2rem;
                         font-weight: bold;
+                        padding-bottom: 40px;
                     }
                 `}
             </style>

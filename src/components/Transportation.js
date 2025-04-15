@@ -72,7 +72,7 @@ export const Transportation = ({
       <div className="transport__background"></div>
 
       <div className="transport__options">
-        {["rental", "flight", "train", "own"].map((option) => (
+        {["Rental Car", "Flight", "Train", "Own"].map((option) => (
           <button
             key={option}
             className={`transport__option ${
@@ -80,23 +80,12 @@ export const Transportation = ({
             }`}
             onClick={() => handleTransportChange(option)}
           >
-            {option === "own"
-              ? "No, I have my own transportation"
+            {option === "Own"
+              ? "I have my own transportation"
               : option.charAt(0).toUpperCase() + option.slice(1)}
           </button>
         ))}
       </div>
-
-      {selectedOption && (
-        <p className="transport__selected">
-          You selected:{" "}
-          <strong>
-            {selectedOption === "own"
-              ? "I have my own transportation"
-              : selectedOption.charAt(0).toUpperCase() + selectedOption.slice(1)}
-          </strong>
-        </p>
-      )}
     </div>
   );
 };

@@ -16,25 +16,6 @@ function ItineraryPage() {
     const [vacationPlan, setVacationPlan] = useState(null);
     const [userInputs, setUserInputs] = useState([]);
 
-    // Static for testing, needs to be dynamic
-    // const userId = 1;
-
-    // const handleActivityReplace = (activityId, newActivity) => {
-    //     setVacationPlan((prevPlan) => {
-    //         const updatedVacation = { ...prevPlan.vacation };
-    //         Object.keys(updatedVacation).forEach((dayKey) => {
-    //             const dayData = updatedVacation[dayKey];
-    //             if (dayData.activities) { 
-    //                 dayData.activities = dayData.activities.map((activity) =>
-    //                     activity.id === activityId
-    //                         ? { ...activity, ...newActivity } // If match activityID, replace the activity with updated
-    //                         : activity
-    //                 );
-    //             }
-    //         });
-    //         return { ...prevPlan, vacation: updatedVacation };
-    //     });
-    // };
     const handleActivityReplace = (activityId, newActivity) => {
         setVacationPlan(prevPlan => {
             const updatedVacation = { ...prevPlan.vacation };
@@ -53,8 +34,8 @@ function ItineraryPage() {
     useEffect(() => {
         const retrieveVacation = async () => {
             try {
-                const response = await axios.get(`/db/get-vacation/${tripId}`);
-
+                const response = await axios.get(`http://localhost:3001/db/get-vacation/${tripId}`);
+                
                 // Store vacation data in state
                 setVacationPlan(response.data.vacationPlan);
                 setUserInputs(response.data.userInputs || []);

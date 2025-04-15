@@ -6,6 +6,13 @@ import { BudgetSlider } from "../components/budgetSlider";
 import { HousingAccommodations } from "../components/housingAccomdations";
 import { Transportation } from "../components/Transportation";
 import { Destinations } from "../components/Destinations";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+} from "@mui/material";
 import "../css/TripPlanning.css";
 
 const TripPlanning = () => {
@@ -20,35 +27,44 @@ const TripPlanning = () => {
   const [destination, setDestination] = useState([]);
   const [endLocation, setEndLocation] = useState("");
 
+  const [errors, setErrors] = useState({
+    startDate: false,
+    endDate: false,
+    budget: false,
+    accommodation: false,
+    transport: false,
+    startLocation: false,
+    destination: false,
+    endLocation: false,
+  });
+
+  const [errorDialogOpen, setErrorDialogOpen] = useState(false);
+
   const handleDateChange = (start, end) => {
     setStartDate(start);
     setEndDate(end);
   };
 
   const handleSubmit = () => {
-    if (
-      !startDate ||
-      !endDate ||
-      !accommodation ||
-      !transport ||
-      !startLocation.trim()
-    ) {
-      alert("Please complete all required fields, including your starting location.");
-      return;
-    }
-
-    if (destination.length === 0) {
-      alert("Please choose at least one destination.");
-      return;
-    }
-
     const choseCustomPlace = destination.includes("I have a place in mind");
-    const choseOtherDestinations = destination.some(
-      (dest) => dest !== "I have a place in mind"
-    );
+    const choseOtherDestinations = destination.some((dest) => dest !== "I have a place in mind");
 
-    if (!choseOtherDestinations && choseCustomPlace && !endLocation.trim()) {
-      alert("Please enter your specific destination.");
+    const newErrors = {
+      startDate: !startDate,
+      endDate: !endDate,
+      budget: !budget,
+      accommodation: !accommodation,
+      transport: !transport,
+      startLocation: !startLocation.trim(),
+      destination: destination.length === 0,
+      endLocation: choseCustomPlace && !choseOtherDestinations && !endLocation.trim(),
+    };
+
+    setErrors(newErrors);
+
+    const hasErrors = Object.values(newErrors).some(Boolean);
+    if (hasErrors) {
+      setErrorDialogOpen(true);
       return;
     }
 
@@ -67,75 +83,165 @@ const TripPlanning = () => {
   };
 
   return (
-    <div>
+    <div className="overflow-y-auto max-h-screen">
       <div className="header-container">
         <Header />
       </div>
 
-      <div className="trip-planning container">
+      <div className="trip-planning container pb-10">
         <div className="surveyIntro">
-          <h1 className="surveyTitle">Before we begin, tell us: </h1>
+          <h1 className="surveyTitle">Answer a few questions, and we'll take it from there.</h1>
         </div>
 
-        <div className="calendar">
+        {/* Calendar Section */}
+        <div
+          className="calendar mb-6"
+          style={
+            errors.startDate || errors.endDate
+              ? { border: "4px solid red", borderRadius: "20px" }
+              : {}
+          }
+        >
           <h2 className="calendarTitle">What dates do you plan on traveling?</h2>
-          <p className="calendarSubtitle">
-            Select the dates which you want to travel during.
-          </p>
+          <p className="calendarSubtitle">Select the dates which you want to travel during.</p>
           <CalendarComponent onDateChange={handleDateChange} />
+          {errors.startDate && <p className="warning-text">*Start date is required*</p>}
+          {errors.endDate && <p className="warning-text">*End date is required*</p>}
         </div>
 
-        <div className="budget">
+        {/* Budget Section */}
+        <div
+          className="budget mb-6"
+          style={{
+            backgroundColor: "#8ac6d1",
+            border: errors.budget ? "4px solid red" : "none",
+            borderRadius: "20px",
+            margin: "50px 200px",
+          }}
+        >
           <h2 className="budgetTitle">What is your budget for this trip?</h2>
-          <p className="budgetSubtitle">
-            Designate the minimum and maximum amounts you want to spend on this trip.
-          </p>
+          <p className="budgetSubtitle">Designate the minimum and maximum amounts you want to spend on this trip.</p>
           <BudgetSlider onBudgetChange={setBudget} />
+          {errors.budget && <p className="warning-text">Budget minimum and maximum is required.</p>}
         </div>
 
-        <div className="transportation">
+        {/* Transportation Section */}
+        <div
+          className="transportation mb-6"
+          style={
+            errors.transport || errors.startLocation
+              ? { border: "4px solid red", borderRadius: "20px" }
+              : {}
+          }
+        >
           <Transportation
             onTransportChange={setTransport}
             onStartLocationChange={setStartLocation}
             startLocation={startLocation}
           />
+          {errors.startLocation && <p className="warning-text">*Starting location is required*</p>}
+          {errors.transport && <p className="warning-text">*Transportation choice is required*</p>}
         </div>
 
-        <div className="destinations">
-          <Destinations onDestinationChange={setDestination} />
+        {/* Destinations Section */}
+        <div
+          className="destinations mb-6"
+          style={{
+            backgroundColor: "red",
+            border: errors.destination || errors.endLocation ? "4px solid red" : "none",
+            borderRadius: "20px",
+            margin: "50px 200px",
+          }}
+        >
+          {/* <Destinations onDestinationChange={setDestination} /> */}
+          <Destinations
+            onDestinationChange={(selected) => {
+              setDestination(selected);
+
+              // Clear destination error if something was selected
+              if (selected.length > 0) {
+                setErrors((prev) => ({ ...prev, destination: false }));
+              }
+
+              // Clear endLocation error if "I have a place in mind" is not selected
+              if (!selected.includes("I have a place in mind")) {
+                setErrors((prev) => ({ ...prev, endLocation: false }));
+              }
+            }}
+          />
+          {errors.destination && (
+            <p className="warning-text">Please choose at least one destination.</p>
+          )}
+
+          {destination.includes("I have a place in mind") && (
+            <div className="specific-destination mt-4">
+              <label htmlFor="end-location" className="block font-semibold mb-1">
+                Enter your specific destination:
+              </label>
+              <input
+                type="text"
+                id="end-location"
+                placeholder="Ex: Paris, France"
+                value={endLocation}
+                // onChange={(e) => setEndLocation(e.target.value)}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setEndLocation(value);
+                
+                  // Clear endLocation error if input is not empty
+                  if (value.trim() !== "") {
+                    setErrors((prev) => ({ ...prev, endLocation: false }));
+                  }
+                }}
+                className={`w-4/5 p-2 border rounded-md shadow-sm ${
+                  errors.endLocation ? "border-yellow-400" : "border-gray-300"
+                }`}
+              />
+              {errors.endLocation && (
+                <p className="text-red-500 text-sm mt-1">End destination is required.</p>
+              )}
+            </div>
+          )}
         </div>
 
-        {destination.includes("I have a place in mind") && (
-          <div className="specific-destination">
-            <label htmlFor="end-location" className="block font-semibold mb-1 mt-4">
-              Enter your specific destination:
-            </label>
-            <input
-              type="text"
-              id="end-location"
-              placeholder="Ex: Paris, France"
-              value={endLocation}
-              onChange={(e) => setEndLocation(e.target.value)}
-              className="w-4/5 p-2 border border-gray-300 rounded-md shadow-sm"
-            />
-          </div>
-        )}
-
-        {/* ⬇️ Moved Housing section to the bottom ⬇️ */}
-        <div className="question-container mt-6">
+        {/* Housing Section */}
+        <div
+          className="accommodations mb-6"
+          style={{
+            backgroundColor: "#5b8e89",
+            border: errors.accommodation ? "4px solid red" : "none",
+            borderRadius: "20px",
+            margin: "50px 200px",
+          }}
+        >
           <HousingAccommodations onHousingChange={setAccommodation} />
+          {errors.accommodation && (<p className="warning-text">*Housing accomodation choice is required*</p>)}
         </div>
 
-        <div className="submit mt-6">
+        {/* Submit Button */}
+        <div className="submit mt-6 text-center">
           <button
             onClick={handleSubmit}
-            className="bg-[rgba(221,190,169,1)] cursor-pointer transition-transform hover:scale-105 duration-[0.2s] whitespace-nowrap px-6 py-[13px] rounded-xl font-bold max-sm:text-center max-sm:px-5 max-sm:py-3"
+            className="bg-[rgba(221,190,169,1)] cursor-pointer transition-transform hover:scale-105 duration-200 whitespace-nowrap px-6 py-[13px] rounded-xl font-bold max-sm:px-5 max-sm:py-3"
             aria-label="Submit Form"
           >
             Submit
           </button>
         </div>
       </div>
+
+      {/* ❗ Popup Dialog for Errors */}
+      <Dialog open={errorDialogOpen} onClose={() => setErrorDialogOpen(false)}>
+        <DialogTitle>Your Trip is Incomplete!</DialogTitle>
+        <DialogContent>
+          Please complete all required fields before continuing.
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setErrorDialogOpen(false)} autoFocus>
+            OK
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 };

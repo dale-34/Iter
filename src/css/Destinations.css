@@ -1,19 +1,12 @@
 /* Main Container */
-.destinations {
-    width: 90%;
-    max-width: 800px;
-    margin: 20px auto;
-    text-align: center;
-    font-family: Arial, sans-serif;
-    color: #333;
-}
+
 
 /* Title */
 .destinations__title {
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
-    color: black;
-    margin-bottom: 20px;
+    color: rgb(255, 255, 255);
+    padding-top: 20px;
 }
 
 /* Continent Selection Grid */
@@ -54,7 +47,6 @@
     filter: none;
     opacity: 1;
     font-size: 18px;
-    font-family: Arial, sans-serif;
     color: #333;
     background-blend-mode: darken;
 }
@@ -73,12 +65,11 @@
     border: none;
     padding: 8px 15px;
     font-size: 14px;
-    font-family: Arial, sans-serif;
     color: #333;
     border-radius: 12px;
     font-weight: bold;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background-color 0.2s;
 }
 
 .destinations__filter.selected {
@@ -93,8 +84,7 @@
 /* Carousel Section */
 .destinations__carousel-title {
     font-size: 18px;
-    font-family: Arial, sans-serif;
-    color: #333;
+    color: #ffffff;
     font-weight: bold;
     color: black;
     margin-bottom: 10px;
@@ -141,7 +131,6 @@
 .destinations__carousel-card p {
     margin: 10px 0 5px;
     font-size: 20px;
-    font-family: Arial, sans-serif;
     color: #333;
     text-align: center;
 }
@@ -159,10 +148,15 @@
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background 0.2s ease-in-out, transform 0.1s ease-in-out;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
 }
 
 .destinations__custom-button:hover {
     background: #d0d0d0;
     transform: translateY(-2px);
+}
+
+.destinations__custom-button {
+    background-color: white;
+    margin-bottom: 20px;
 }

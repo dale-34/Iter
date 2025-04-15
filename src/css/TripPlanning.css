@@ -11,8 +11,7 @@ html, body {
 }
 
 .trip-planning {
-    /* background-color: rgba(255, 232, 214, 1.0); Light beige background */
-    background-color: white;
+    background-color: rgb(255, 243, 230);
 }
 
 /* Centering container */
@@ -27,14 +26,16 @@ html, body {
     font-size: 54px;
     font-weight: bold;
     color: #333;
-    margin-top: 40px;
+    padding-top: 40px;
+    margin: auto;
+    width: 50%;
 }
 
 /* Paragraph styling */
 p {
     font-size: 16px;
     line-height: 1.5;
-    color: #666;
+    color: #ffffff;
 }
 
 /* Button styling */
@@ -53,34 +54,70 @@ p {
     background-color: #0056b3;
 }
 
+.calendar {
+    background-color: #5b8e89;
+    margin: 80px 200px;
+    border-radius: 30px;
+}
+
 .calendarTitle {
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
+    color: #ffffff;
+    padding-top: 20px;
     text-align: center;
-    padding-top: 5%;
 }
 
 .calendarSubtitle {
     font-size: 18px;
-    color: #333;
-    margin-bottom: 10px;
+    color: #ffffff;
+    margin-bottom: 20px;
     text-align: center;
 }
 
+.budget {
+    background-color: #5b8e89 !important;
+    margin: 50px 200px;
+    border-radius: 30px;
+}
+
 .budgetTitle {
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    padding-top: 20px;
     text-align: center;
-    padding-top: 5%;
 }
 
 .budgetSubtitle {
     font-size: 18px;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 10px;
     text-align: center;
+}
+
+.transportation {
+    background-color: #5b8e89;
+    margin: 50px 200px;
+    border-radius: 30px;
+}
+
+.destinations {
+    background-color: #5b8e89 !important;
+    margin: 50px 200px;
+    border-radius: 30px;
+}
+
+.accomodations {
+    background-color: #5b8e89 !important;
+    margin: 50px 200px;
+    border-radius: 30px;
+}
+
+.warning-text {
+    color: #5e0000;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
