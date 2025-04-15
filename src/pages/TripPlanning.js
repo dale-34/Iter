@@ -184,7 +184,7 @@ const TripPlanning = () => {
         <div
           className="accommodations mb-6"
           style={{
-            backgroundColor: "#5b8e89",
+            backgroundColor: "#7ab3ad",
             border: errors.accommodation ? "4px solid red" : "none",
             borderRadius: "20px",
             margin: "50px 200px",
