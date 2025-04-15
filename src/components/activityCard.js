@@ -26,7 +26,7 @@ const ActivityCard = ({
 
     const handleReplace = async () => {
         try {
-            const { data } = await axios.post("/openai/replace-activity", {
+            const { data } = await axios.post("http://localhost:3001/openai/replace-activity", {
                 activityId: id,
                 title,
             });
