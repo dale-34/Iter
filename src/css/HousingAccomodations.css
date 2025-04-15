@@ -96,7 +96,7 @@
     padding: 15px;
     font-size: 18px;
     /* background: rgb(248, 241, 235); */
-    background-color: lightgrey;
+    background-color: rgb(255, 255, 255);
     border: 0.5px solid #c8c8c8;
     border-radius: 5px;
     cursor: pointer;
