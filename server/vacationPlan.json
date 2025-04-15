@@ -2,64 +2,64 @@
   "accomodations": {
     "reservations": [
       {
-        "name": "Hilton Atlanta",
+        "name": "Hyatt Place Atlanta Downtown",
         "type": "hotel",
-        "estimated_cost": "200.00",
-        "description": "A centrally located hotel with modern amenities and easy access to major attractions.",
-        "reservation_link": "https://www.hilton.com/en/hotels/atlhtqq-hilton-atlanta/"
+        "estimated_cost": "$250",
+        "description": "A modern hotel located in the heart of downtown Atlanta, offering comfortable rooms and amenities.",
+        "reservation_link": "https://www.hyatt.com/en-US/hotel/georgia/hyatt-place-atlanta-downtown/atlzd"
       }
     ],
     "transportation": [
       {
         "name": "Delta Airlines Flight",
         "type": "flight",
-        "estimated_cost": "150.00",
+        "estimated_cost": "$150",
         "description": "Round-trip flight from Tampa to Atlanta.",
         "reservation_link": "https://www.delta.com/"
       }
     ]
   },
   "vacation": {
-    "climate": "Mild spring weather, typically around 60-75°F.",
+    "climate": "Mild and pleasant with temperatures ranging from 60°F to 75°F.",
     "day1": {
-      "day_description": "Exploring the vibrant culture and historic sites in Atlanta.",
+      "day_description": "Arrival in Atlanta and exploration of the city landmarks.",
       "activities": [
         {
           "type": "food",
           "title": "The Varsity",
-          "description": "Famous fast-food restaurant known for its chili dogs and burgers.",
-          "cost": 10,
+          "description": "An iconic fast-food restaurant known for its chili dogs and burgers.",
+          "cost": 15,
           "day": 1,
           "relevant_link": "https://www.thevarsity.com/"
         },
         {
           "type": "activity",
           "title": "Georgia Aquarium",
-          "description": "One of the largest aquariums in the world, featuring a wide variety of marine life.",
-          "cost": 35,
+          "description": "One of the largest aquariums in the world, featuring thousands of marine animals.",
+          "cost": 39.95,
           "day": 1,
           "relevant_link": "https://www.georgiaaquarium.org/"
         }
       ]
     },
     "day2": {
-      "day_description": "Enjoying the city's parks and museums before returning home.",
+      "day_description": "Visit to historical sites and local parks before departure.",
       "activities": [
         {
           "type": "food",
           "title": "Mary Mac's Tea Room",
-          "description": "Famous for Southern comfort food in a cozy setting.",
-          "cost": 25,
+          "description": "Traditional Southern restaurant known for its comfort food and southern hospitality.",
+          "cost": 20,
           "day": 2,
-          "relevant_link": "https://www.marymacs.com/"
+          "relevant_link": "https://marymacs.com/"
         },
         {
           "type": "activity",
-          "title": "Atlanta Botanical Garden",
-          "description": "A beautiful garden with diverse plant collections and stunning displays.",
-          "cost": 20,
+          "title": "Martin Luther King Jr. National Historical Park",
+          "description": "A park dedicated to the civil rights leader, featuring his childhood home and church.",
+          "cost": 0,
           "day": 2,
-          "relevant_link": "https://atlantabg.org/"
+          "relevant_link": "https://www.nps.gov/malu/index.htm"
         }
       ]
     }

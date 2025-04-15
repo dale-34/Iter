@@ -158,8 +158,9 @@ router.post("/surprise-me", async (req, res) => {
         Provide activities and daily breakdowns. Use bullet points and neatly organize your answer.
         IMPORTANT: 
         - Return ONLY valid JSON (no markdown, no code blocks).
-        - Use this exact structure:
-        - Use REAL and RELEVANT website links, if the activity/place/accomodation do not have a website use "NULL" instead
+        - Use this exact structure.
+        - Generate a random amount of days between 1-5.
+        - Use REAL and RELEVANT website links, if the activity/place/accomodation do not have a website use "NULL" instead.
         {
         "accomodations": {
             "reservations": [
@@ -183,6 +184,8 @@ router.post("/surprise-me", async (req, res) => {
         },
         "vacation": {
             "climate": "general climate of the destination location",   
+            "latitude": "general latitude of the end destination (TYPE INT)",
+            "longitude": "general longitude of the end destination (TYPE INT)",
             "day1": {
                 "day_description": "general description going over agenda for the day",
                 "activities": [
@@ -191,7 +194,7 @@ router.post("/surprise-me", async (req, res) => {
                     "title": "name of activity or food place",
                     "description": "short description of activity/place",
                     "cost": 29.30,
-                    "day": NULL
+                    "day": 1
                     "relevant_link": "relevant link to activity/place"
                     }
                 ]
@@ -204,7 +207,7 @@ router.post("/surprise-me", async (req, res) => {
                     "title": "name of activity or food place",
                     "description": "short description of activity/place",
                     "cost": 30.30,
-                    "day": NULL
+                    "day": 2
                     "relevant_link": "relevant link to activity/place"
                     }
                 ]

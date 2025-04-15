@@ -166,7 +166,7 @@ async function getVacationPlan(tripId) {
 
         // Step 2: Get the vacation activities details from the activities table
         const activityQuery = `
-            SELECT type, title, cost, day, relevant_link, description, day_description, image
+            SELECT id, type, title, cost, day, relevant_link, description, day_description, image
             FROM activities 
             WHERE trip_id = ?;
         `;
@@ -185,6 +185,7 @@ async function getVacationPlan(tripId) {
                 };
             }
             vacation[`day${day}`].activities.push({
+                id: activity.id,
                 type: activity.type,
                 title: activity.title,
                 description: activity.description,
