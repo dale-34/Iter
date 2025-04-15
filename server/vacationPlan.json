@@ -2,96 +2,64 @@
   "accomodations": {
     "reservations": [
       {
-        "name": "The Wharf Inn",
+        "name": "Hyatt Regency Atlanta",
         "type": "hotel",
-        "estimated_cost": "$300",
-        "description": "A comfortable hotel located near Fisherman's Wharf with easy access to major attractions.",
-        "reservation_link": "https://www.wharfinn.com"
+        "estimated_cost": "300",
+        "description": "A centrally located hotel with comfortable accommodations and great amenities.",
+        "reservation_link": "https://www.hyatt.com/en-US/hotel/georgia/hyatt-regency-atlanta/atlra"
       }
     ],
     "transportation": [
       {
-        "name": "Round Trip Flight from Gainesville, FL to San Francisco, CA",
+        "name": "Delta Airlines Flight",
         "type": "flight",
-        "estimated_cost": "$400",
-        "description": "Round trip flight covering the distance from Gainesville to San Francisco.",
-        "reservation_link": "https://www.google.com/flights"
+        "estimated_cost": "200",
+        "description": "Round trip flight from Tampa to Atlanta.",
+        "reservation_link": "https://www.delta.com"
       }
     ]
   },
   "vacation": {
-    "climate": "Mild and pleasant with temperatures ranging from 55°F to 70°F.",
+    "climate": "Mild spring weather with temperatures ranging from 60°F to 75°F.",
     "day1": {
-      "day_description": "Arrival in San Francisco. Explore Fisherman's Wharf and enjoy the local seafood.",
+      "day_description": "Arrive in Atlanta and explore the downtown area, including the famous Georgia Aquarium.",
       "activities": [
         {
           "type": "food",
-          "title": "Boudin Bakery",
-          "description": "Famous for its sourdough bread and delicious clam chowder served in bread bowls.",
-          "cost": 12.5,
+          "title": "The Varsity",
+          "description": "Iconic fast-food restaurant known for its hot dogs and burgers.",
+          "cost": 15,
           "day": 1,
-          "relevant_link": "https://www.boudinbakery.com"
+          "relevant_link": "http://www.thevarsity.com/"
         },
         {
           "type": "activity",
-          "title": "Aquarium of the Bay",
-          "description": "Explore the underwater world of San Francisco with interactive exhibits and walking through underwater tunnels.",
-          "cost": 29.3,
+          "title": "Georgia Aquarium",
+          "description": "One of the largest aquariums in the world, featuring thousands of marine animals.",
+          "cost": 35,
           "day": 1,
-          "relevant_link": "https://www.aquariumofthebay.org"
-        },
-        {
-          "type": "food",
-          "title": "Fish Hopper",
-          "description": "A popular seafood restaurant overlooking the bay, offering fresh seafood dishes.",
-          "cost": 25,
-          "day": 1,
-          "relevant_link": "https://www.fishhopper.com"
-        },
-        {
-          "type": "activity",
-          "title": "Visit Pier 39",
-          "description": "A bustling marketplace featuring sea lions, shops, and dining options.",
-          "cost": 0,
-          "day": 1,
-          "relevant_link": "http://www.pier39.com"
+          "relevant_link": "https://www.georgiaaquarium.org/"
         }
       ]
     },
     "day2": {
-      "day_description": "Visit iconic landmarks like the Golden Gate Bridge and explorations in the city.",
+      "day_description": "Visit the Martin Luther King Jr. National Historic Park and explore local art galleries.",
       "activities": [
         {
           "type": "food",
-          "title": "Café Trieste",
-          "description": "A historic café famous for its coffee and live music performances.",
-          "cost": 10,
+          "title": "Mary Mac's Tea Room",
+          "description": "Classic Southern restaurant known for its traditional dishes.",
+          "cost": 25,
           "day": 2,
-          "relevant_link": "http://www.cafetrieste.com"
+          "relevant_link": "https://www.marymactea.com/"
         },
         {
           "type": "activity",
-          "title": "Golden Gate Bridge",
-          "description": "Walk or bike across this iconic bridge with stunning views of the Bay.",
+          "title": "Martin Luther King Jr. National Historic Park",
+          "description": "Historic site that includes MLK's childhood home and church.",
           "cost": 0,
           "day": 2,
-          "relevant_link": "https://www.goldengatebridge.org"
-        },
-        {
-          "type": "food",
-          "title": "Mama's on Washington Square",
-          "description": "A popular breakfast spot known for its delicious brunch menu.",
-          "cost": 20,
-          "day": 2,
-          "relevant_link": "https://www.mamasonwashingtonsquare.com"
-        },
-        {
-          "type": "activity",
-          "title": "Lombard Street",
-          "description": "Famous for being the crookedest street in the world, great for a photo op.",
-          "cost": 0,
-          "day": 2,
-          "relevant_link": "https://www.sfcityguides.org/lombard-street/"
+          "relevant_link": "https://www.nps.gov/malu/index.htm"
         }
       ]
     }

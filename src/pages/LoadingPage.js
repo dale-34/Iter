@@ -38,15 +38,12 @@ const LoadingPage = () => {
         } = location.state;
 
         // Fetching userId if user is logged in, and if not setting userId to guest id which is 999
-
         const generateVacation = async () => {
             if (surpriseMode) {
                 try {
-                    const response = await axios.post("/openai/surprise-me",
-                      {
-                        correctuserId
-                      }
-                    );
+                    const response = await axios.post("/openai/surprise-me", {
+                        correctuserId,
+                    });
                     console.log("Response tripId:", response.data.tripId); // Ensure this is logged to see if tripId is available
                     navigate("/ItineraryPage", {
                         state: {
