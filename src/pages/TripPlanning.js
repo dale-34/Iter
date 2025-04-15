@@ -98,7 +98,7 @@ const TripPlanning = () => {
           className="calendar mb-6"
           style={
             errors.startDate || errors.endDate
-              ? { border: "3px solid red", borderRadius: "20px" }
+              ? { border: "4px solid red", borderRadius: "20px" }
               : {}
           }
         >
@@ -114,7 +114,7 @@ const TripPlanning = () => {
           className="budget mb-6"
           style={{
             backgroundColor: "#8ac6d1",
-            border: errors.budget ? "3px solid red" : "none",
+            border: errors.budget ? "4px solid red" : "none",
             borderRadius: "20px",
             margin: "50px 200px",
           }}
@@ -130,7 +130,7 @@ const TripPlanning = () => {
           className="transportation mb-6"
           style={
             errors.transport || errors.startLocation
-              ? { border: "3px solid red", borderRadius: "20px" }
+              ? { border: "4px solid red", borderRadius: "20px" }
               : {}
           }
         >
@@ -148,7 +148,7 @@ const TripPlanning = () => {
           className="destinations mb-6"
           style={{
             backgroundColor: "red",
-            border: errors.destination || errors.endLocation ? "3px solid red" : "none",
+            border: errors.destination || errors.endLocation ? "4px solid red" : "none",
             borderRadius: "20px",
             margin: "50px 200px",
           }}
@@ -209,7 +209,7 @@ const TripPlanning = () => {
           className="accommodations mb-6"
           style={{
             backgroundColor: "#5b8e89",
-            border: errors.accommodation ? "3px solid red" : "none",
+            border: errors.accommodation ? "4px solid red" : "none",
             borderRadius: "20px",
             margin: "50px 200px",
           }}
