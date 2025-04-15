@@ -226,10 +226,11 @@ async function getVacationPlan(tripId) {
 
             if (
                 reservation.type === "hotel" ||
-                reservation.type === "car_rental"
+                reservation.type === "motel" ||
+                reservation.type === "airBnB"
             ) {
                 accomodations.reservations.push(formattedReservation);
-            } else if (reservation.type === "flight") {
+            } else if (reservation.type === "flight" || reservation.type === "car_rental" || reservation.type === "train") {
                 accomodations.transportation.push(formattedReservation);
             }
         });
