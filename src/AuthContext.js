@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
     sessionStorage.setItem("token", newToken); // Optionally, use localStorage
 
     const decodedToken = jwtDecode(newToken);
-    setUserProfile({ username: decodedToken.username, profilePhoto: decodedToken.profilePhoto });
+    setUserProfile({ username: decodedToken.username, profilePhoto: decodedToken.profilePhoto, profileBackground: decodedToken.profileBackground });
     setUserId({ userId: decodedToken.userId });
   };
 

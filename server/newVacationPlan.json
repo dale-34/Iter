@@ -1,7 +1,7 @@
 {
-  "type": "food",
-  "title": "Bobby's BBQ",
-  "description": "A local favorite known for its slow-cooked, smoked meats and homemade sauces, offering a cozy atmosphere with outdoor seating.",
-  "cost": 15,
-  "relevant_link": "https://www.bobbysbbq.com"
+  "type": "activity",
+  "title": "Snorkeling at Molokini Crater",
+  "description": "Experience the underwater beauty of Molokini Crater, a partially submerged volcanic caldera, while snorkeling in crystal clear waters filled with vibrant marine life.",
+  "cost": 100,
+  "relevant_link": "https://www.pacificwhale.org/maui/molokini-snorkeling/"
 }

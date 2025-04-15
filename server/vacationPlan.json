@@ -1,0 +1,93 @@
+{
+  "accomodations": {
+    "reservations": [
+      {
+        "name": "Cozy Beachfront Apartment",
+        "type": "AirBnB",
+        "estimated_cost": "$150 per night",
+        "description": "A beautiful beachfront apartment with stunning ocean views.",
+        "reservation_link": "https://www.airbnb.com/rooms/12345678"
+      }
+    ],
+    "transportation": [
+      {
+        "name": "Round Trip Flight to Maui",
+        "type": "flight",
+        "estimated_cost": "$400",
+        "description": "Non-stop round trip flight to Maui from Los Angeles.",
+        "reservation_link": "https://www.expedia.com/Flights"
+      }
+    ]
+  },
+  "vacation": {
+    "destination": "Maui, Hawaii",
+    "minimum_budget": "$800",
+    "maximum_budget": "$1500",
+    "climate": "Tropical, warm year-round",
+    "latitude": 20,
+    "longitude": -156,
+    "day1": {
+      "day_description": "Arrive in Maui and explore the local beaches.",
+      "activities": [
+        {
+          "type": "activity",
+          "title": "Kaanapali Beach",
+          "description": "A popular beach known for its beautiful sand and clear waters.",
+          "cost": 0,
+          "day": 1,
+          "relevant_link": "https://www.gohawaii.com/islands/maui/regions/kaanapali"
+        },
+        {
+          "type": "food",
+          "title": "Duke's Beach House",
+          "description": "Enjoy fresh seafood and Hawaiian cuisine with a beach view.",
+          "cost": 50,
+          "day": 1,
+          "relevant_link": "https://www.dukesmaui.com/"
+        }
+      ]
+    },
+    "day2": {
+      "day_description": "Visit Haleakalā National Park and witness the sunrise.",
+      "activities": [
+        {
+          "type": "activity",
+          "title": "Haleakalā National Park",
+          "description": "Experience the stunning sunrise and explore the park's natural beauty.",
+          "cost": 30,
+          "day": 2,
+          "relevant_link": "https://www.nps.gov/hale/index.htm"
+        },
+        {
+          "type": "food",
+          "title": "Kula Lodge Restaurant",
+          "description": "Enjoy farm-to-table dining with a view of the island.",
+          "cost": 45,
+          "day": 2,
+          "relevant_link": "https://www.kulalodge.com/"
+        }
+      ]
+    },
+    "day3": {
+      "day_description": "Snorkeling adventure in Molokini Crater.",
+      "activities": [
+        {
+          "type": "activity",
+          "title": "Molokini Crater Snorkeling Tour",
+          "description": "A snorkeling trip to a partially submerged volcanic caldera.",
+          "cost": 100,
+          "day": 3,
+          "relevant_link": "https://www.mauisnorkeling.com/molokini-snorkeling/"
+        },
+        {
+          "type": "food",
+          "title": "The Beach House",
+          "description": "Relax and enjoy island-inspired dishes near the water.",
+          "cost": 60,
+          "day": 3,
+          "relevant_link": "https://www.thebeachhousemaui.com/"
+        }
+      ]
+    }
+  }
+}
