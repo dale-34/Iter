@@ -2,90 +2,108 @@
   "accomodations": {
     "reservations": [
       {
-        "name": "Cozy Beachfront Apartment",
+        "name": "Cozy Apartment near Midtown",
         "type": "AirBnB",
-        "estimated_cost": "$150 per night",
-        "description": "A beautiful beachfront apartment with stunning ocean views.",
+        "estimated_cost": "$600",
+        "description": "A charming 2-bedroom apartment located in the heart of Atlanta, close to popular attractions.",
         "reservation_link": "https://www.airbnb.com/rooms/12345678"
       }
     ],
     "transportation": [
       {
-        "name": "Round Trip Flight to Maui",
-        "type": "flight",
-        "estimated_cost": "$400",
-        "description": "Non-stop round trip flight to Maui from Los Angeles.",
-        "reservation_link": "https://www.expedia.com/Flights"
+        "name": "Economy Car Rental",
+        "type": "car_rental",
+        "estimated_cost": "$250",
+        "description": "Economy car rental for the duration of your trip for convenient transportation around Atlanta.",
+        "reservation_link": "https://www.enterprise.com/en/home.html"
       }
     ]
   },
   "vacation": {
-    "destination": "Maui, Hawaii",
-    "minimum_budget": "$800",
-    "maximum_budget": "$1500",
-    "climate": "Tropical, warm year-round",
-    "latitude": 20,
-    "longitude": -156,
+    "climate": "Mild and pleasant with a chance of rain",
+    "latitude": 33,
+    "longitude": -84,
     "day1": {
-      "day_description": "Arrive in Maui and explore the local beaches.",
+      "day_description": "Arrival in Atlanta, exploring local area and enjoying local cuisine.",
       "activities": [
         {
-          "type": "activity",
-          "title": "Kaanapali Beach",
-          "description": "A popular beach known for its beautiful sand and clear waters.",
-          "cost": 0,
+          "type": "food",
+          "title": "The Flying Biscuit Café",
+          "description": "Famous for its breakfast and homestyle meals.",
+          "cost": 22.5,
           "day": 1,
-          "relevant_link": "https://www.gohawaii.com/islands/maui/regions/kaanapali"
+          "relevant_link": "https://www.flyingbiscuits.com"
         },
         {
-          "type": "food",
-          "title": "Duke's Beach House",
-          "description": "Enjoy fresh seafood and Hawaiian cuisine with a beach view.",
-          "cost": 50,
+          "type": "activity",
+          "title": "Visit Piedmont Park",
+          "description": "Enjoy a stroll or a picnic in this large urban park with beautiful scenery.",
+          "cost": 0,
           "day": 1,
-          "relevant_link": "https://www.dukesmaui.com/"
+          "relevant_link": "https://www.piedmontpark.org"
         }
       ]
     },
     "day2": {
-      "day_description": "Visit Haleakalā National Park and witness the sunrise.",
+      "day_description": "Exploring Atlanta's history and culture.",
       "activities": [
         {
-          "type": "activity",
-          "title": "Haleakalā National Park",
-          "description": "Experience the stunning sunrise and explore the park's natural beauty.",
+          "type": "food",
+          "title": "Mary Mac's Tea Room",
+          "description": "A historic restaurant serving classic Southern comfort food.",
           "cost": 30,
           "day": 2,
-          "relevant_link": "https://www.nps.gov/hale/index.htm"
+          "relevant_link": "https://www.marymacs.com"
         },
         {
-          "type": "food",
-          "title": "Kula Lodge Restaurant",
-          "description": "Enjoy farm-to-table dining with a view of the island.",
-          "cost": 45,
+          "type": "activity",
+          "title": "Georgia Aquarium",
+          "description": "One of the largest aquariums in the world, home to thousands of marine animals.",
+          "cost": 40,
           "day": 2,
-          "relevant_link": "https://www.kulalodge.com/"
+          "relevant_link": "https://www.georgiaaquarium.org"
         }
       ]
     },
     "day3": {
-      "day_description": "Snorkeling adventure in Molokini Crater.",
+      "day_description": "Day trip to explore the World of Coca-Cola and the vibrant local markets.",
       "activities": [
         {
-          "type": "activity",
-          "title": "Molokini Crater Snorkeling Tour",
-          "description": "A snorkeling trip to a partially submerged volcanic caldera.",
-          "cost": 100,
+          "type": "food",
+          "title": "Ponce City Market",
+          "description": "A historic site turned marketplace offering various food vendors and shops.",
+          "cost": 25,
           "day": 3,
-          "relevant_link": "https://www.mauisnorkeling.com/molokini-snorkeling/"
+          "relevant_link": "https://poncecitymarket.com"
         },
         {
-          "type": "food",
-          "title": "The Beach House",
-          "description": "Relax and enjoy island-inspired dishes near the water.",
-          "cost": 60,
+          "type": "activity",
+          "title": "World of Coca-Cola",
+          "description": "A museum showcasing the history of Coca-Cola, complete with tastings.",
+          "cost": 20,
           "day": 3,
-          "relevant_link": "https://www.thebeachhousemaui.com/"
+          "relevant_link": "https://www.worldofcoca-cola.com"
+        }
+      ]
+    },
+    "day4": {
+      "day_description": "Relaxing morning and departure back to Gainesville.",
+      "activities": [
+        {
+          "type": "food",
+          "title": "Highlands Bar & Grill",
+          "description": "Enjoy brunch at this renowned restaurant known for its Southern cuisine.",
+          "cost": 35,
+          "day": 4,
+          "relevant_link": "https://www.highlandsbarandgrill.com"
+        },
+        {
+          "type": "activity",
+          "title": "Centennial Olympic Park",
+          "description": "A beautiful park with fountains and notable monuments from the 1996 Olympics.",
+          "cost": 0,
+          "day": 4,
+          "relevant_link": "https://www.centennialpark.com"
         }
       ]
     }
