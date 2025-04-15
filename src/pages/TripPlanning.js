@@ -122,7 +122,7 @@ const TripPlanning = () => {
           <h2 className="budgetTitle">What is your budget for this trip?</h2>
           <p className="budgetSubtitle">Designate the minimum and maximum amounts you want to spend on this trip.</p>
           <BudgetSlider onBudgetChange={setBudget} />
-          {errors.budget && <p className="warning-text">Budget selection is required.</p>}
+          {errors.budget && <p className="warning-text">Budget minimum and maximum is required.</p>}
         </div>
 
         {/* Transportation Section */}
@@ -140,7 +140,7 @@ const TripPlanning = () => {
             startLocation={startLocation}
           />
           {errors.startLocation && <p className="warning-text">*Starting location is required*</p>}
-          {errors.transport && <p className="warning-text">*Transport type is required*</p>}
+          {errors.transport && <p className="warning-text">*Transportation choice is required*</p>}
         </div>
 
         {/* Destinations Section */}
@@ -153,7 +153,22 @@ const TripPlanning = () => {
             margin: "50px 200px",
           }}
         >
-          <Destinations onDestinationChange={setDestination} />
+          {/* <Destinations onDestinationChange={setDestination} /> */}
+          <Destinations
+            onDestinationChange={(selected) => {
+              setDestination(selected);
+
+              // Clear destination error if something was selected
+              if (selected.length > 0) {
+                setErrors((prev) => ({ ...prev, destination: false }));
+              }
+
+              // Clear endLocation error if "I have a place in mind" is not selected
+              if (!selected.includes("I have a place in mind")) {
+                setErrors((prev) => ({ ...prev, endLocation: false }));
+              }
+            }}
+          />
           {errors.destination && (
             <p className="warning-text">Please choose at least one destination.</p>
           )}
@@ -168,13 +183,22 @@ const TripPlanning = () => {
                 id="end-location"
                 placeholder="Ex: Paris, France"
                 value={endLocation}
-                onChange={(e) => setEndLocation(e.target.value)}
+                // onChange={(e) => setEndLocation(e.target.value)}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setEndLocation(value);
+                
+                  // Clear endLocation error if input is not empty
+                  if (value.trim() !== "") {
+                    setErrors((prev) => ({ ...prev, endLocation: false }));
+                  }
+                }}
                 className={`w-4/5 p-2 border rounded-md shadow-sm ${
                   errors.endLocation ? "border-yellow-400" : "border-gray-300"
                 }`}
               />
               {errors.endLocation && (
-                <p className="text-red-500 text-sm mt-1">Specific destination is required.</p>
+                <p className="text-red-500 text-sm mt-1">End destination is required.</p>
               )}
             </div>
           )}
@@ -191,7 +215,7 @@ const TripPlanning = () => {
           }}
         >
           <HousingAccommodations onHousingChange={setAccommodation} />
-          {errors.accommodation && (<p className="warning-text">*Housing option is required*</p>)}
+          {errors.accommodation && (<p className="warning-text">*Housing accomodation choice is required*</p>)}
         </div>
 
         {/* Submit Button */}
