@@ -5,7 +5,7 @@
 .destinations__title {
     font-size: 32px;
     font-weight: bold;
-    color: black;
+    color: rgb(255, 255, 255);
     padding-top: 20px;
 }
 
@@ -84,7 +84,7 @@
 /* Carousel Section */
 .destinations__carousel-title {
     font-size: 18px;
-    color: #333;
+    color: #ffffff;
     font-weight: bold;
     color: black;
     margin-bottom: 10px;
@@ -154,4 +154,9 @@
 .destinations__custom-button:hover {
     background: #d0d0d0;
     transform: translateY(-2px);
+}
+
+.destinations__custom-button {
+    background-color: white;
+    margin-bottom: 20px;
 }

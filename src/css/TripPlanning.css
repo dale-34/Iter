@@ -64,14 +64,14 @@ p {
 .calendarTitle {
     font-size: 32px;
     font-weight: bold;
-    color: #333;
+    color: #ffffff;
     padding-top: 20px;
     text-align: center;
 }
 
 .calendarSubtitle {
     font-size: 18px;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -85,7 +85,7 @@ p {
 .budgetTitle {
     font-size: 32px;
     font-weight: bold;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 20px;
     padding-top: 20px;
     text-align: center;
@@ -93,7 +93,7 @@ p {
 
 .budgetSubtitle {
     font-size: 18px;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 10px;
     text-align: center;
 }

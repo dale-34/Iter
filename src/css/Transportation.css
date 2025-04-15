@@ -5,7 +5,7 @@
     margin: 20px auto;
     text-align: center;
     /* background: rgb(249, 232, 220); */
-    color: #333;
+    color: #ffffff;
 }
 
 /* Title styling to match Trip Planning */
@@ -13,7 +13,7 @@
     padding-top: 20px;
     font-size: 32px;
     font-weight: bold;
-    color: #333;
+    color: #ffffff;
 }
 
 .transport__input-box {
@@ -128,6 +128,10 @@
     background: black;
     color: white;
     font-weight: bold;
+}
+
+.transport__options {
+  padding-bottom: 20px;
 }
 
 /* Selected Option Display

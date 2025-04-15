@@ -147,7 +147,7 @@ const TripPlanning = () => {
         <div
           className="destinations mb-6"
           style={{
-            backgroundColor: "#8ac6d1",
+            backgroundColor: "red",
             border: errors.destination || errors.endLocation ? "3px solid red" : "none",
             borderRadius: "20px",
             margin: "50px 200px",
@@ -184,7 +184,7 @@ const TripPlanning = () => {
         <div
           className="accommodations mb-6"
           style={{
-            backgroundColor: "#8ac6d1",
+            backgroundColor: "#5b8e89",
             border: errors.accommodation ? "3px solid red" : "none",
             borderRadius: "20px",
             margin: "50px 200px",
