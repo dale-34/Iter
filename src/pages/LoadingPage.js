@@ -42,7 +42,7 @@ const LoadingPage = () => {
         const generateVacation = async () => {
             if (surpriseMode) {
                 try {
-                    const response = await axios.post("/openai/surprise-me",
+                    const response = await axios.post("http://localhost:3001/openai/surprise-me",
                       {
                         correctuserId
                       }
@@ -59,7 +59,7 @@ const LoadingPage = () => {
                 }
             } else {
                 try {
-                    const response = await axios.post("/openai/generate-vacation",
+                    const response = await axios.post("http://localhost:3001/openai/generate-vacation",
                         {
                             startDate,
                             endDate,

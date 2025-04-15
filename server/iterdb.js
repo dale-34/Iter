@@ -19,7 +19,7 @@ const pool = mysql.createPool({
 async function insertPlan(vacationPlan, correctuserId, extraInputs) {
     try {
         const [startDate, endDate, budget, destination, startingLocation] = extraInputs;
-        const tripName = "MyTrip";
+        const tripName = `${destination} Trip`;
 
         // Formatting dates:
         function convertToISO(dateString) {
@@ -239,7 +239,7 @@ async function getUserTrips(userId) {
 
         // Step 1: Get the user's trips from the trips table
         const tripQuery = `
-            SELECT id, trip_name, start_date, end_date, starting_point, destination, min_budget, max_budget
+            SELECT id, trip_name, start_date, end_date, starting_point, destination, min_budget, max_budget, latitude, longitude
             FROM trips
             WHERE user_id = ?;
         `;
