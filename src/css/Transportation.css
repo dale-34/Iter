@@ -32,7 +32,7 @@
     padding: 12px;
     font-size: 16px;
     border-radius: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
     background-color: #f9f9f9;
     outline: none;
     transition: border 0.2s ease-in-out;
@@ -47,7 +47,7 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0;
+    background-color: rgb(255, 255, 255);
     border-radius: 9999px;
     padding: 10px 16px;
     font-size: 18px;
@@ -61,6 +61,8 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: black;
+    font-weight: bold;
   }
   
   .transport__tag-close {
@@ -126,7 +128,7 @@
 
 .transport__option.selected {
     background: black;
-    color: white;
+    color: rgb(255, 255, 255);
     font-weight: bold;
 }
 
