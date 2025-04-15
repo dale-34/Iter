@@ -7,6 +7,7 @@ import LoadingPage from "./pages/LoadingPage.js";
 import ItineraryPage from "./pages/ItineraryPage.js";
 import ProfilePage from "./pages/ProfilePage.js";
 import TestLoginPage from "./pages/TestLoginPage.js";
+import './App.css';
 
 
 function App() {

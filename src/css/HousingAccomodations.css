@@ -5,17 +5,16 @@
     margin: 20px auto;
     text-align: center;
     /* background: rgb(249, 232, 220); */
-    padding: 20px;
-    font-family: Arial, sans-serif;
     color: #333;
 }
 
 /* Title styling to match Trip Planning */
 .housing__title {
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
     color: #333;
     margin-bottom: 20px;
+    padding-top:20px;
 }
 
 /* Subtitle styling */

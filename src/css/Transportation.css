@@ -5,17 +5,15 @@
     margin: 20px auto;
     text-align: center;
     /* background: rgb(249, 232, 220); */
-    padding: 20px;
-    font-family: Arial, sans-serif;
     color: #333;
 }
 
 /* Title styling to match Trip Planning */
 .transport__title {
-    font-size: 25px;
+    padding-top: 20px;
+    font-size: 32px;
     font-weight: bold;
     color: #333;
-    margin-bottom: 20px;
 }
 
 .transport__input-box {

@@ -27,7 +27,9 @@ html, body {
     font-size: 54px;
     font-weight: bold;
     color: #333;
-    margin-top: 40px;
+    padding-top: 40px;
+    margin: auto;
+    width: 50%;
 }
 
 /* Paragraph styling */
@@ -60,33 +62,33 @@ p {
 }
 
 .calendarTitle {
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
     color: #333;
-    padding-top: 40px;
+    padding-top: 20px;
     text-align: center;
 }
 
 .calendarSubtitle {
     font-size: 18px;
     color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     text-align: center;
 }
 
 .budget {
-    background-color: #5b8e89;;
+    background-color: #5b8e89 !important;
     margin: 50px 200px;
     border-radius: 30px;
 }
 
 .budgetTitle {
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
     color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    padding-top: 20px;
     text-align: center;
-    padding-top: 40px;
 }
 
 .budgetSubtitle {
@@ -97,19 +99,26 @@ p {
 }
 
 .transportation {
-    background-color: #5b8e89;;
+    background-color: #5b8e89;
     margin: 50px 200px;
     border-radius: 30px;
 }
 
 .destinations {
-    background-color: #5b8e89;;
+    background-color: #5b8e89 !important;
     margin: 50px 200px;
     border-radius: 30px;
 }
 
 .accomodations {
-    background-color: #5b8e89;;
+    background-color: #5b8e89 !important;
     margin: 50px 200px;
     border-radius: 30px;
+}
+
+.warning-text {
+    color: #5e0000;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
