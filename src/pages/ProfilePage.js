@@ -7,19 +7,21 @@ const ProfilePage = () => {
     return (
         <div>
             <Header />
-            <div className='profile-container'>
-                <div className='profile-info'>
-                    <img src='./images/island.jpg' alt='Profile Background' className='profile-bg'/>
-                    <img src="./images/albert.png" alt="Profile Picture" className="profile-pic"/>
-                    <h1>Welcome, <br />FirstName LastName!</h1>
+            <div className='profile-page'>
+                <div className='profile-container'>
+                    <div className='profile-info'>
+                        <img src='./images/island.jpg' alt='Profile Background' className='profile-bg'/>
+                        <img src="./images/albert.png" alt="Alligator Mascot" className="profile-pic"/>
+                        <h1>Welcome, <br />FirstName LastName!</h1>
+                    </div>
                 </div>
-            </div>
-            <div className = 'map'>
-                <h1>Your Trips</h1>
-                <WorldMap />
-            </div>
-            <div className='upcoming-trips'>
+                <div className = 'map'>
+                    <h1>Your Trips</h1>
+                    <WorldMap />
+                </div>
+                <div className='upcoming-trips'>
 
+                </div>
             </div>
         </div>
     );

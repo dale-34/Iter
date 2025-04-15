@@ -15,7 +15,7 @@ export const HousingAccommodations = ({ onHousingChange }) => {
 
   return (
     <div className="housing">
-      <h2 className="housing__title">Where do you prefer to stay?</h2>
+      <h2 className="housing__title">Where would you prefer to stay?</h2>
       <div className="housing__image">
         <img 
           src="https://www.travelandleisure.com/thmb/OiDnPGo3k9QLRT9__TPhFZcr7PU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/rosewood-carlyle-presidential-suite-LUXESUITE0122-0046808a88924e57922d78c7f1d9ca60.jpg" 

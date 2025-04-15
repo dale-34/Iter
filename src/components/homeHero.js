@@ -8,9 +8,12 @@ export const HomeHero = () => {
       {/* Left Section: Text and Buttons */}
       <section className="home-hero-text">
         <h2 className="home-hero-title">
-          <span>Begin Your</span>
+          {/* <span>Begin Your</span>
           <br />
-          <span>Adventure Today</span>
+          <span>Adventure Today!</span> */}
+          <span>Experience Travel,</span>
+          <br />
+          <span>Redefined</span>
         </h2>
         <ActionButtons />
       </section>
