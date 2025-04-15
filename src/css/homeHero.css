@@ -11,9 +11,11 @@
   
 .home-hero-text {
   width: 50%;
-  color: rgb(131, 131, 131);
-  border: 0caps;
-  border-color: rgb(0,0,0);
+  color: rgb(0, 0, 0);
+  /* -webkit-text-stroke: 1px black;
+  text-stroke: 1px black;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent; */
 }
 
 .home-hero-title {

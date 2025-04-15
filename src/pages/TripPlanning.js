@@ -153,22 +153,7 @@ const TripPlanning = () => {
             margin: "50px 200px",
           }}
         >
-          {/* <Destinations onDestinationChange={setDestination} /> */}
-          <Destinations
-            onDestinationChange={(selected) => {
-              setDestination(selected);
-
-              // Clear destination error if something was selected
-              if (selected.length > 0) {
-                setErrors((prev) => ({ ...prev, destination: false }));
-              }
-
-              // Clear endLocation error if "I have a place in mind" is not selected
-              if (!selected.includes("I have a place in mind")) {
-                setErrors((prev) => ({ ...prev, endLocation: false }));
-              }
-            }}
-          />
+          <Destinations onDestinationChange={setDestination} />
           {errors.destination && (
             <p className="warning-text">Please choose at least one destination.</p>
           )}
@@ -183,16 +168,7 @@ const TripPlanning = () => {
                 id="end-location"
                 placeholder="Ex: Paris, France"
                 value={endLocation}
-                // onChange={(e) => setEndLocation(e.target.value)}
-                onChange={(e) => {
-                  const value = e.target.value;
-                  setEndLocation(value);
-                
-                  // Clear endLocation error if input is not empty
-                  if (value.trim() !== "") {
-                    setErrors((prev) => ({ ...prev, endLocation: false }));
-                  }
-                }}
+                onChange={(e) => setEndLocation(e.target.value)}
                 className={`w-4/5 p-2 border rounded-md shadow-sm ${
                   errors.endLocation ? "border-yellow-400" : "border-gray-300"
                 }`}
