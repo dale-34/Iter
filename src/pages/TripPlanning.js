@@ -90,7 +90,7 @@ const TripPlanning = () => {
 
       <div className="trip-planning container pb-10">
         <div className="surveyIntro">
-          <h1 className="surveyTitle">Before we begin, tell us:</h1>
+          <h1 className="surveyTitle">Answer a few questions, and we'll take it from there.</h1>
         </div>
 
         {/* Calendar Section */}
@@ -98,15 +98,15 @@ const TripPlanning = () => {
           className="calendar mb-6"
           style={
             errors.startDate || errors.endDate
-              ? { border: "3px solid #facc15", padding: "20px", borderRadius: "20px" }
+              ? { border: "4px solid red", borderRadius: "20px" }
               : {}
           }
         >
           <h2 className="calendarTitle">What dates do you plan on traveling?</h2>
           <p className="calendarSubtitle">Select the dates which you want to travel during.</p>
           <CalendarComponent onDateChange={handleDateChange} />
-          {errors.startDate && <p className="text-red-500 text-sm mt-1">Start date is required.</p>}
-          {errors.endDate && <p className="text-red-500 text-sm mt-1">End date is required.</p>}
+          {errors.startDate && <p className="warning-text">*Start date is required*</p>}
+          {errors.endDate && <p className="warning-text">*End date is required*</p>}
         </div>
 
         {/* Budget Section */}
@@ -114,8 +114,7 @@ const TripPlanning = () => {
           className="budget mb-6"
           style={{
             backgroundColor: "#8ac6d1",
-            border: errors.budget ? "3px solid #facc15" : "none",
-            padding: "20px",
+            border: errors.budget ? "4px solid red" : "none",
             borderRadius: "20px",
             margin: "50px 200px",
           }}
@@ -123,7 +122,7 @@ const TripPlanning = () => {
           <h2 className="budgetTitle">What is your budget for this trip?</h2>
           <p className="budgetSubtitle">Designate the minimum and maximum amounts you want to spend on this trip.</p>
           <BudgetSlider onBudgetChange={setBudget} />
-          {errors.budget && <p className="text-red-500 text-sm mt-1">Budget selection is required.</p>}
+          {errors.budget && <p className="warning-text">Budget minimum and maximum is required.</p>}
         </div>
 
         {/* Transportation Section */}
@@ -131,7 +130,7 @@ const TripPlanning = () => {
           className="transportation mb-6"
           style={
             errors.transport || errors.startLocation
-              ? { border: "3px solid #facc15", padding: "20px", borderRadius: "20px" }
+              ? { border: "4px solid red", borderRadius: "20px" }
               : {}
           }
         >
@@ -140,24 +139,38 @@ const TripPlanning = () => {
             onStartLocationChange={setStartLocation}
             startLocation={startLocation}
           />
-          {errors.transport && <p className="text-red-500 text-sm mt-1">Transport type is required.</p>}
-          {errors.startLocation && <p className="text-red-500 text-sm mt-1">Starting location is required.</p>}
+          {errors.startLocation && <p className="warning-text">*Starting location is required*</p>}
+          {errors.transport && <p className="warning-text">*Transportation choice is required*</p>}
         </div>
 
         {/* Destinations Section */}
         <div
           className="destinations mb-6"
           style={{
-            backgroundColor: "#8ac6d1",
-            border: errors.destination || errors.endLocation ? "3px solid #facc15" : "none",
-            padding: "20px",
+            backgroundColor: "red",
+            border: errors.destination || errors.endLocation ? "4px solid red" : "none",
             borderRadius: "20px",
             margin: "50px 200px",
           }}
         >
-          <Destinations onDestinationChange={setDestination} />
+          {/* <Destinations onDestinationChange={setDestination} /> */}
+          <Destinations
+            onDestinationChange={(selected) => {
+              setDestination(selected);
+
+              // Clear destination error if something was selected
+              if (selected.length > 0) {
+                setErrors((prev) => ({ ...prev, destination: false }));
+              }
+
+              // Clear endLocation error if "I have a place in mind" is not selected
+              if (!selected.includes("I have a place in mind")) {
+                setErrors((prev) => ({ ...prev, endLocation: false }));
+              }
+            }}
+          />
           {errors.destination && (
-            <p className="text-red-500 text-sm mt-1">Please choose at least one destination.</p>
+            <p className="warning-text">Please choose at least one destination.</p>
           )}
 
           {destination.includes("I have a place in mind") && (
@@ -170,13 +183,22 @@ const TripPlanning = () => {
                 id="end-location"
                 placeholder="Ex: Paris, France"
                 value={endLocation}
-                onChange={(e) => setEndLocation(e.target.value)}
+                // onChange={(e) => setEndLocation(e.target.value)}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setEndLocation(value);
+                
+                  // Clear endLocation error if input is not empty
+                  if (value.trim() !== "") {
+                    setErrors((prev) => ({ ...prev, endLocation: false }));
+                  }
+                }}
                 className={`w-4/5 p-2 border rounded-md shadow-sm ${
                   errors.endLocation ? "border-yellow-400" : "border-gray-300"
                 }`}
               />
               {errors.endLocation && (
-                <p className="text-red-500 text-sm mt-1">Specific destination is required.</p>
+                <p className="text-red-500 text-sm mt-1">End destination is required.</p>
               )}
             </div>
           )}
@@ -186,17 +208,14 @@ const TripPlanning = () => {
         <div
           className="accommodations mb-6"
           style={{
-            backgroundColor: "#8ac6d1",
-            border: errors.accommodation ? "3px solid #facc15" : "none",
-            padding: "20px",
+            backgroundColor: "#5b8e89",
+            border: errors.accommodation ? "4px solid red" : "none",
             borderRadius: "20px",
             margin: "50px 200px",
           }}
         >
           <HousingAccommodations onHousingChange={setAccommodation} />
-          {errors.accommodation && (
-            <p className="text-red-500 text-sm mt-1">Housing option is required.</p>
-          )}
+          {errors.accommodation && (<p className="warning-text">*Housing accomodation choice is required*</p>)}
         </div>
 
         {/* Submit Button */}

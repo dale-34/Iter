@@ -3,8 +3,7 @@
     max-width: 900px;
     margin: 0 auto;
     padding: 20px;
-    /* background-color: rgba(255, 232, 214, 1.0); Light beige from previous styles */
-    background-color: white;
+    background-color: rgb(255, 243, 230);
 }
 
 /* Title Positioned at the Top */
