@@ -42,7 +42,7 @@ router.post("/generate-vacation", async (req, res) => {
             "reservations": [
                 {
                 "name": "name of the booking",
-                "type": "hotel, apartment, house, hostel",
+                "type": "hotel, AirBnb, Motel, or NULL",
                 "estimated_cost": "estimated cost of the booking",
                 "description": "brief description to the booking",
                 "reservation_link": "URL to the booking"
@@ -51,7 +51,7 @@ router.post("/generate-vacation", async (req, res) => {
             "transportation": [
                 {
                 "name": "name of the booking",
-                "type": "rental car, train, flight, or N/A",
+                "type": "rental car, train, flight, or NULL",
                 "estimated_cost": "estimated cost of the booking",
                 "description": "brief description to the booking",
                 "reservation_link": "URL to the booking"
@@ -166,7 +166,7 @@ router.post("/surprise-me", async (req, res) => {
             "reservations": [
                 {
                 "name": "name of the booking",
-                "type": "hotel, apartment, house, hostel",
+                "type": "hotel, AirBnb, Motel, or NULL",
                 "estimated_cost": "estimated cost of the booking",
                 "description": "brief description to the booking",
                 "reservation_link": "URL to the booking"
@@ -175,7 +175,7 @@ router.post("/surprise-me", async (req, res) => {
             "transportation": [
                 {
                 "name": "name of the booking",
-                "type": "rental car, train, flight, or N/A",
+                "type": "rental car, train, flight, or NULL",
                 "estimated_cost": "estimated cost of the booking",
                 "description": "brief description to the booking",
                 "reservation_link": "URL to the booking"
@@ -265,7 +265,6 @@ router.post("/replace-activity", async (req, res) => {
     try {
         const { activityId, title} = req.body;
 
-        // Build a prompt to generate a replacement activity
         const prompt = `Replace the following vacation activity with a new suggestion:
         Current activity: 
         Title: ${title}
