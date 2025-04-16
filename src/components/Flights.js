@@ -6,7 +6,15 @@ const Flights = ({ flights = [], hotels = [] }) => {
         <div className="flights-container">
             <h1 className="section-title">Reservations</h1>
             <div className="reservation-card">
-            <h2 className="section-title">Flights</h2>
+            <h2 className="section-title"> {
+                flights[0].type === "car_rental"
+                ? "Car Rental"
+                : flights[0].type === "flight"
+                ? "Flight"
+                : flights[0].type === "train"
+                ? "Train"
+                : flights[0].type
+            }</h2>
             <div className="flights-card">
                 {(!flights || flights.length === 0) && (
                     <p>No flights available.</p>
@@ -22,7 +30,15 @@ const Flights = ({ flights = [], hotels = [] }) => {
                     </div>
                 ))}
             </div>
-            <h2 className="section-title">Hotels</h2>
+            <h2 className="section-title"> {
+                hotels[0].type === "hotel"
+                ? "Hotel"
+                : hotels[0].type === "airBnB"
+                ? "AirBnB"
+                : hotels[0].type === "motel"
+                ? "Motel"
+                : hotels[0].type
+            }</h2>
             <div className="flights-card">
                 {(!hotels || hotels.length === 0) && (
                     <p>No hotels populated.</p>
