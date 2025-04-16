@@ -11,7 +11,7 @@ const Recap = ({ vacationPlan = [], startDate, endDate, destination, budget, sta
                 <p><strong>Dates:</strong> 
                     {(startDate.toISOString().split("T")[0] === "2099-12-31" || endDate.toISOString().split("T")[0] === "2099-12-31") 
                     ? " Whenever you want" 
-                    : `${startDate.toDateString()} - ${endDate.toDateString()}`}
+                    : ` ${startDate.toDateString()} - ${endDate.toDateString()}`}
                 </p>
                 <p><strong>Budget:</strong> ${parseInt(budget[0])} - ${parseInt(budget[1])}</p>
                 <p><strong>Weather:</strong> {vacationPlan.vacation.climate} </p>
