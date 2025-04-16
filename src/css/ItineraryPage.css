@@ -1,9 +1,10 @@
 /* Container for Itinerary Page */
 .itinerary-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: rgb(255, 243, 230);
+    background-color: rgb(255, 246, 235);
+}
+
+.recap-card {
+    background-color: rgb(255, 255, 255);
 }
 
 /* Title Positioned at the Top */
@@ -31,7 +32,6 @@ h2 {
 
 /* General Card Styling */
 .itinerary-card {
-    background-color: rgba(245, 240, 235, 1); /* Soft neutral tone */
     padding: 20px;
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle depth */
