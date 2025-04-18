@@ -43,7 +43,7 @@ router.post("/generate-vacation", async (req, res) => {
                 {
                 "name": "name of the booking",
                 "type": "hotel, airBnB, motel, or NULL",
-                "estimated_cost": "estimated cost of the booking",
+                "estimated_cost": "REAL ESTIMATED COST OF THE BOOKING",
                 "description": "brief description to the booking",
                 "reservation_link": "URL to the booking"
                 }
@@ -52,7 +52,7 @@ router.post("/generate-vacation", async (req, res) => {
                 {
                 "name": "name of the booking",
                 "type": "car_rental, train, flight, or NULL",
-                "estimated_cost": "estimated cost of the booking",
+                "estimated_cost": "REAL ESTIMATED COST OF THE BOOKING",
                 "description": "brief description to the booking",
                 "reservation_link": "URL to the booking"
                 }
