@@ -58,14 +58,15 @@ function ItineraryPage() {
     const startDateFixed = new Date(startDate);
     const endDateFixed = new Date(endDate);
 
+
     return (
-        <div className="itinerary-wrapper">
+        <div className="itinerary-container">
             <Header />
             <div className="trip-title">
                 <h1>{destination || "No destination provided"} Trip</h1>
             </div>
-            <div className="itinerary-content">
-                <Recap
+            <div className="itinerary-wrapper">
+                <Recap className="recap"
                     vacationPlan={vacationPlan}
                     startDate={startDateFixed}
                     endDate={endDateFixed}

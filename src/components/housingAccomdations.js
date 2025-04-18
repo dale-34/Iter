@@ -1,17 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/HousingAccomodations.css";
 
 
 export const HousingAccommodations = ({ onHousingChange }) => {
   const [accommodation, setAccommodation] = useState("");
 
-  const handleChange = (event) => {
-    const newValue = event.target.value;
+  // const handleChange = (event) => {
+  //   const newValue = event.target.value;
+  //   if (onHousingChange) {
+  //     onHousingChange(newValue);
+  //   }
+  //   setAccommodation(newValue);
+  // };
+
+  const handleHousingChange = (housing) => {
+    setAccommodation(housing);
     if (onHousingChange) {
-      onHousingChange(newValue);
+      onHousingChange(housing);
     }
-    setAccommodation(newValue);
   };
+
+  useEffect(() => {
+    if (accommodation && onHousingChange) {
+      onHousingChange(accommodation);
+    }
+  }, [accommodation, onHousingChange]);
 
   return (
     <div className="housing">
@@ -24,13 +37,29 @@ export const HousingAccommodations = ({ onHousingChange }) => {
         />
       </div>
 
-      <select value={accommodation} onChange={handleChange} className="housing__dropdown">
+      <div className="housing__options">
+        {["Hotel", "AirBnB", "Motel", "I have my own housing"].map((option) => (
+          <button
+            key={option}
+            className={`housing__option ${
+              accommodation === option ? "selected" : ""
+            }`}
+            onClick={() => handleHousingChange(option)}
+          >
+            {option === "Own"
+              ? "I have my own transportation"
+              : option.charAt(0).toUpperCase() + option.slice(1)}
+          </button>
+        ))}
+      </div>
+
+      {/* <select value={accommodation} onChange={handleChange} className="housing__dropdown">
         <option value="">Select an option</option>
         <option value="hotel">Hotel</option>
         <option value="apartment">AirBnB</option>
         <option value="hostel">Motel</option>
         <option value="hostel">I have my own housing</option>
-      </select>
+      </select> */}
   </div> 
   );
 };

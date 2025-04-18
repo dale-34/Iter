@@ -39,14 +39,16 @@ async function insertPlan(vacationPlan, correctuserId, extraInputs) {
             startingLocation,
             destination,
             climate: vacationPlan.vacation.climate,
+            latitude: vacationPlan.vacation.latitude,
+            longitude: vacationPlan.vacation.longitude,
             minBudget: budget[0],
             maxBudget: budget[1],
         });
 
         // Step 1: Insert into `trips` Table (including climate info)
         const tripQuery = `
-            INSERT INTO trips (user_id, trip_name, start_date, end_date, starting_point, destination, climate, created_at, min_budget, max_budget)
-            VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), ?, ?);
+            INSERT INTO trips (user_id, trip_name, start_date, end_date, starting_point, destination, climate, latitude, longitude, created_at, min_budget, max_budget)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?, ?);
         `;
         const [tripResult] = await pool
             .promise()
@@ -58,6 +60,8 @@ async function insertPlan(vacationPlan, correctuserId, extraInputs) {
                 startingLocation,
                 destination,
                 vacationPlan.vacation.climate,
+                vacationPlan.vacation.latitude,
+                vacationPlan.vacation.longitude,
                 budget[0],
                 budget[1],
             ]);
@@ -139,7 +143,7 @@ async function getVacationPlan(tripId) {
 
         // Step 1: Get the user's trip details from the trips table
         const tripQuery = `
-            SELECT start_date, end_date, destination, starting_point, climate, min_budget, max_budget
+            SELECT start_date, end_date, destination, starting_point, climate, min_budget, max_budget, image
             FROM trips
             WHERE id = ?;
         `;
@@ -159,6 +163,7 @@ async function getVacationPlan(tripId) {
             climate,
             min_budget,
             max_budget,
+            image, // trip image
         } = tripResults[0];
 
         const budget = [min_budget, max_budget];
@@ -234,6 +239,7 @@ async function getVacationPlan(tripId) {
         const vacationPlan = {
             accomodations,
             vacation: {
+                image, // trip image
                 climate,
                 ...vacation,
             },

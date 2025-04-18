@@ -7,6 +7,11 @@
         "estimated_cost": "750.00",
         "description": "A modern hotel located in the heart of Sydney, offering luxurious accommodations and amenities.",
         "reservation_link": "https://www.hilton.com/en/hotels/sydhitw-hilton-sydney/"
+        "name": "Seaside Bliss Hotel",
+        "type": "hotel",
+        "estimated_cost": "$150 per night",
+        "description": "A beachfront hotel with stunning ocean views and modern amenities.",
+        "reservation_link": "https://www.examplehotelbooking.com/seasidebliss"
       }
     ],
     "transportation": [
@@ -16,6 +21,12 @@
         "estimated_cost": "1300.00",
         "description": "Round trip flight with a major airline, taking approximately 22 hours with a layover.",
         "reservation_link": "https://www.kayak.com/flights"
+
+        "name": "Local Car Rental",
+        "type": "car_rental",
+        "estimated_cost": "$50 per day",
+        "description": "Convenient car rental service near the hotel for exploring the area.",
+        "reservation_link": "https://www.examplecarrental.com"
       }
     ]
   },
@@ -39,6 +50,46 @@
           "cost": 39,
           "day": 1,
           "relevant_link": "https://www.sydneyoperahouse.com/visit/tours"
+    "destination": "Santa Monica, California",
+    "minimum_budget": "$500",
+    "maximum_budget": "$1200",
+    "climate": "Mild and sunny, with temperatures ranging from 60°F to 75°F",
+    "latitude": 34,
+    "longitude": -118,
+    "day1": {
+      "day_description": "Explore the Santa Monica Pier and local shops.",
+      "activities": [
+        {
+          "type": "activity",
+          "title": "Santa Monica Pier",
+          "description": "A fun amusement park and historic landmark by the beach.",
+          "cost": 0,
+          "day": 1,
+          "relevant_link": "https://www.santamonica.com/visit/pier/"
+        },
+        {
+          "type": "food",
+          "title": "The Lobster",
+          "description": "Seafood restaurant offering ocean views and fresh seafood dishes.",
+          "cost": 60,
+          "day": 1,
+          "relevant_link": "https://www.thelobster.com"
+        },
+        {
+          "type": "activity",
+          "title": "Bike Rental",
+          "description": "Rent a bike to ride along the beach and explore the boardwalk.",
+          "cost": 20,
+          "day": 1,
+          "relevant_link": "https://www.santamonica.com/bike-rentals/"
+        },
+        {
+          "type": "food",
+          "title": "Beaches Coffee Shop",
+          "description": "A casual coffee shop serving snacks and beverages near the beach.",
+          "cost": 10,
+          "day": 1,
+          "relevant_link": "NULL"
         }
       ]
     },
@@ -60,6 +111,40 @@
           "cost": 60,
           "day": 2,
           "relevant_link": "https://www.captaincook.com.au/"
+
+      "day_description": "Visit Venice Beach and relax on the sand.",
+      "activities": [
+        {
+          "type": "activity",
+          "title": "Venice Beach Boardwalk",
+          "description": "Famous for its lively atmosphere and street performers.",
+          "cost": 0,
+          "day": 2,
+          "relevant_link": "https://www.venicebeach.com"
+        },
+        {
+          "type": "food",
+          "title": "Café Buna",
+          "description": "A beachfront café known for its organic coffee and hearty breakfast.",
+          "cost": 20,
+          "day": 2,
+          "relevant_link": "https://www.cafebuna.com"
+        },
+        {
+          "type": "activity",
+          "title": "Muscle Beach Gym",
+          "description": "An iconic outdoor gym where you can work out or watch bodybuilders.",
+          "cost": 10,
+          "day": 2,
+          "relevant_link": "NULL"
+        },
+        {
+          "type": "food",
+          "title": "The Sidewalk Café",
+          "description": "Casual eatery with outdoor seating and a relaxed vibe.",
+          "cost": 25,
+          "day": 2,
+          "relevant_link": "http://sidewalkcafvenice.com"
         }
       ]
     }

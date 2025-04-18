@@ -35,14 +35,14 @@ router.post("/generate-vacation", async (req, res) => {
         IMPORTANT: 
         - Return ONLY valid JSON (no markdown, no code blocks).
         - Use this exact structure:
-        - For each day, list 2 different food AND 2 different activities for each day
+        - For each day, list 2 different food AND 2 different activities totaling for 4 activities on that day
         - Use REAL and RELEVANT website links, if the activity/place/accomodation do not have a website use "NULL" instead
         {
         "accomodations": {
             "reservations": [
                 {
                 "name": "name of the booking",
-                "type": "hotel, apartment, house, hostel",
+                "type": "hotel, airBnB, motel, or NULL",
                 "estimated_cost": "REAL ESTIMATED COST OF THE BOOKING",
                 "description": "brief description to the booking",
                 "reservation_link": "URL to the booking"
@@ -51,7 +51,7 @@ router.post("/generate-vacation", async (req, res) => {
             "transportation": [
                 {
                 "name": "name of the booking",
-                "type": "rental car, train, flight, or N/A",
+                "type": "car_rental, train, flight, or NULL",
                 "estimated_cost": "REAL ESTIMATED COST OF THE BOOKING",
                 "description": "brief description to the booking",
                 "reservation_link": "URL to the booking"
@@ -59,7 +59,9 @@ router.post("/generate-vacation", async (req, res) => {
             ]
         },
         "vacation": {
-            "climate": "general climate of the destination location",   
+            "climate": "general climate of the destination location",
+            "latitude": "general latitude of the end destination (TYPE INT)",
+            "longitude": "general longitude of the end destination (TYPE INT)",   
             "day1": {
                 "day_description": "general description going over agenda for the day",
                 "activities": [
@@ -156,17 +158,19 @@ router.post("/surprise-me", async (req, res) => {
         // OpenAI Prompt
         const prompt = `Plan a vacation to a random destination.
         Provide activities and daily breakdowns. Use bullet points and neatly organize your answer.
+        IMPORTANT:
         IMPORTANT: 
         - Return ONLY valid JSON (no markdown, no code blocks).
-        - Use this exact structure.
+        - Use this exact structure:
         - Generate a random amount of days between 1-5.
+        - For each day, list 2 different food AND 2 different activities totaling for 4 activities on that day
         - Use REAL and RELEVANT website links, if the activity/place/accomodation do not have a website use "NULL" instead.
         {
         "accomodations": {
             "reservations": [
                 {
                 "name": "name of the booking",
-                "type": "hotel, apartment, house, hostel",
+                "type": "hotel, airBnB, motel, or NULL",
                 "estimated_cost": "estimated cost of the booking",
                 "description": "brief description to the booking",
                 "reservation_link": "URL to the booking"
@@ -175,7 +179,7 @@ router.post("/surprise-me", async (req, res) => {
             "transportation": [
                 {
                 "name": "name of the booking",
-                "type": "rental car, train, flight, or N/A",
+                "type": "car_rental, train, flight, or NULL",
                 "estimated_cost": "estimated cost of the booking",
                 "description": "brief description to the booking",
                 "reservation_link": "URL to the booking"
@@ -183,6 +187,9 @@ router.post("/surprise-me", async (req, res) => {
             ]
         },
         "vacation": {
+            "destination": "destination name"
+            "minimum_budget": "estimated lower cost for the trip"
+            "maximum_budget": "estimated higher cost for the trip"
             "climate": "general climate of the destination location",   
             "latitude": "general latitude of the end destination (TYPE INT)",
             "longitude": "general longitude of the end destination (TYPE INT)",
@@ -234,11 +241,38 @@ router.post("/surprise-me", async (req, res) => {
             const jsonData = JSON.stringify(vacationPlan, null, 2);
             fs.writeFileSync("vacationPlan.json", jsonData);
 
+            // Default values for surprise me
+            const defaultDate = "2099-12-31";
+            const parseBudget = (value) => {
+                if (typeof value === "string") {
+                    return parseFloat(value.replace(/[^0-9.]/g, "")); // remove $ and parse
+                }
+                return value;
+            };
+            const minBudget = parseBudget(vacationPlan.vacation.minimum_budget ?? "0");
+            const maxBudget = parseBudget(vacationPlan.vacation.maximum_budget ?? "9999");
+            const budget = [minBudget, maxBudget];
+            const destination = vacationPlan.vacation.destination;
+            const defaultStartLocation = "Your Home!";
+
+            // Missing values hardcoded for surprise me
+            const extraInputs = [
+                defaultDate, // start date
+                defaultDate, // end date
+                budget, // budget
+                destination, // destination
+                defaultStartLocation, //startLocation
+            ];
+
             // Call function in DB to handle insertion with userId
             console.log("userId is as follows...");
             console.log(correctuserId);
+            console.log("Minimum is as follows...");
+            console.log(budget[0]);
+            console.log("Maximum is as follows...");
+            console.log(budget[1]);
             console.log("Calling insertPlan function...");
-            const tripId = await insertPlan(vacationPlan, correctuserId);
+            const tripId = await insertPlan(vacationPlan, correctuserId, extraInputs);
             console.log("insertPlan function executed.");
             console.log(tripId);
 
@@ -265,7 +299,6 @@ router.post("/replace-activity", async (req, res) => {
     try {
         const { activityId, title} = req.body;
 
-        // Build a prompt to generate a replacement activity
         const prompt = `Replace the following vacation activity with a new suggestion:
         Current activity: 
         Title: ${title}

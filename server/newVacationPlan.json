@@ -1,7 +1,7 @@
 {
   "type": "food",
-  "title": "Bobby's BBQ",
-  "description": "A local favorite known for its slow-cooked, smoked meats and homemade sauces, offering a cozy atmosphere with outdoor seating.",
-  "cost": 15,
-  "relevant_link": "https://www.bobbysbbq.com"
+  "title": "Pike Place Market",
+  "description": "A bustling marketplace in Seattle featuring fresh produce, unique crafts, and various local eateries.",
+  "cost": "Varies by vendor",
+  "relevant_link": "https://www.pikeplacemarket.org"
 }
