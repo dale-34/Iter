@@ -30,7 +30,7 @@ async function getImageURL(placeName) {
                 input: placeName,
                 inputtype: 'textquery',
                 fields: 'place_id',
-                key: GOOGLE_API_KEY
+                key: process.env.GOOGLE_API_KEY
             }
         });
 
@@ -41,14 +41,25 @@ async function getImageURL(placeName) {
             params: {
                 place_id: placeId,
                 fields: 'photos',
-                key: GOOGLE_API_KEY
+                key: process.env.GOOGLE_API_KEY
             }
         });
 
         const photoRef = detailsRes.data.result.photos?.[0]?.photo_reference;
         if (!photoRef) return null;
 
-        return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=${photoRef}&key=${process.env.GOOGLE_API_KEY}`;
+        // Redirect to Final URL
+        const photoRes = await axios.get(
+            `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=${photoRef}&key=${process.env.GOOGLE_API_KEY}`,
+            { maxRedirects: 0, validateStatus: status => status >= 200 && status < 400 }
+        );
+
+        let redirectUrl = photoRes.headers.location;
+        if (redirectUrl) {
+            redirectUrl = redirectUrl.replace("=s1600-w800", "=s800");
+        }
+        return redirectUrl || null;
+
     } catch (err) {
         console.error(`Image LookUp Failed for ${placeName}:`, err.message);
         return null;

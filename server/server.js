@@ -4,6 +4,7 @@ import cors from "cors";  // Import the cors package
 import authRoutes from "./authRoutes.js";
 import openaiRoutes from "./openaiRoutes.js";
 import iterdbRoutes from "./iterdbRoutes.js";
+import googleRoutes from "./googleRoutes.js";
 
 dotenv.config(); // Load environment variables
 
@@ -21,6 +22,7 @@ app.use(express.json()); // Parse JSON bodies
 // Use routes
 app.use("/auth", authRoutes);  // Authentication routes
 app.use("/openai", openaiRoutes);
+app.use("/photos", googleRoutes);
 app.use("/db", iterdbRoutes);
 
 app.listen(port, () => {

@@ -1,0 +1,67 @@
+{
+  "accomodations": {
+    "reservations": [
+      {
+        "name": "Hilton Sydney",
+        "type": "hotel",
+        "estimated_cost": "750.00",
+        "description": "A modern hotel located in the heart of Sydney, offering luxurious accommodations and amenities.",
+        "reservation_link": "https://www.hilton.com/en/hotels/sydhitw-hilton-sydney/"
+      }
+    ],
+    "transportation": [
+      {
+        "name": "Round Trip Flight from Tampa to Sydney",
+        "type": "flight",
+        "estimated_cost": "1300.00",
+        "description": "Round trip flight with a major airline, taking approximately 22 hours with a layover.",
+        "reservation_link": "https://www.kayak.com/flights"
+      }
+    ]
+  },
+  "vacation": {
+    "climate": "April in Australia features mild weather, with temperatures ranging from 55°F to 75°F (13°C to 24°C).",
+    "day1": {
+      "day_description": "Arrive in Sydney and explore the iconic Sydney Opera House and nearby Royal Botanic Garden.",
+      "activities": [
+        {
+          "type": "food",
+          "title": "Sydney Opera House Restaurant",
+          "description": "Enjoy a meal with a stunning view of the Sydney Harbour.",
+          "cost": 40,
+          "day": 1,
+          "relevant_link": "https://www.sydneyoperahouse.com/visit/eat-drink"
+        },
+        {
+          "type": "activity",
+          "title": "Sydney Opera House Tour",
+          "description": "A guided tour exploring the architecture and history of the Opera House.",
+          "cost": 39,
+          "day": 1,
+          "relevant_link": "https://www.sydneyoperahouse.com/visit/tours"
+        }
+      ]
+    },
+    "day2": {
+      "day_description": "Experience Sydney's local culture with a visit to The Rocks and enjoy a harbor cruise.",
+      "activities": [
+        {
+          "type": "food",
+          "title": "The Rocks Markets",
+          "description": "Explore local food stalls offering a variety of cuisines.",
+          "cost": 30,
+          "day": 2,
+          "relevant_link": "https://www.therocks.com/whats-on/the-rocks-markets"
+        },
+        {
+          "type": "activity",
+          "title": "Sydney Harbour Cruise",
+          "description": "Take a scenic cruise around Sydney Harbour and see the city from the water.",
+          "cost": 60,
+          "day": 2,
+          "relevant_link": "https://www.captaincook.com.au/"
+        }
+      ]
+    }
+  }
+}
