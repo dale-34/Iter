@@ -143,7 +143,7 @@ async function getVacationPlan(tripId) {
 
         // Step 1: Get the user's trip details from the trips table
         const tripQuery = `
-            SELECT start_date, end_date, destination, starting_point, climate, min_budget, max_budget
+            SELECT start_date, end_date, destination, starting_point, climate, min_budget, max_budget, image
             FROM trips
             WHERE id = ?;
         `;
@@ -163,6 +163,7 @@ async function getVacationPlan(tripId) {
             climate,
             min_budget,
             max_budget,
+            image, // trip image
         } = tripResults[0];
 
         const budget = [min_budget, max_budget];
@@ -226,11 +227,10 @@ async function getVacationPlan(tripId) {
 
             if (
                 reservation.type === "hotel" ||
-                reservation.type === "motel" ||
-                reservation.type === "airBnB"
+                reservation.type === "car_rental"
             ) {
                 accomodations.reservations.push(formattedReservation);
-            } else if (reservation.type === "flight" || reservation.type === "car_rental" || reservation.type === "train") {
+            } else if (reservation.type === "flight") {
                 accomodations.transportation.push(formattedReservation);
             }
         });
@@ -239,6 +239,7 @@ async function getVacationPlan(tripId) {
         const vacationPlan = {
             accomodations,
             vacation: {
+                image, // trip image
                 climate,
                 ...vacation,
             },

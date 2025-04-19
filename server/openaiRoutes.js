@@ -35,7 +35,7 @@ router.post("/generate-vacation", async (req, res) => {
         IMPORTANT: 
         - Return ONLY valid JSON (no markdown, no code blocks).
         - Use this exact structure:
-        - For each day, list 2 different food AND 2 different activities for each day
+        - For each day, list 2 different food AND 2 different activities totaling for 4 activities on that day
         - Use REAL and RELEVANT website links, if the activity/place/accomodation do not have a website use "NULL" instead
         {
         "accomodations": {
@@ -43,7 +43,7 @@ router.post("/generate-vacation", async (req, res) => {
                 {
                 "name": "name of the booking",
                 "type": "hotel, airBnB, motel, or NULL",
-                "estimated_cost": "estimated cost of the booking",
+                "estimated_cost": "REAL ESTIMATED COST OF THE BOOKING",
                 "description": "brief description to the booking",
                 "reservation_link": "URL to the booking"
                 }
@@ -52,7 +52,7 @@ router.post("/generate-vacation", async (req, res) => {
                 {
                 "name": "name of the booking",
                 "type": "car_rental, train, flight, or NULL",
-                "estimated_cost": "estimated cost of the booking",
+                "estimated_cost": "REAL ESTIMATED COST OF THE BOOKING",
                 "description": "brief description to the booking",
                 "reservation_link": "URL to the booking"
                 }
@@ -158,10 +158,12 @@ router.post("/surprise-me", async (req, res) => {
         // OpenAI Prompt
         const prompt = `Plan a vacation to a random destination.
         Provide activities and daily breakdowns. Use bullet points and neatly organize your answer.
+        IMPORTANT:
         IMPORTANT: 
         - Return ONLY valid JSON (no markdown, no code blocks).
-        - Use this exact structure.
+        - Use this exact structure:
         - Generate a random amount of days between 1-5.
+        - For each day, list 2 different food AND 2 different activities totaling for 4 activities on that day
         - Use REAL and RELEVANT website links, if the activity/place/accomodation do not have a website use "NULL" instead.
         {
         "accomodations": {

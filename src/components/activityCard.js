@@ -52,7 +52,7 @@ const ActivityCard = ({
                 },
                 overflow: "visible",
             }}
-        >
+        >   
             <CardMedia component="img" alt={title} height="220" image={image} />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
