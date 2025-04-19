@@ -12,15 +12,39 @@
 }
 
 .recap-card {
-    background: #f5f5f5;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     margin: auto;
 }
 
-.recap-card p {
-    font-size: 16px;
+.recap-text p {
+    font-size: 18px;
     margin: 8px 0;
     line-height: 1.5;
+}
+
+.recap-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.trip-picture img {
+    width: 400px;
+    height: 250px;
+    object-fit: cover;
+    justify-content: right;
+    float: right;    
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.trip-picture {
+    display: flex;
+    justify-content: right;
+    float: right;
 }

@@ -3,10 +3,6 @@
     background-color: rgb(255, 246, 235);
 }
 
-.recap-card {
-    background-color: rgb(255, 255, 255);
-}
-
 /* Title Positioned at the Top */
 .trip-title {
     font-size: 1.8em;
@@ -14,6 +10,12 @@
     text-align: center;
     margin-top: 40px;
     margin-bottom: 30px;
+    border: none;
+    outline: none;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Vacation Plan Section */

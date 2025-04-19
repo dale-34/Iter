@@ -67,7 +67,7 @@ const ActivityCard = ({
                 <IconButton
                     size="small"
                     onClick={handleFavorite}
-                    color={favorited ? "primary" : "default"}
+                    color={favorited ? "error" : "default"} //error for red color when favorited 
                 >
                     <FavoriteIcon />
                 </IconButton>
@@ -76,6 +76,10 @@ const ActivityCard = ({
                     size="small"
                     onClick={handleReplace}
                     color="secondary"
+                    disabled={favorited}
+                    sx={{
+                        color: favorited ? 'default' : 'warning.main', // warning for yellow/orange swap color
+                    }}
                 >
                     <SwapHorizIcon />
                 </IconButton>

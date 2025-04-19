@@ -1,0 +1,138 @@
+{
+  "accomodations": {
+    "reservations": [
+      {
+        "name": "Cozy Beachfront Condo",
+        "type": "airBnB",
+        "estimated_cost": "450.00",
+        "description": "A beachfront condo with stunning views, close to local attractions.",
+        "reservation_link": "https://www.airbnb.com/rooms/12345678"
+      }
+    ],
+    "transportation": [
+      {
+        "name": "Economy Car Rental",
+        "type": "car_rental",
+        "estimated_cost": "150.00",
+        "description": "Economy car rental for easy transportation around the area.",
+        "reservation_link": "https://www.rentacar.com"
+      }
+    ]
+  },
+  "vacation": {
+    "climate": "Mild and sunny, perfect for outdoor activities.",
+    "latitude": 30,
+    "longitude": -90,
+    "day1": {
+      "day_description": "Arrive in New Orleans, explore the vibrant French Quarter and enjoy local cuisine.",
+      "activities": [
+        {
+          "type": "food",
+          "title": "Cafe Du Monde",
+          "description": "Famous for its beignets and café au lait.",
+          "cost": 10,
+          "day": 1,
+          "relevant_link": "https://www.cafesdumonde.com"
+        },
+        {
+          "type": "food",
+          "title": "Cochon Butcher",
+          "description": "A casual sandwich shop known for its Cajun-style meats.",
+          "cost": 15,
+          "day": 1,
+          "relevant_link": "http://cochonbutcher.com"
+        },
+        {
+          "type": "activity",
+          "title": "French Quarter Walking Tour",
+          "description": "A guided tour showcasing the history and architecture of the French Quarter.",
+          "cost": 25,
+          "day": 1,
+          "relevant_link": "https://www.neworleans.com/things-to-do/tours/"
+        },
+        {
+          "type": "activity",
+          "title": "Steamboat Natchez Cruise",
+          "description": "Cruise along the Mississippi River on a historic steamboat.",
+          "cost": 40,
+          "day": 1,
+          "relevant_link": "https://www.steamboatnatchez.com"
+        }
+      ]
+    },
+    "day2": {
+      "day_description": "Explore New Orleans’ cultural side, visiting museums and enjoying live music.",
+      "activities": [
+        {
+          "type": "food",
+          "title": "Mother's Restaurant",
+          "description": "Homey spot known for po'boys and Southern comfort food.",
+          "cost": 20,
+          "day": 2,
+          "relevant_link": "https://www.mothersrestaurant.net"
+        },
+        {
+          "type": "food",
+          "title": "Commander's Palace",
+          "description": "Upscale dining with Creole fare in a historic Victorian mansion.",
+          "cost": 60,
+          "day": 2,
+          "relevant_link": "https://www.commanderspalace.com"
+        },
+        {
+          "type": "activity",
+          "title": "National WWII Museum",
+          "description": "A comprehensive museum dedicated to World War II history.",
+          "cost": 30,
+          "day": 2,
+          "relevant_link": "https://www.nationalww2museum.org"
+        },
+        {
+          "type": "activity",
+          "title": "Frenchmen Street Live Music",
+          "description": "Experience local music in bars and venues along Frenchmen Street.",
+          "cost": 20,
+          "day": 2,
+          "relevant_link": "NULL"
+        }
+      ]
+    },
+    "day3": {
+      "day_description": "Visit local parks and enjoy the natural beauty of New Orleans.",
+      "activities": [
+        {
+          "type": "food",
+          "title": "Willie Mae's Scotch House",
+          "description": "Famous for its fried chicken, a local favorite.",
+          "cost": 25,
+          "day": 3,
+          "relevant_link": "https://www.williemaes scotchhouse.net"
+        },
+        {
+          "type": "food",
+          "title": "Jacques-Imo's Cafe",
+          "description": "A lively spot offering innovative takes on New Orleans cuisine.",
+          "cost": 35,
+          "day": 3,
+          "relevant_link": "http://www.jacquesimoscafe.com"
+        },
+        {
+          "type": "activity",
+          "title": "City Park",
+          "description": "A large urban park with botanical gardens and walking paths.",
+          "cost": 10,
+          "day": 3,
+          "relevant_link": "https://neworleanscitypark.com"
+        },
+        {
+          "type": "activity",
+          "title": "Audubon Zoo",
+          "description": "A beautiful zoo with a wide variety of animals and habitats.",
+          "cost": 25,
+          "day": 3,
+          "relevant_link": "https://www.audubonnatureinstitute.org/zoo"
+        }
+      ]
+    }
+  }
+}

@@ -5,12 +5,13 @@ import {
     CardContent,
     Typography,
     IconButton,
-    Collapse
+    Collapse,
+    Box
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-const DayCard = ({ dayNumber, date, description, activities = [], onActivityReplace}) => {
-    const [expanded, setExpanded] = useState(false);
+const DayCard = ({ dayNumber, date, description, activities = [], onActivityReplace }) => {
+    const [expanded, setExpanded] = useState(true);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -19,31 +20,35 @@ const DayCard = ({ dayNumber, date, description, activities = [], onActivityRepl
     return (
         <Card sx={{ marginBottom: 2 }}>
             <CardContent>
-                <Typography variant="h6">Day {dayNumber}</Typography>
-                <Typography variant="body2" color="text.secondary">
-                    {date}
+                <Box display="flex" justifyContent="space-between" alignItems="center">
+                    <Box>
+                        <Typography variant="h6">Day {dayNumber}</Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            {date}
+                        </Typography>
+                    </Box>
+                    <IconButton
+                        onClick={handleExpandClick}
+                        sx={{
+                            transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                            transition: 'transform 0.3s ease-in-out',
+                        }}
+                    >
+                        <ExpandMoreIcon />
+                    </IconButton>
+                </Box>
+                <Typography paragraph sx={{ marginTop: 1 }}>
+                    {description}
                 </Typography>
-                <Typography paragraph>
-                        {description}
-                </Typography>
-                <IconButton
-                    onClick={handleExpandClick}
-                    sx={{
-                        transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)',
-                        transition: 'transform 0.3s ease-in-out',
-                    }}
-                >
-                    <ExpandMoreIcon />
-                </IconButton>
+                <Collapse in={expanded}>
+                    <CardContent>
+                        <ActivityCarousel
+                            activities={activities}
+                            onActivityReplace={onActivityReplace}
+                        />
+                    </CardContent>
+                </Collapse>
             </CardContent>
-            <Collapse in={expanded}>
-                <CardContent>
-                    <ActivityCarousel
-                        activities={activities}
-                        onActivityReplace={onActivityReplace}
-                    />
-                </CardContent>
-            </Collapse>
         </Card>
     );
 };
