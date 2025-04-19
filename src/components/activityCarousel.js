@@ -26,6 +26,7 @@ const ActivityCarousel = ({activities = [], onActivityReplace}) => {
                         image={activity.image}
                         cost={activity.cost}
                         onActivityReplace={onActivityReplace}
+                        favorited={activity.favorited}
                     />
                 ))}
             </Slider>

@@ -17,11 +17,20 @@ const ActivityCard = ({
     image,
     cost,
     onActivityReplace,
+    favorited: initialFavorited // rename to avoid name clash
 }) => {
-    const [favorited, setFavorite] = React.useState(false);
+    const [favorited, setFavorited] = useState(initialFavorited);
 
-    const handleFavorite = () => {
-        setFavorite(!favorited);
+    const handleFavorite = async () => {
+        try {
+            await axios.post('http://localhost:3001/db/set-favorite', {
+                activityId: id,         
+                favorited: !favorited
+            });
+            setFavorited(!favorited); // update local state to re-render with new color
+        } catch (error) {
+            console.error('Error setting favorite:', error.message);
+        }
     };
 
     const handleReplace = async () => {
