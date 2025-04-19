@@ -45,10 +45,11 @@ async function insertPlan(vacationPlan, correctuserId, extraInputs) {
             maxBudget: budget[1],
         });
 
+        const image = await getImageURL(destination);
         // Step 1: Insert into `trips` Table (including climate info)
         const tripQuery = `
-            INSERT INTO trips (user_id, trip_name, start_date, end_date, starting_point, destination, climate, latitude, longitude, created_at, min_budget, max_budget)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?, ?);
+            INSERT INTO trips (user_id, trip_name, start_date, end_date, starting_point, destination, climate, latitude, longitude, created_at, min_budget, max_budget, image)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?, ?, ?);
         `;
         const [tripResult] = await pool
             .promise()
@@ -64,6 +65,7 @@ async function insertPlan(vacationPlan, correctuserId, extraInputs) {
                 vacationPlan.vacation.longitude,
                 budget[0],
                 budget[1],
+                image,
             ]);
 
         const tripId = tripResult.insertId; // Get the newly created trip ID
@@ -143,7 +145,7 @@ async function getVacationPlan(tripId) {
 
         // Step 1: Get the user's trip details from the trips table
         const tripQuery = `
-            SELECT start_date, end_date, destination, starting_point, climate, min_budget, max_budget, image
+            SELECT start_date, end_date, destination, starting_point, climate, min_budget, max_budget, image, trip_name
             FROM trips
             WHERE id = ?;
         `;
@@ -163,14 +165,17 @@ async function getVacationPlan(tripId) {
             climate,
             min_budget,
             max_budget,
-            image, // trip image
+            image,
+            trip_name, // trip image
         } = tripResults[0];
 
+        console.log("TRIP NAMEMMMEMME");
+        console.log(trip_name);
         const budget = [min_budget, max_budget];
 
         // Step 2: Get the vacation activities details from the activities table
         const activityQuery = `
-            SELECT id, type, title, cost, day, relevant_link, description, day_description, image
+            SELECT id, type, title, cost, day, relevant_link, description, day_description, image, favorited
             FROM activities 
             WHERE trip_id = ?;
         `;
@@ -197,6 +202,7 @@ async function getVacationPlan(tripId) {
                 day: activity.day,
                 relevant_link: activity.relevant_link,
                 image: activity.image,
+                favorited: activity.favorited,
             });
         });
 
@@ -225,12 +231,9 @@ async function getVacationPlan(tripId) {
                 image: reservation.image,
             };
 
-            if (
-                reservation.type === "hotel" ||
-                reservation.type === "car_rental"
-            ) {
+            if (reservation.type === "hotel" || reservation.type === "motel" || reservation.type === "airBnB") {
                 accomodations.reservations.push(formattedReservation);
-            } else if (reservation.type === "flight") {
+            } else if (reservation.type === "flight" || reservation.type === "car_rental" || reservation.type === "train") {
                 accomodations.transportation.push(formattedReservation);
             }
         });
@@ -240,6 +243,7 @@ async function getVacationPlan(tripId) {
             accomodations,
             vacation: {
                 image, // trip image
+                trip_name, // trip name
                 climate,
                 ...vacation,
             },
@@ -358,6 +362,79 @@ async function setProfilePhoto(userId, profilePhoto) {
     }
 }
 
+// Sets a new tripName for the user
+async function setTripName(tripId, newName) {
+    console.log("tripId");
+    console.log("newName");
+    try {
+        const query = `
+            UPDATE trips
+            SET trip_name = ?
+            WHERE id = ?;
+        `;
+
+        const [result] = await pool
+            .promise()
+            .query(query, [newName, tripId]);
+
+        if (result.affectedRows === 1) {
+            console.log(`TripName updated for trip ${tripId}`);
+            return {
+                success: true,
+                message: "TripName updated successfully.",
+            };
+        } else {
+            console.log("No trip found with the given tripId");
+            return {
+                success: false,
+                message: "User not found or profile photo not updated.",
+            };
+        }
+    } catch (err) {
+        console.error("Error updating TripName:", err);
+        return { success: false, message: "Error updating TripName" };
+    }
+}
+
+// Sets a profile photo for the user
+async function setFavorite(activityId, favorited) {
+    try {
+
+        let favoriteValue = 0;
+        if (favorited) {
+            favoriteValue = 1;
+        }
+
+        const query = `
+            UPDATE activities
+            SET favorited = ?
+            WHERE id = ?;
+        `;
+
+        const [result] = await pool
+            .promise()
+            .query(query, [favoriteValue, activityId]);
+
+        if (result.affectedRows === 1) {
+            console.log(`Activity favorited for ${activityId}`);
+            return {
+                success: true,
+                message: "activity favorite set.",
+                favorited: favorited,
+            };
+        } else {
+            console.log("No activity found with the activityId");
+            return {
+                success: false,
+                message: "No activity found.",
+            };
+        }
+    } catch (err) {
+        console.error("Error favoriting acitvity:", err);
+        return { success: false, message: "Error favoriting activity." };
+    }
+}
+
 console.log("Attempting to connect to MySQL...");
 
 pool.query("SELECT * FROM users", (err, results) => {
@@ -368,4 +445,4 @@ pool.query("SELECT * FROM users", (err, results) => {
     console.log("Database connected. Query results:", results);
 });
 
-export { getVacationPlan, insertPlan, getUserTrips, setProfilePhoto, updateActivity, pool };
+export { getVacationPlan, insertPlan, getUserTrips, setProfilePhoto, updateActivity, setFavorite, setTripName, pool };

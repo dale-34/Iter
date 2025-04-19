@@ -1,0 +1,104 @@
+{
+  "accomodations": {
+    "reservations": [
+      {
+        "name": "Sunny Beach Resort",
+        "type": "hotel",
+        "estimated_cost": "$120 per night",
+        "description": "A beachfront hotel offering stunning views and great amenities.",
+        "reservation_link": "https://www.booking.com/hotel/sunny-beach-resort"
+      }
+    ],
+    "transportation": [
+      {
+        "name": "Local Car Rental",
+        "type": "car_rental",
+        "estimated_cost": "$50 per day",
+        "description": "Convenient car rental service available for exploring the area.",
+        "reservation_link": "https://www.localcarrental.com"
+      }
+    ]
+  },
+  "vacation": {
+    "destination": "Malibu, California",
+    "minimum_budget": "$500",
+    "maximum_budget": "$1200",
+    "climate": "Mediterranean, warm and dry",
+    "latitude": 34,
+    "longitude": -118,
+    "day1": {
+      "day_description": "Arrive in Malibu and relax on the scenic beaches.",
+      "activities": [
+        {
+          "type": "food",
+          "title": "Malibu Seafood",
+          "description": "Fresh seafood and ocean views.",
+          "cost": 25,
+          "day": 1,
+          "relevant_link": "http://www.malibuseafood.com"
+        },
+        {
+          "type": "activity",
+          "title": "Zuma Beach",
+          "description": "Enjoy sunbathing and swimming at one of the most popular beaches.",
+          "cost": 0,
+          "day": 1,
+          "relevant_link": "NULL"
+        },
+        {
+          "type": "food",
+          "title": "Nobu Malibu",
+          "description": "Luxury Japanese restaurant overlooking the ocean.",
+          "cost": 70,
+          "day": 1,
+          "relevant_link": "https://www.noburestaurants.com/malibu/home/"
+        },
+        {
+          "type": "activity",
+          "title": "Malibu Pier",
+          "description": "Take a stroll on the historic pier and enjoy the views.",
+          "cost": 0,
+          "day": 1,
+          "relevant_link": "NULL"
+        }
+      ]
+    },
+    "day2": {
+      "day_description": "Explore local attractions and nature trails.",
+      "activities": [
+        {
+          "type": "food",
+          "title": "Trancas Country Market",
+          "description": "A charming market with local eateries and shops.",
+          "cost": 20,
+          "day": 2,
+          "relevant_link": "http://www.trancascountrymarket.com"
+        },
+        {
+          "type": "activity",
+          "title": "El Matador State Beach",
+          "description": "A beautiful beach known for its scenic cliffs and sea caves.",
+          "cost": 0,
+          "day": 2,
+          "relevant_link": "NULL"
+        },
+        {
+          "type": "food",
+          "title": "The Old Place",
+          "description": "Rustic eatery serving hearty American fare in a cozy atmosphere.",
+          "cost": 35,
+          "day": 2,
+          "relevant_link": "http://www.oldplace.com"
+        },
+        {
+          "type": "activity",
+          "title": "Point Dume Natural Preserve",
+          "description": "Hiking trails with breathtaking ocean views.",
+          "cost": 0,
+          "day": 2,
+          "relevant_link": "NULL"
+        }
+      ]
+    }
+  }
+}

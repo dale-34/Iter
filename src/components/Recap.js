@@ -18,7 +18,7 @@ const Recap = ({ vacationPlan = [], startDate, endDate, destination, budget, sta
                     <p><strong>Weather:</strong> {vacationPlan.vacation.climate} </p>
                 </div>
                 <div className="trip-picture">
-                    <img src="/images/roadtrip.jpg" alt="Road trip" />
+                    <img src={vacationPlan.vacation.image || "/images/roadtrip.jpg"} alt="Road trip" />
                 </div>
             </div>
             

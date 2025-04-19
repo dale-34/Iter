@@ -1,5 +1,5 @@
 import express from 'express';
-import { insertPlan, getVacationPlan, getUserTrips, setProfilePhoto, updateActivity } from './iterdb.js';
+import { insertPlan, getVacationPlan, getUserTrips, setProfilePhoto, updateActivity, setFavorite, setTripName } from './iterdb.js';
 
 const router = express.Router();
 
@@ -57,6 +57,28 @@ router.post('/set-profilePhoto', async (req, res) => {
         res.status(200).json({ success: true, message: 'Profile photo set!', profilePhoto: result.profilePhoto });
     } catch (err) {
         res.status(500).json({ success: false, message: 'Failed to set profile photo', error: err.message });
+    }
+});
+
+// POST route to set profilePhoto for a user
+router.post('/set-favorite', async (req, res) => {
+    const { activityId, favorited } = req.body; // Ensure userId is received first
+    try {
+        const result = await setFavorite(activityId, favorited); // Corrected order
+        res.status(200).json({ success: true, message: 'Favorite set!', favorited: result.favorited });
+    } catch (err) {
+        res.status(500).json({ success: false, message: 'Failed to set favorite', error: err.message });
+    }
+});
+
+// POST route to set profilePhoto for a user
+router.post('/set-tripName', async (req, res) => {
+    const { tripId, newName } = req.body; // Ensure userId is received first
+    try {
+        const result = await setTripName(tripId, newName); // Corrected order
+        res.status(200).json({ success: true, message: 'Name set!', favorited: result.favorited });
+    } catch (err) {
+
     }
 });
 

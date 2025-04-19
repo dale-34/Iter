@@ -37,6 +37,26 @@ function ItineraryPage() {
         });
     };
 
+
+    const handleSave = async (tripTitle) => {
+        try {
+            const response = await axios.post("http://localhost:3001/db/set-tripName", {
+                tripId,
+                newName: tripTitle,
+            });
+
+            if (response.data.success) {
+                console.log("Trip name updated!");
+                setEditTitle(false);
+                // Optionally re-fetch vacation plan here, or just update the UI
+            } else {
+                console.error("Failed to update trip name:", response.data.message);
+            }
+        } catch (err) {
+            console.error("Error updating trip name:", err);
+        }
+    };
+
     useEffect(() => {
         const retrieveVacation = async () => {
             try {
@@ -45,7 +65,7 @@ function ItineraryPage() {
                 // Store vacation data in state
                 setVacationPlan(response.data.vacationPlan);
                 setUserInputs(response.data.userInputs || []);
-                setTripTitle(response.data.vacationPlan.destination || "No destination provided");
+                setTripTitle(response.data.vacationPlan.vacation.trip_name || "No destination provided");
                 console.log("Returned plan");
             } catch (error) {
                 console.error("Error fetching vacation plan:", error);
@@ -60,8 +80,7 @@ function ItineraryPage() {
         return <div>Loading...</div>;
     }
 
-    const [startDate, endDate, budget, destination, startLocation] =
-        userInputs || ["", "", "", ""];
+    const [startDate, endDate, budget, destination, startLocation] = userInputs || ["", "", "", ""];
     const startDateFixed = new Date(startDate);
     const endDateFixed = new Date(endDate);
 
@@ -77,15 +96,11 @@ function ItineraryPage() {
                         type="text"
                         value={tripTitle}
                         onChange={(e) => setTripTitle(e.target.value)}
-                        onBlur={() => setEditTitle(false)}
                         autoFocus
                         className="trip-title"
                     />
                     <button
-                        onClick={() => {
-                            setEditTitle(false);
-                            // Optionally, you can add logic here to save the updated title to the server
-                        }}
+                        onClick={() => handleSave(tripTitle)}
                         className="save-title-button"
                     >
                         Save
