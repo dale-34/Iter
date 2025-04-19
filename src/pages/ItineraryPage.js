@@ -6,6 +6,8 @@ import Flights from "../components/Flights";
 import DayCard from "../components/DayCard";
 import "../css/ItineraryPage.css";
 import axios from "axios";
+import EditIcon from '@mui/icons-material/Edit';
+import IconButton from '@mui/material/IconButton';
 
 function ItineraryPage() {
     const location = useLocation();
@@ -14,6 +16,10 @@ function ItineraryPage() {
     console.log("TripId:", tripId); // Ensure tripId is not undefined
 
     const [vacationPlan, setVacationPlan] = useState(null);
+
+    const [tripTitle, setTripTitle] = useState("");
+    const [editTitle, setEditTitle] = useState("");
+
     const [userInputs, setUserInputs] = useState([]);
 
     const handleActivityReplace = (activityId, newActivity) => {
@@ -39,6 +45,7 @@ function ItineraryPage() {
                 // Store vacation data in state
                 setVacationPlan(response.data.vacationPlan);
                 setUserInputs(response.data.userInputs || []);
+                setTripTitle(response.data.vacationPlan.destination || "No destination provided");
                 console.log("Returned plan");
             } catch (error) {
                 console.error("Error fetching vacation plan:", error);
@@ -63,7 +70,41 @@ function ItineraryPage() {
         <div className="itinerary-container">
             <Header />
             <div className="trip-title">
-                <h1>{destination || "No destination provided"} Trip</h1>
+                {editTitle ? (
+                    // if currently editing title, show input field
+                    <> 
+                    <input // text input field
+                        type="text"
+                        value={tripTitle}
+                        onChange={(e) => setTripTitle(e.target.value)}
+                        onBlur={() => setEditTitle(false)}
+                        autoFocus
+                        className="trip-title"
+                    />
+                    <button
+                        onClick={() => {
+                            setEditTitle(false);
+                            // Optionally, you can add logic here to save the updated title to the server
+                        }}
+                        className="save-title-button"
+                    >
+                        Save
+                    </button>
+                    </>
+                    ) : (
+                    // if not editing, show current title and edit icon
+                    <>
+                    <h1>{tripTitle}</h1>
+                    <IconButton
+                        aria-label="edit title"
+                        onClick={() => setEditTitle(true)}
+                        size="small"
+                        sx={{ marginLeft: 1 }}
+                    >
+                        <EditIcon />
+                    </IconButton>
+                </>
+                )}
             </div>
             <div className="itinerary-wrapper">
                 <Recap className="recap"
@@ -87,7 +128,7 @@ function ItineraryPage() {
                                 date.setDate(date.getDate() + index - 1);
                                 return (
                                     <DayCard
-                                        dayNumber={index}
+                                        dayNumber={index - 1}
                                         date={date.toLocaleDateString()}
                                         description={dayData.day_description}
                                         activities={dayData.activities}

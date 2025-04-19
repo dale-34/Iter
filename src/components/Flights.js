@@ -6,18 +6,23 @@ const Flights = ({ flights = [], hotels = [] }) => {
         <div className="flights-container">
             <h1 className="section-title">Reservations</h1>
             <div className="reservation-card">
-            <h2 className="section-title"> {
-                flights[0].type === "car_rental"
-                ? "Car Rental"
-                : flights[0].type === "flight"
-                ? "Flight"
-                : flights[0].type === "train"
-                ? "Train"
-                : flights[0].type
-            }</h2>
+            <h2 className="section-title"> 
+                {flights.length === 0 ? (
+                    <p>Transportation</p>
+                ) : (
+                    flights[0]?.type === "car_rental"
+                        ? "Car Rental"
+                        : flights[0]?.type === "flight"
+                        ? "Flight"
+                        : flights[0]?.type === "train"
+                        ? "Train"
+                        : flights[0]?.type || "Transportation"
+                )}
+            </h2>
+
             <div className="flights-card">
                 {(!flights || flights.length === 0) && (
-                    <p>No flights available.</p>
+                    <p>No transportation available.</p>
                 )}
                 {flights.map((flight, index) => (
                     <div key={index} className="flight">
@@ -30,18 +35,23 @@ const Flights = ({ flights = [], hotels = [] }) => {
                     </div>
                 ))}
             </div>
-            <h2 className="section-title"> {
-                hotels[0].type === "hotel"
-                ? "Hotel"
-                : hotels[0].type === "airBnB"
-                ? "AirBnB"
-                : hotels[0].type === "motel"
-                ? "Motel"
-                : hotels[0].type
-            }</h2>
+            <h2 className="section-title"> 
+                {hotels.length === 0 ? (
+                    <p>Accommodations</p>
+                ) : (
+                    hotels[0]?.type === "hotel"
+                        ? "Hotel"
+                        : hotels[0]?.type?.toLowerCase() === "airbnb"
+                        ? "AirBnB"
+                        : hotels[0]?.type === "motel"
+                        ? "Motel"
+                        : hotels[0]?.type || "Accommodations"
+                )}
+            </h2>
+
             <div className="flights-card">
                 {(!hotels || hotels.length === 0) && (
-                    <p>No hotels populated.</p>
+                    <p>No accomodations populated.</p>
                 )}
                 {hotels.map((hotel, index) => (
                     <div key={index} className="hotel">
