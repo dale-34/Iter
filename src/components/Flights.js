@@ -28,7 +28,7 @@ const Flights = ({ flights = [], hotels = [] }) => {
                     <div key={index} className="flight">
                         <h3>{flight.name}</h3>
                         <p>{flight.description}</p>
-                        <p>Cost: {flight.estimated_cost}</p>
+                        <p>Cost: ${flight.estimated_cost}</p>
                         <a href={flight.reservation_link} target="_blank" rel="noopener noreferrer">
                             Book Now
                         </a>
@@ -57,7 +57,7 @@ const Flights = ({ flights = [], hotels = [] }) => {
                     <div key={index} className="hotel">
                         <h3>{hotel.name}</h3>
                         <p>{hotel.description}</p>
-                        <p>Cost: {hotel.estimated_cost}</p>
+                        <p>Cost: ${hotel.estimated_cost}</p>
                         <a href={hotel.reservation_link} target="_blank" rel="noopener noreferrer">
                             Book Now
                         </a>

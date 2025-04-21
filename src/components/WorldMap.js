@@ -53,7 +53,7 @@ export const WorldMap = () => {
   };
 
   return (
-    <MapContainer center={[20, 0]} zoom={2} style={{ height: "500px", width: "65%" }}>
+    <MapContainer center={[20, 0]} zoom={2} style={{ height: "500px", width: "85%" }}>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       
       {/* Use coordinates from userTrips if they exist */}

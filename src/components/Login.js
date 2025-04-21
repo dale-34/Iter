@@ -112,11 +112,12 @@ export const Login = () => {
           src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
           alt="profile"
           style={{
-            width: 32,
-            height: 32,
+            width: 44,
+            height: 44,
             borderRadius: '50%',
             backgroundColor: 'white',
-            padding: 2
+            padding: 1,
+            marginRight: 8,
           }}
         />
       </IconButton>

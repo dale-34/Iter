@@ -140,10 +140,10 @@ function ItineraryPage() {
                             const dayData = vacationPlan.vacation[day];
                             if (day.startsWith("day")) {
                                 const date = new Date(startDate);
-                                date.setDate(date.getDate() + index - 1);
+                                date.setDate(date.getDate() + index - 3);
                                 return (
                                     <DayCard
-                                        dayNumber={index - 1}
+                                        dayNumber={index - 2}
                                         date={date.toLocaleDateString()}
                                         description={dayData.day_description}
                                         activities={dayData.activities}
