@@ -195,10 +195,10 @@ const TripPlanning = () => {
         </div>
 
         {/* Submit Button */}
-        <div className="submit mt-6 text-center">
+        <div className="submit">
           <button
             onClick={handleSubmit}
-            className="bg-[rgba(221,190,169,1)] cursor-pointer transition-transform hover:scale-105 duration-200 whitespace-nowrap px-6 py-[13px] rounded-xl font-bold max-sm:px-5 max-sm:py-3"
+            className="submit-button"
             aria-label="Submit Form"
           >
             Submit

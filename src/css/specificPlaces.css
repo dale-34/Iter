@@ -9,25 +9,19 @@
 
 /* Title */
 .specific-places__title {
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
-    color: black;
-    margin-bottom: 15px;
+    color: rgb(255, 255, 255);
+    padding-top: 20px;
 }
 
-/* Search Box */
-.specific-places__box {
-    background: rgb(249, 232, 220);
-    padding: 20px;
-    border-radius: 12px;
-}
 
 /* Input */
 .specific-places__input {
-    width: 90%;
+    width: 100%;
     padding: 12px;
     font-size: 16px;
-    background: #d3d3d3;
+    background: #fff7f7;
     border: none;
     border-radius: 8px;
     color: black;
@@ -43,7 +37,7 @@
 }
 
 .specific-places__tag {
-    background: #d3d3d3;
+    background: #fff8f8;
     padding: 8px 15px;
     border-radius: 12px;
     font-size: 14px;
@@ -65,6 +59,7 @@
     font-size: 14px;
     background: #e0e0e0;
     border: none;
+    margin-bottom: 20px;
     border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
