@@ -46,7 +46,7 @@ export const HousingAccommodations = ({ onHousingChange }) => {
       <img
         src={housingImages[imageIndex]}
         alt="Rotating housing option"
-        className="housing__img"
+        className={`housing__img ${fade ? "fade-in" : "fade-out"}`}
       />
       </div>
 

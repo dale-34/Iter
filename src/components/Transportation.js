@@ -8,6 +8,27 @@ export const Transportation = ({
 }) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [input, setInput] = useState("");
+  const [imageIndex, setImageIndex] = useState(0);
+  const [fade, setFade] = useState(true);
+
+  const transportImages = [
+    "https://t4.ftcdn.net/jpg/02/96/78/67/360_F_296786762_ucj0pcmqEJPxURshkvm8ufQ7NV6TbArL.jpg",
+    "https://www.railway-technology.com/wp-content/uploads/sites/13/2021/05/train-4775170_1280-min.jpg",
+    "https://faracerv.com/wp-content/uploads/2022/09/essential-rv-driving-tips-for-beginners-scaled.webp",
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false); // fade out
+      setTimeout(() => {
+        setImageIndex((prevIndex) => (prevIndex + 1) % transportImages.length);
+        setFade(true); // fade in
+      }, 300); // must match CSS fade-out time
+    }, 5000); // rotate every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && input.trim() !== "") {
@@ -69,7 +90,13 @@ export const Transportation = ({
         )}
       </div>
 
-      <div className="transport__background"></div>
+      <div className="transport__image">
+        <img
+          src={transportImages[imageIndex]}
+          alt="Transportation method"
+          className={`transport__img ${fade ? "fade-in" : "fade-out"}`}
+        />
+      </div>
 
       <div className="transport__options">
         {["Rental Car", "Flight", "Train", "Own"].map((option) => (

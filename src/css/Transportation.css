@@ -81,18 +81,24 @@
   }
   
 
-/* Background Section */
-.transport__background {
-    width: 100%;
+  .transport__image {
+    width: 800px;
     height: 500px;
-    background: url('https://images.pexels.com/photos/62623/wing-plane-flying-airplane-62623.jpeg?cs=srgb&dl=pexels-pixabay-62623.jpg&fm=jpg');
-    background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
     border-radius: 15px;
+    overflow: hidden; /* ensures image doesn’t spill out */
+}
+
+.transport__img {
+  margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* maintains aspect ratio and fills container */
+    border-radius: 15px;
+    transition: opacity 0.5s ease;
 }
 
 /* Clickable Options */
