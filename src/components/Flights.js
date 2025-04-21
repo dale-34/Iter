@@ -6,7 +6,7 @@ const Flights = ({ flights = [], hotels = [] }) => {
         <div className="flights-container">
             <h1 className="section-title">Reservations</h1>
             <div className="reservation-card">
-            <h2 className="section-title"> 
+            <h2 className="section-title2"> 
                 {flights.length === 0 ? (
                     <p>Transportation</p>
                 ) : (
@@ -35,7 +35,7 @@ const Flights = ({ flights = [], hotels = [] }) => {
                     </div>
                 ))}
             </div>
-            <h2 className="section-title"> 
+            <h2 className="section-title2"> 
                 {hotels.length === 0 ? (
                     <p>Accommodations</p>
                 ) : (

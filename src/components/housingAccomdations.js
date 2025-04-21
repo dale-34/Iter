@@ -21,7 +21,7 @@ export const HousingAccommodations = ({ onHousingChange }) => {
         setImageIndex((prevIndex) => (prevIndex + 1) % housingImages.length);
         setFade(true); // trigger fade-in
       }, 300); // fade-out duration
-    }, 5000); // change every 5 seconds
+    }, 3500); // change every 5 seconds
   
     return () => clearInterval(interval);
   }, [housingImages.length]);

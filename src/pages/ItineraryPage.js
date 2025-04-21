@@ -134,6 +134,9 @@ function ItineraryPage() {
                     flights={vacationPlan?.accomodations?.transportation || []}
                     hotels={vacationPlan?.accomodations?.reservations || []}
                 />
+                <div className="day-list-header">
+                    <h1 className="section-title">Itinerary</h1>
+                </div>
                 <div className="day-list">
                     {Object.keys(vacationPlan?.vacation || {}).map(
                         (day, index) => {
@@ -154,7 +157,7 @@ function ItineraryPage() {
                             return null;
                         }
                     )}
-                </div>
+                </div>    
             </div>
         </div>
     );

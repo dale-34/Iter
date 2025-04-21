@@ -38,50 +38,6 @@
     border-radius: 15px;
 }
 
-/* Dropdown
-.housing__dropdown {
-    width: 60%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid black;
-    background: white;
-    text-align: center;
-    margin-top: 10px;
-}
-
-.housing__selected {
-    margin-top: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-}
-
-.housing__comparison-title {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    margin: 20px 0;
-}
-
-.housing__comparison {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.housing__comparison-box {
-    width: 30%;
-    height: auto;
-}
-
-.housing__comparison-img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 5px;
-} */
-
 .housing__options {
     display: flex;
     flex-direction: column;

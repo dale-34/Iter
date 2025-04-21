@@ -24,7 +24,7 @@ export const Transportation = ({
         setImageIndex((prevIndex) => (prevIndex + 1) % transportImages.length);
         setFade(true); // fade in
       }, 300); // must match CSS fade-out time
-    }, 5000); // rotate every 5 seconds
+    }, 3500); // rotate every 5 seconds
 
     return () => clearInterval(interval);
   }, []);
