@@ -55,9 +55,6 @@ const ActivityCard = ({
     };
 
     const [imgSrc, setImgSrc] = useState("");
-    // const [imgSrc, setImgSrc] = useState(
-    //     `http://localhost:3001/photo-proxy?url=${encodeURIComponent(image)}&t=${Date.now()}`
-    // );
     useEffect(() => {
         setIsPlaceholder(false);
         setImgSrc(`http://localhost:3001/photo-proxy?url=${encodeURIComponent(image)}&t=${Date.now()}`);
