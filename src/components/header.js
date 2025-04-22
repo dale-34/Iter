@@ -60,11 +60,12 @@ export const Header = () => {
                 src={getProfilePhoto()} // Use the getProfilePhoto function to choose the image
                 alt="profile"
                 style={{
-                  width: 32,
-                  height: 32,
+                  width: 44,
+                  height: 44,
                   borderRadius: '50%',
                   backgroundColor: 'white',
-                  padding: 2
+                  padding: 1,
+                  marginRight: 8,
                 }}
               />
             </IconButton>

@@ -2,101 +2,172 @@
   "accomodations": {
     "reservations": [
       {
-        "name": "Sunny Beach Resort",
+        "name": "Naples Beach Resort",
         "type": "hotel",
-        "estimated_cost": "$120 per night",
-        "description": "A beachfront hotel offering stunning views and great amenities.",
-        "reservation_link": "https://www.booking.com/hotel/sunny-beach-resort"
+        "estimated_cost": "800.00",
+        "description": "A beachfront hotel offering stunning views and easy access to the beach.",
+        "reservation_link": "https://www.naplesbeachhotel.com"
       }
     ],
     "transportation": [
       {
-        "name": "Local Car Rental",
+        "name": "Rental Car",
         "type": "car_rental",
-        "estimated_cost": "$50 per day",
-        "description": "Convenient car rental service available for exploring the area.",
-        "reservation_link": "https://www.localcarrental.com"
+        "estimated_cost": "300.00",
+        "description": "A reliable car rental for easy travel around Naples.",
+        "reservation_link": "https://www.enterprise.com/en/home.html"
       }
     ]
   },
   "vacation": {
-    "destination": "Malibu, California",
-    "minimum_budget": "$500",
-    "maximum_budget": "$1200",
-    "climate": "Mediterranean, warm and dry",
-    "latitude": 34,
-    "longitude": -118,
+    "climate": "tropical and humid",
+    "latitude": 26,
+    "longitude": -81,
     "day1": {
-      "day_description": "Arrive in Malibu and relax on the scenic beaches.",
+      "day_description": "Arrival and beach relaxation on the first day.",
       "activities": [
         {
-          "type": "food",
-          "title": "Malibu Seafood",
-          "description": "Fresh seafood and ocean views.",
-          "cost": 25,
-          "day": 1,
-          "relevant_link": "http://www.malibuseafood.com"
-        },
-        {
           "type": "activity",
-          "title": "Zuma Beach",
-          "description": "Enjoy sunbathing and swimming at one of the most popular beaches.",
+          "title": "Vanderbilt Beach",
+          "description": "Relax at this popular beach with soft sand and clear waters.",
           "cost": 0,
           "day": 1,
-          "relevant_link": "NULL"
+          "relevant_link": "https://www.naplesgov.com/nature/parks/vanderbilt-beach"
         },
         {
           "type": "food",
-          "title": "Nobu Malibu",
-          "description": "Luxury Japanese restaurant overlooking the ocean.",
-          "cost": 70,
+          "title": "The Turtle Club",
+          "description": "Enjoy beachfront dining with fresh seafood options.",
+          "cost": 75,
           "day": 1,
-          "relevant_link": "https://www.noburestaurants.com/malibu/home/"
+          "relevant_link": "https://www.turtleclubnaples.com"
         },
         {
           "type": "activity",
-          "title": "Malibu Pier",
-          "description": "Take a stroll on the historic pier and enjoy the views.",
+          "title": "Sunset at the Pier",
+          "description": "Watch a beautiful sunset at Naples Pier.",
           "cost": 0,
+          "day": 1,
+          "relevant_link": "https://www.naplespier.com"
+        },
+        {
+          "type": "food",
+          "title": "DB Cooper's",
+          "description": "Casual dining spot with drinks and appetizers.",
+          "cost": 40,
           "day": 1,
           "relevant_link": "NULL"
         }
       ]
     },
     "day2": {
-      "day_description": "Explore local attractions and nature trails.",
+      "day_description": "Exploring local attractions and experiencing Naples culture.",
       "activities": [
         {
-          "type": "food",
-          "title": "Trancas Country Market",
-          "description": "A charming market with local eateries and shops.",
+          "type": "activity",
+          "title": "Naples Botanical Garden",
+          "description": "Stroll through vibrant gardens showcasing local and exotic plants.",
           "cost": 20,
           "day": 2,
-          "relevant_link": "http://www.trancascountrymarket.com"
-        },
-        {
-          "type": "activity",
-          "title": "El Matador State Beach",
-          "description": "A beautiful beach known for its scenic cliffs and sea caves.",
-          "cost": 0,
-          "day": 2,
-          "relevant_link": "NULL"
+          "relevant_link": "https://www.naplesgarden.org"
         },
         {
           "type": "food",
-          "title": "The Old Place",
-          "description": "Rustic eatery serving hearty American fare in a cozy atmosphere.",
-          "cost": 35,
+          "title": "The Naples Players",
+          "description": "Enjoy a dinner and a show at a local theater.",
+          "cost": 60,
           "day": 2,
-          "relevant_link": "http://www.oldplace.com"
+          "relevant_link": "https://www.naplesplayers.org"
         },
         {
           "type": "activity",
-          "title": "Point Dume Natural Preserve",
-          "description": "Hiking trails with breathtaking ocean views.",
+          "title": "Tin City",
+          "description": "Explore this historic waterfront marketplace with shops and eateries.",
           "cost": 0,
           "day": 2,
-          "relevant_link": "NULL"
+          "relevant_link": "https://tincity.com"
+        },
+        {
+          "type": "food",
+          "title": "Old Naples Pub",
+          "description": "Relaxed pub serving American classics and a local brews.",
+          "cost": 50,
+          "day": 2,
+          "relevant_link": "http://www.oldnaplespub.com"
+        }
+      ]
+    },
+    "day3": {
+      "day_description": "Adventure and outdoor activities in the beautiful natural parks.",
+      "activities": [
+        {
+          "type": "activity",
+          "title": "Everglades National Park",
+          "description": "Take a day trip to explore the unique ecosystem of the Everglades.",
+          "cost": 30,
+          "day": 3,
+          "relevant_link": "https://www.nps.gov/ever/index.htm"
+        },
+        {
+          "type": "food",
+          "title": "Sweet Melissa's",
+          "description": "Fine dining with an emphasis on seasonal local ingredients.",
+          "cost": 80,
+          "day": 3,
+          "relevant_link": "http://www.sweetmelissas.com"
+        },
+        {
+          "type": "activity",
+          "title": "Kayaking Tour",
+          "description": "Join a guided kayak tour through the mangroves.",
+          "cost": 60,
+          "day": 3,
+          "relevant_link": "https://www.napleskayakcompany.com"
+        },
+        {
+          "type": "food",
+          "title": "The Good Life",
+          "description": "Relaxed restaurant with a good selection of craft beers and comfort food.",
+          "cost": 40,
+          "day": 3,
+          "relevant_link": "http://www.goodlifenaples.com"
+        }
+      ]
+    },
+    "day4": {
+      "day_description": "Relaxation and heading back home after a fulfilling trip.",
+      "activities": [
+        {
+          "type": "activity",
+          "title": "Naples Zoo",
+          "description": "Visit the Naples Zoo to see a variety of animals and exhibits.",
+          "cost": 30,
+          "day": 4,
+          "relevant_link": "https://www.napleszoo.org"
+        },
+        {
+          "type": "food",
+          "title": "Royal Scoop Ice Cream",
+          "description": "End your trip with some of Naples' best ice cream.",
+          "cost": 10,
+          "day": 4,
+          "relevant_link": "https://www.royalscoop.com"
+        },
+        {
+          "type": "activity",
+          "title": "Fifth Avenue South",
+          "description": "Explore shops and boutiques on this vibrant street.",
+          "cost": 0,
+          "day": 4,
+          "relevant_link": "https://www.fifthavenuesouth.com"
+        },
+        {
+          "type": "food",
+          "title": "Bistro 821",
+          "description": "A local favorite for a delicious lunch before departure.",
+          "cost": 50,
+          "day": 4,
+          "relevant_link": "http://www.bistro821.com"
         }
       ]
     }

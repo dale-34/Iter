@@ -6,25 +6,37 @@
 }
 
 .flights-card {
-    /* background: rgba(255, 232, 214, 1.0); */
     background: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.reservation-card {
+    background: #7ab3ad;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     margin: auto;
 }
 
-.reservation-card {
-    /* background: rgba(255, 232, 214, 1.0); */
-    background: #f0f0f0;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    margin: auto;
+.reservation-card h2 {
+    color: white;
 }
 
 .flights-card p {
     font-size: 16px;
     margin: 8px 0;
     line-height: 1.5;
+}
+
+.flights-card h3 {
+    margin: 0px;
+}
+
+.section-title2 {
+    margin: 0px;
+    padding-top: 10px;
 }

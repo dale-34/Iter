@@ -18,7 +18,7 @@ const DayCard = ({ dayNumber, date, description, activities = [], onActivityRepl
     };
 
     return (
-        <Card sx={{ marginBottom: 2 }}>
+        <Card sx={{ marginBottom: 2, width: '97%', borderRadius: '12px', }}>
             <CardContent>
                 <Box display="flex" justifyContent="space-between" alignItems="center">
                     <Box>

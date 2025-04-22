@@ -1,7 +1,7 @@
 {
   "type": "food",
-  "title": "Lombardi's Pizza",
-  "description": "Famous for being one of the first pizzerias in America, Lombardi's serves up classic New York-style pizza with a variety of toppings in a cozy setting.",
-  "cost": 20,
-  "relevant_link": "https://www.lombardispizza.com/"
+  "title": "Seaside Grill",
+  "description": "A cozy beachfront restaurant offering fresh seafood and stunning ocean views.",
+  "cost": 25,
+  "relevant_link": "https://www.seasidegrill.com"
 }

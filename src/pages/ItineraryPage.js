@@ -134,16 +134,19 @@ function ItineraryPage() {
                     flights={vacationPlan?.accomodations?.transportation || []}
                     hotels={vacationPlan?.accomodations?.reservations || []}
                 />
+                <div className="day-list-header">
+                    <h1 className="section-title">Itinerary</h1>
+                </div>
                 <div className="day-list">
                     {Object.keys(vacationPlan?.vacation || {}).map(
                         (day, index) => {
                             const dayData = vacationPlan.vacation[day];
                             if (day.startsWith("day")) {
                                 const date = new Date(startDate);
-                                date.setDate(date.getDate() + index - 1);
+                                date.setDate(date.getDate() + index - 3);
                                 return (
                                     <DayCard
-                                        dayNumber={index - 1}
+                                        dayNumber={index - 2}
                                         date={date.toLocaleDateString()}
                                         description={dayData.day_description}
                                         activities={dayData.activities}
@@ -154,7 +157,7 @@ function ItineraryPage() {
                             return null;
                         }
                     )}
-                </div>
+                </div>    
             </div>
         </div>
     );
