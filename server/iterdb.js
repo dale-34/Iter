@@ -19,7 +19,8 @@ const pool = mysql.createPool({
 // Insert vacation plan into the database
 async function insertPlan(vacationPlan, correctuserId, extraInputs) {
     try {
-        const [startDate, endDate, budget, destination, startingLocation] = extraInputs;
+        const [startDate, endDate, budget, destination, startingLocation] =
+            extraInputs;
         const tripName = `${destination} Trip`;
 
         // Formatting dates:
@@ -44,8 +45,12 @@ async function insertPlan(vacationPlan, correctuserId, extraInputs) {
             minBudget: budget[0],
             maxBudget: budget[1],
         });
+        
+        const dest = Array.isArray(destination)
+            ? destination.join(", ")
+            : destination;
 
-        const image = await getImageURL(destination);
+        const image = await getImageURL(dest);
         // Step 1: Insert into `trips` Table (including climate info)
         const tripQuery = `
             INSERT INTO trips (user_id, trip_name, start_date, end_date, starting_point, destination, climate, latitude, longitude, created_at, min_budget, max_budget, image)
@@ -231,9 +236,17 @@ async function getVacationPlan(tripId) {
                 image: reservation.image,
             };
 
-            if (reservation.type === "hotel" || reservation.type === "motel" || reservation.type === "airBnB") {
+            if (
+                reservation.type === "hotel" ||
+                reservation.type === "motel" ||
+                reservation.type === "airBnB"
+            ) {
                 accomodations.reservations.push(formattedReservation);
-            } else if (reservation.type === "flight" || reservation.type === "car_rental" || reservation.type === "train") {
+            } else if (
+                reservation.type === "flight" ||
+                reservation.type === "car_rental" ||
+                reservation.type === "train"
+            ) {
                 accomodations.transportation.push(formattedReservation);
             }
         });
@@ -305,7 +318,7 @@ async function updateActivity(activityId, newActivity) {
             image = ?
         WHERE id = ?;
         `;
-    
+
         const values = [
             newActivity.type,
             newActivity.title,
@@ -313,7 +326,7 @@ async function updateActivity(activityId, newActivity) {
             newActivity.cost,
             newActivity.relevant_link,
             newActivity.image,
-            activityId
+            activityId,
         ];
 
         const [result] = await pool.promise().query(updateQuery, values);
@@ -376,9 +389,7 @@ async function setTripName(tripId, newName) {
             WHERE id = ?;
         `;
 
-        const [result] = await pool
-            .promise()
-            .query(query, [newName, tripId]);
+        const [result] = await pool.promise().query(query, [newName, tripId]);
 
         if (result.affectedRows === 1) {
             console.log(`TripName updated for trip ${tripId}`);
@@ -402,7 +413,6 @@ async function setTripName(tripId, newName) {
 // Sets a profile photo for the user
 async function setFavorite(activityId, favorited) {
     try {
-
         let favoriteValue = 0;
         if (favorited) {
             favoriteValue = 1;
@@ -448,4 +458,13 @@ pool.query("SELECT * FROM users", (err, results) => {
     console.log("Database connected. Query results:", results);
 });
 
-export { getVacationPlan, insertPlan, getUserTrips, setProfilePhoto, updateActivity, setFavorite, setTripName, pool };
+export {
+    getVacationPlan,
+    insertPlan,
+    getUserTrips,
+    setProfilePhoto,
+    updateActivity,
+    setFavorite,
+    setTripName,
+    pool,
+};
