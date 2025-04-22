@@ -30,8 +30,7 @@ const Recap = ({
         setImgSrc(placeholder);
         setIsPlaceholder(true);
     };
-
-    console.log("VACATION IMAGE: ", vacationPlan.vacation.image);
+    
     return (
         <div className="recap-container">
             <h2 className="section-title">Overview</h2>
