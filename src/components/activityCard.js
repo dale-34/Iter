@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -9,7 +9,6 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 import axios from "axios";
 
-
 const ActivityCard = ({
     id,
     title,
@@ -17,31 +16,34 @@ const ActivityCard = ({
     image,
     cost,
     onActivityReplace,
-    favorited: initialFavorited // rename to avoid name clash
+    favorited: initialFavorited, // rename to avoid name clash
 }) => {
-    const placeholder = "/images/placeholder.jpeg"; 
+    const placeholder = "/images/placeholder.jpeg";
     const [favorited, setFavorited] = useState(initialFavorited);
     const [isPlaceholder, setIsPlaceholder] = useState(false);
 
     const handleFavorite = async () => {
         try {
-            await axios.post('http://localhost:3001/db/set-favorite', {
-                activityId: id,         
-                favorited: !favorited
+            await axios.post("http://localhost:3001/db/set-favorite", {
+                activityId: id,
+                favorited: !favorited,
             });
             setFavorited(!favorited); // update local state to re-render with new color
         } catch (error) {
-            console.error('Error setting favorite:', error.message);
+            console.error("Error setting favorite:", error.message);
         }
     };
 
     const handleReplace = async () => {
         try {
-            const { data } = await axios.post("http://localhost:3001/openai/replace-activity", {
-                activityId: id,
-                title,
-            });
-            
+            const { data } = await axios.post(
+                "http://localhost:3001/openai/replace-activity",
+                {
+                    activityId: id,
+                    title,
+                }
+            );
+
             if (data.success && data.newActivity) {
                 // Call Parent Callback
                 onActivityReplace(id, data.newActivity);
@@ -52,9 +54,11 @@ const ActivityCard = ({
         }
     };
 
-    const [imgSrc, setImgSrc] = useState(
-        `http://localhost:3001/photo-proxy?url=${encodeURIComponent(image)}&t=${Date.now()}`
-    );
+    const [imgSrc, setImgSrc] = useState("");
+    useEffect(() => {
+        setIsPlaceholder(false);
+        setImgSrc(`http://localhost:3001/photo-proxy?url=${encodeURIComponent(image)}&t=${Date.now()}`);
+    }, [image]);
 
     const handleImgError = (e) => {
         e.target.onerror = null;
@@ -73,7 +77,7 @@ const ActivityCard = ({
                 },
                 overflow: "visible",
             }}
-        >   
+        >
             <CardMedia
                 component="img"
                 alt={title}
@@ -81,9 +85,9 @@ const ActivityCard = ({
                 image={imgSrc}
                 onError={handleImgError}
                 sx={{
-                    width: isPlaceholder ? 350 : '100%',
+                    width: isPlaceholder ? 350 : "100%",
                     height: isPlaceholder ? 300 : 220,
-                    objectFit: isPlaceholder ? 'contain' : 'cover',
+                    objectFit: isPlaceholder ? "contain" : "cover",
                 }}
             />
             <CardContent>
@@ -99,7 +103,7 @@ const ActivityCard = ({
                 <IconButton
                     size="small"
                     onClick={handleFavorite}
-                    color={favorited ? "error" : "default"} //error for red color when favorited 
+                    color={favorited ? "error" : "default"} //error for red color when favorited
                 >
                     <FavoriteIcon />
                 </IconButton>
@@ -110,7 +114,7 @@ const ActivityCard = ({
                     color="secondary"
                     disabled={favorited}
                     sx={{
-                        color: favorited ? 'default' : 'warning.main', // warning for yellow/orange swap color
+                        color: favorited ? "default" : "warning.main", // warning for yellow/orange swap color
                     }}
                 >
                     <SwapHorizIcon />
