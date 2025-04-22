@@ -19,7 +19,9 @@ const ActivityCard = ({
     onActivityReplace,
     favorited: initialFavorited // rename to avoid name clash
 }) => {
+    const placeholder = "/images/placeholder.jpeg"; 
     const [favorited, setFavorited] = useState(initialFavorited);
+    const [isPlaceholder, setIsPlaceholder] = useState(false);
 
     const handleFavorite = async () => {
         try {
@@ -50,6 +52,16 @@ const ActivityCard = ({
         }
     };
 
+    const [imgSrc, setImgSrc] = useState(
+        `http://localhost:3001/photo-proxy?url=${encodeURIComponent(image)}&t=${Date.now()}`
+    );
+
+    const handleImgError = (e) => {
+        e.target.onerror = null;
+        setImgSrc(placeholder);
+        setIsPlaceholder(true);
+    };
+
     return (
         <Card
             sx={{
@@ -62,7 +74,18 @@ const ActivityCard = ({
                 overflow: "visible",
             }}
         >   
-            <CardMedia component="img" alt={title} height="220" image={image} />
+            <CardMedia
+                component="img"
+                alt={title}
+                height="220"
+                image={imgSrc}
+                onError={handleImgError}
+                sx={{
+                    width: isPlaceholder ? 350 : '100%',
+                    height: isPlaceholder ? 300 : 220,
+                    objectFit: isPlaceholder ? 'contain' : 'cover',
+                }}
+            />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                     {title}

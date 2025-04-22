@@ -22,7 +22,7 @@ app.use(express.json()); // Parse JSON bodies
 // Use routes
 app.use("/auth", authRoutes);  // Authentication routes
 app.use("/openai", openaiRoutes);
-app.use("/photos", googleRoutes);
+app.use("/", googleRoutes);
 app.use("/db", iterdbRoutes);
 
 app.listen(port, () => {
