@@ -22,20 +22,38 @@ function ItineraryPage() {
 
     const [userInputs, setUserInputs] = useState([]);
 
+    // const handleActivityReplace = (activityId, newActivity) => {
+    //     setVacationPlan(prevPlan => {
+    //         const updatedVacation = { ...prevPlan.vacation };
+    //         Object.keys(updatedVacation).forEach(dayKey => {
+    //             const dayData = updatedVacation[dayKey];
+    //             if (dayData.activities) {
+    //                 dayData.activities = dayData.activities.map(activity =>
+    //                     (activity.id === activityId) ? { ...activity, ...newActivity } : activity
+    //                 );
+    //             }
+    //         });
+    //         return { ...prevPlan, vacation: updatedVacation };
+    //     });
+    // };
     const handleActivityReplace = (activityId, newActivity) => {
         setVacationPlan(prevPlan => {
             const updatedVacation = { ...prevPlan.vacation };
+    
             Object.keys(updatedVacation).forEach(dayKey => {
                 const dayData = updatedVacation[dayKey];
-                if (dayData.activities) {
-                    dayData.activities = dayData.activities.map(activity =>
-                        (activity.id === activityId) ? { ...activity, ...newActivity } : activity
+    
+                if (dayData && Array.isArray(dayData.activities)) {
+                    updatedVacation[dayKey].activities = dayData.activities.map(activity =>
+                        activity.id === activityId ? { ...activity, ...newActivity } : activity
                     );
                 }
             });
+    
             return { ...prevPlan, vacation: updatedVacation };
         });
     };
+    
 
 
     const handleSave = async (tripTitle) => {
