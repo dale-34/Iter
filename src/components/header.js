@@ -37,10 +37,11 @@ export const Header = () => {
   // Determine which profile photo to display based on the profilePhoto preference
   const getProfilePhoto = () => {
     if (!userProfile) {
-      return "./images/default-profile.png"; // Blank profile image when not logged in
+      return ["./images/default-profile.png"];
     }
-    return userProfile.profilePhoto === 1 ? "./images/albert.png" : "./images/alberta.png";
+    return ["./images/alberta.png"];
   };
+  
 
   return (
     <header className="header">
@@ -56,6 +57,7 @@ export const Header = () => {
         ) : (
           <>
             <IconButton onClick={handleMenuClick}>
+              <img src="./images/island.jpg" alt="Profile Background" className="profile-bg-header" />
               <img
                 src={getProfilePhoto()} // Use the getProfilePhoto function to choose the image
                 alt="profile"
@@ -63,9 +65,11 @@ export const Header = () => {
                   width: 44,
                   height: 44,
                   borderRadius: '50%',
-                  backgroundColor: 'white',
                   padding: 1,
                   marginRight: 8,
+                  zIndex: 1,
+                  border: '1px solid white',
+                  transform: 'translateX(-50%)',
                 }}
               />
             </IconButton>

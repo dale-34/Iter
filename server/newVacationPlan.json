@@ -1,7 +1,7 @@
 {
   "type": "food",
-  "title": "Seaside Grill",
-  "description": "A cozy beachfront restaurant offering fresh seafood and stunning ocean views.",
+  "title": "Pasta Project",
+  "description": "An Italian restaurant known for its freshly made pasta and traditional sauces.",
   "cost": 25,
-  "relevant_link": "https://www.seasidegrill.com"
+  "relevant_link": "https://www.pastaproject.com"
 }

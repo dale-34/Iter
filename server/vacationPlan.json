@@ -2,172 +2,98 @@
   "accomodations": {
     "reservations": [
       {
-        "name": "Naples Beach Resort",
-        "type": "hotel",
-        "estimated_cost": "800.00",
-        "description": "A beachfront hotel offering stunning views and easy access to the beach.",
-        "reservation_link": "https://www.naplesbeachhotel.com"
+        "name": "Quality Inn",
+        "type": "motel",
+        "estimated_cost": "150.00",
+        "description": "Comfortable motel located in New Jersey with free breakfast and Wi-Fi.",
+        "reservation_link": "https://www.choicehotels.com/new-jersey/monroe/quality-inn-hotels/nj013"
       }
     ],
     "transportation": [
       {
-        "name": "Rental Car",
-        "type": "car_rental",
-        "estimated_cost": "300.00",
-        "description": "A reliable car rental for easy travel around Naples.",
-        "reservation_link": "https://www.enterprise.com/en/home.html"
+        "name": "NJ Transit Train",
+        "type": "train",
+        "estimated_cost": "80.00",
+        "description": "Round trip train tickets from NYC to New Jersey.",
+        "reservation_link": "https://www.njtransit.com/"
       }
     ]
   },
   "vacation": {
-    "climate": "tropical and humid",
-    "latitude": 26,
-    "longitude": -81,
+    "climate": "mild spring climate with temperatures averaging between 50°F and 70°F.",
+    "latitude": 40,
+    "longitude": -74,
     "day1": {
-      "day_description": "Arrival and beach relaxation on the first day.",
+      "day_description": "Arrive in New Jersey and explore local parks and dining options.",
       "activities": [
         {
-          "type": "activity",
-          "title": "Vanderbilt Beach",
-          "description": "Relax at this popular beach with soft sand and clear waters.",
-          "cost": 0,
+          "type": "food",
+          "title": "The Cheesecake Factory",
+          "description": "A popular chain known for its extensive menu and delicious cheesecakes.",
+          "cost": 29.3,
           "day": 1,
-          "relevant_link": "https://www.naplesgov.com/nature/parks/vanderbilt-beach"
+          "relevant_link": "https://www.thecheesecakefactory.com/"
         },
         {
           "type": "food",
-          "title": "The Turtle Club",
-          "description": "Enjoy beachfront dining with fresh seafood options.",
-          "cost": 75,
+          "title": "Tavern on the Lake",
+          "description": "Family-friendly restaurant offering a great view of the lake and delicious American cuisine.",
+          "cost": 35,
           "day": 1,
-          "relevant_link": "https://www.turtleclubnaples.com"
+          "relevant_link": "https://www.tavernonthelake.com/"
         },
         {
           "type": "activity",
-          "title": "Sunset at the Pier",
-          "description": "Watch a beautiful sunset at Naples Pier.",
-          "cost": 0,
+          "title": "Dinosaur Island",
+          "description": "An outdoor adventure park featuring life-sized dinosaur replicas and activities for children.",
+          "cost": 25,
           "day": 1,
-          "relevant_link": "https://www.naplespier.com"
+          "relevant_link": "https://www.dinosaurisland.com/"
         },
         {
-          "type": "food",
-          "title": "DB Cooper's",
-          "description": "Casual dining spot with drinks and appetizers.",
-          "cost": 40,
+          "type": "activity",
+          "title": "Lake Hopatcong",
+          "description": "A tranquil lake providing opportunities for walking, fishing, and enjoying nature.",
+          "cost": 0,
           "day": 1,
           "relevant_link": "NULL"
         }
       ]
     },
     "day2": {
-      "day_description": "Exploring local attractions and experiencing Naples culture.",
+      "day_description": "Visit historical sites and enjoy local dining experiences.",
       "activities": [
         {
-          "type": "activity",
-          "title": "Naples Botanical Garden",
-          "description": "Stroll through vibrant gardens showcasing local and exotic plants.",
-          "cost": 20,
+          "type": "food",
+          "title": "Pasta e Vino",
+          "description": "Authentic Italian restaurant known for its fresh pasta and wine selection.",
+          "cost": 32,
           "day": 2,
-          "relevant_link": "https://www.naplesgarden.org"
+          "relevant_link": "http://pastaevino.com/"
         },
         {
           "type": "food",
-          "title": "The Naples Players",
-          "description": "Enjoy a dinner and a show at a local theater.",
-          "cost": 60,
-          "day": 2,
-          "relevant_link": "https://www.naplesplayers.org"
-        },
-        {
-          "type": "activity",
-          "title": "Tin City",
-          "description": "Explore this historic waterfront marketplace with shops and eateries.",
-          "cost": 0,
-          "day": 2,
-          "relevant_link": "https://tincity.com"
-        },
-        {
-          "type": "food",
-          "title": "Old Naples Pub",
-          "description": "Relaxed pub serving American classics and a local brews.",
-          "cost": 50,
-          "day": 2,
-          "relevant_link": "http://www.oldnaplespub.com"
-        }
-      ]
-    },
-    "day3": {
-      "day_description": "Adventure and outdoor activities in the beautiful natural parks.",
-      "activities": [
-        {
-          "type": "activity",
-          "title": "Everglades National Park",
-          "description": "Take a day trip to explore the unique ecosystem of the Everglades.",
-          "cost": 30,
-          "day": 3,
-          "relevant_link": "https://www.nps.gov/ever/index.htm"
-        },
-        {
-          "type": "food",
-          "title": "Sweet Melissa's",
-          "description": "Fine dining with an emphasis on seasonal local ingredients.",
-          "cost": 80,
-          "day": 3,
-          "relevant_link": "http://www.sweetmelissas.com"
-        },
-        {
-          "type": "activity",
-          "title": "Kayaking Tour",
-          "description": "Join a guided kayak tour through the mangroves.",
-          "cost": 60,
-          "day": 3,
-          "relevant_link": "https://www.napleskayakcompany.com"
-        },
-        {
-          "type": "food",
-          "title": "The Good Life",
-          "description": "Relaxed restaurant with a good selection of craft beers and comfort food.",
-          "cost": 40,
-          "day": 3,
-          "relevant_link": "http://www.goodlifenaples.com"
-        }
-      ]
-    },
-    "day4": {
-      "day_description": "Relaxation and heading back home after a fulfilling trip.",
-      "activities": [
-        {
-          "type": "activity",
-          "title": "Naples Zoo",
-          "description": "Visit the Naples Zoo to see a variety of animals and exhibits.",
-          "cost": 30,
-          "day": 4,
-          "relevant_link": "https://www.napleszoo.org"
-        },
-        {
-          "type": "food",
-          "title": "Royal Scoop Ice Cream",
-          "description": "End your trip with some of Naples' best ice cream.",
+          "title": "Café Amici",
+          "description": "Charming café offering artisan coffee and light bites.",
           "cost": 10,
-          "day": 4,
-          "relevant_link": "https://www.royalscoop.com"
+          "day": 2,
+          "relevant_link": "http://cafeamici.com/"
         },
         {
           "type": "activity",
-          "title": "Fifth Avenue South",
-          "description": "Explore shops and boutiques on this vibrant street.",
+          "title": "Morristown National Historical Park",
+          "description": "Explore the historical significance of the area with guided walks and information centers.",
           "cost": 0,
-          "day": 4,
-          "relevant_link": "https://www.fifthavenuesouth.com"
+          "day": 2,
+          "relevant_link": "https://www.nps.gov/morr/index.htm"
         },
         {
-          "type": "food",
-          "title": "Bistro 821",
-          "description": "A local favorite for a delicious lunch before departure.",
-          "cost": 50,
-          "day": 4,
-          "relevant_link": "http://www.bistro821.com"
+          "type": "activity",
+          "title": "Red Bank's Count Basie Theater",
+          "description": "Catch a live performance or show at this renowned theater.",
+          "cost": 40,
+          "day": 2,
+          "relevant_link": "https://thebasie.org/"
         }
       ]
     }

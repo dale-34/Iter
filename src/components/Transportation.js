@@ -99,7 +99,7 @@ export const Transportation = ({
       </div>
 
       <div className="transport__options">
-        {["Rental Car", "Flight", "Train", "Own"].map((option) => (
+        {["Rental Car", "Flight", "Train"].map((option) => (
           <button
             key={option}
             className={`transport__option ${

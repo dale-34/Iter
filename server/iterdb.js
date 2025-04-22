@@ -332,6 +332,9 @@ async function updateActivity(activityId, newActivity) {
 
 // Sets a profile photo for the user
 async function setProfilePhoto(userId, profilePhoto) {
+    console.log(profilePhoto);
+    console.log(userId);
+
     try {
         const query = `
             UPDATE users
