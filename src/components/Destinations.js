@@ -96,6 +96,7 @@ export const Destinations = ({ onDestinationChange }) => {
                 key={index}
                 className={`destinations__carousel-card ${selectedDestination === place.title ? "selected" : ""}`}
                 onClick={() => handleCardClick(place.title)}
+                style={{ color: selectedDestination === place.title ? "black" : "#333", border: selectedDestination === place.title ? "3px solid black" : "none" }}
               >
                 <img src={place.img} alt={place.title} className="carousel-image" />
                 <p style={{ color: selectedDestination === place.title ? "black" : "#333", fontWeight: selectedDestination === place.title ? "bold" : "normal" }}>

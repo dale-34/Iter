@@ -51,7 +51,7 @@ export const HousingAccommodations = ({ onHousingChange }) => {
       </div>
 
       <div className="housing__options">
-        {["Hotel", "AirBnB", "Motel", "I have my own housing"].map((option) => (
+        {["Hotel", "AirBnB", "Motel"].map((option) => (
           <button
             key={option}
             className={`housing__option ${
