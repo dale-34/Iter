@@ -1,6 +1,6 @@
 # Iter
 
-This application is the Traveling Gators' senior project, a full-stack React application with a Node.js/Express backend. The application serves the purpose of working as an AI-powered travel guide and itinerary creator. 
+This application is the Traveling Gators' senior project, a full-stack React application with a Node.js/Express backend. Iter serves the purpose of working as an AI-powered travel guide and itinerary creator. 
 
 
 
@@ -55,19 +55,4 @@ The backend server will typically run at:
 http://localhost:3001
 ```
 
-
-## Project Structure
-
-```
-iter/
-├── public/
-├── src/
-├── .env           <-- frontend environment variables
-├── server/
-│   ├── index.js
-│   ├── .env       <-- backend environment variables (if used)
-│   └── ...
-└── package.json
-```
-
-Thank you, and we hope you enjoy our application!
+Thank you, and we hope you enjoy using our application!
